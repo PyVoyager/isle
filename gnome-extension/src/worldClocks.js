@@ -7,6 +7,8 @@ import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 import GWeather from 'gi://GWeather?version=4.0';
 
+import {_} from './i18n.js';
+
 const SHELL_SCHEMA = 'org.gnome.shell.world-clocks';
 const CLOCKS_SCHEMA = 'org.gnome.clocks';
 
@@ -82,5 +84,5 @@ export function dayText(timezone, now = GLib.DateTime.new_now_local()) {
     // A day number that orders dates across years.
     const key = d => d.get_year() * 400 + d.get_day_of_year();
     const diff = key(there) - key(now);
-    return diff > 0 ? 'Tomorrow' : diff < 0 ? 'Yesterday' : '';
+    return diff > 0 ? _('Tomorrow') : diff < 0 ? _('Yesterday') : '';
 }

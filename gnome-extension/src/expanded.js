@@ -12,6 +12,7 @@ import St from 'gi://St';
 import {timerColor} from './compact.js';
 import {VERTICAL, onUiScale, px, uiScale} from './compat.js';
 import * as Format from './format.js';
+import {_, N_} from './i18n.js';
 import * as Playback from './playback.js';
 import {watchClock} from './wallClock.js';
 import {Bars, PrivacyDots, RecordingDot, Ring, easeTo, fence, icon, iconButton, label, slideBy} from './widgets.js';
@@ -24,17 +25,17 @@ export const PAGE_HEIGHT = 150;
 /** Room below the page, as at its sides (.isle-page): 20 px all round, cards' 12 px corners concentric with the 32. */
 export const BOTTOM_PADDING = 20;
 
-/** Each page's tab: its icon, and the label shown while it is open. */
+/** Each page's tab: its icon, and the label shown while it is open (translated as it shows). */
 const TABS = {
-    call: {icon: 'isle-phone', label: 'Call'},
-    music: {icon: 'isle-music', label: 'Music'},
-    notifications: {icon: 'isle-bell', label: 'Notifications'},
-    focus: {icon: 'isle-timer', label: 'Timer'},
-    reminders: {icon: 'isle-tasks', label: 'Reminders'},
-    shelf: {icon: 'isle-shelf', label: 'Shelf'},
-    calendar: {icon: 'isle-calendar', label: 'Calendar'},
-    apps: {icon: 'isle-apps', label: 'Apps'},
-    usage: {icon: 'isle-gauge', label: 'Usage'},
+    call: {icon: 'isle-phone', label: N_('Call')},
+    music: {icon: 'isle-music', label: N_('Music')},
+    notifications: {icon: 'isle-bell', label: N_('Notifications')},
+    focus: {icon: 'isle-timer', label: N_('Timer')},
+    reminders: {icon: 'isle-tasks', label: N_('Reminders')},
+    shelf: {icon: 'isle-shelf', label: N_('Shelf')},
+    calendar: {icon: 'isle-calendar', label: N_('Calendar')},
+    apps: {icon: 'isle-apps', label: N_('Apps')},
+    usage: {icon: 'isle-gauge', label: N_('Usage')},
 };
 /** How bright a tab's icon is: open, under the pointer, otherwise. */
 const TAB_OPACITY = {open: 255, hover: 200, idle: 140};
@@ -170,7 +171,7 @@ export const ExpandedView = GObject.registerClass({
         this._recordingButton = new St.Button({
             style_class: 'isle-recording-pill',
             child: recordingBox,
-            accessible_name: 'Stop recording',
+            accessible_name: _('Stop recording'),
             visible: false,
             y_align: Clutter.ActorAlign.CENTER,
         });
@@ -182,7 +183,7 @@ export const ExpandedView = GObject.registerClass({
         status.add_child(this._headerBars);
         // The assistant, as AI rather than a microphone: it listens, and it can be typed to.
         this._micButton = iconButton('isle-sparkle-symbolic', 'isle-button-flat isle-header-mic',
-            () => this.emit('voice-requested'), {size: 15, accessibleName: 'AI assistant'});
+            () => this.emit('voice-requested'), {size: 15, accessibleName: _('AI assistant')});
         status.add_child(this._micButton);
 
         const clock = new St.BoxLayout({y_align: Clutter.ActorAlign.CENTER, style_class: 'isle-header-clock'});
@@ -199,7 +200,7 @@ export const ExpandedView = GObject.registerClass({
         clock.add_child(time);
         status.add_child(clock);
         const settings = iconButton('isle-settings', 'isle-button-flat isle-header-settings',
-            () => this.emit('settings-requested'), {size: 15, accessibleName: 'Settings'});
+            () => this.emit('settings-requested'), {size: 15, accessibleName: _('Settings')});
         // Its icon is an image, which takes no CSS colour: dimmed as the sparkle beside it, lit under the pointer.
         settings.child.opacity = SETTINGS_OPACITY;
         settings.connect('notify::hover', () => settings.child.ease({opacity: settings.hover ? 255 : SETTINGS_OPACITY, duration: 120}));
@@ -233,7 +234,7 @@ export const ExpandedView = GObject.registerClass({
                 visible: false,
             });
             glyph.add_child(badge);
-            const name = label(text, 'isle-tab-label', {y_align: Clutter.ActorAlign.CENTER});
+            const name = label(_(text), 'isle-tab-label', {y_align: Clutter.ActorAlign.CENTER});
             // The name opens and closes by width, so the tabs beside it slide over instead of jumping.
             const nameClip = new St.Widget({layout_manager: new Clutter.BinLayout(), clip_to_allocation: true, width: 0, y_align: Clutter.ActorAlign.CENTER});
             nameClip.add_child(name);

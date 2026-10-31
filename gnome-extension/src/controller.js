@@ -23,6 +23,7 @@ import {CompactView} from './compact.js';
 import {HAS_ACCENT, grabsKeyboard, inhibitScanout, onUiScale, px, uiScale} from './compat.js';
 import {Daemon} from './daemon.js';
 import {BOTTOM_PADDING, ExpandedView, PAGE_HEIGHT} from './expanded.js';
+import {_} from './i18n.js';
 import {Island} from './island.js';
 import {AudioOutputs} from './audio.js';
 import {CallMonitor} from './call.js';
@@ -1996,7 +1997,7 @@ export class Controller {
             this._syncAssistantBusy();
             return;
         }
-        const why = error || (this._daemon.running ? 'Isle couldn’t take that' : 'Isle’s service isn’t running');
+        const why = error || (this._daemon.running ? _('Isle couldn’t take that') : _('Isle’s service isn’t running'));
         this._listenSent = false;
         this._voice.setState({phase: 'error', error: why, hint: this._askAgainHint});
         this._setKeyboard(false);
@@ -2052,7 +2053,8 @@ export class Controller {
 
     /** How to ask again, under an error: the shortcut, if there is one. */
     get _askAgainHint() {
-        return this._voiceShortcut ? `Press ${this._voiceShortcut} to ask again.` : 'Ask again from the mic in the island.';
+        return this._voiceShortcut ? _('Press {shortcut} to ask again.', {shortcut: this._voiceShortcut})
+            : _('Ask again from the mic in the island.');
     }
 
     /** Whether the assistant works on a request with the island closed. */
@@ -2080,7 +2082,7 @@ export class Controller {
         this._voice.followUp = greet ? null : Format.answerPlain(this._voice.exchange?.reply ?? '') || null;
         // Esc and clicks elsewhere close it while it listens and thinks.
         this._setKeyboard(true);
-        this._voice.greeting = greet ? GREETING : null;
+        this._voice.greeting = greet ? _(GREETING) : null;
         this._voice.micWaiting = false;
         this._voice.setState({phase: 'listening'});
         // Not recording yet after a moment (isled getting the AI or the speech model ready): it says so.
@@ -2350,13 +2352,13 @@ export class Controller {
         if (this._voiceInBackground) {
             this._voiceInBackground = false;
             this._syncAssistantBusy();
-            this._post(Alerts.assistant({phase: 'error', error: 'Isle restarted', hint: this._askAgainHint},
+            this._post(Alerts.assistant({phase: 'error', error: _('Isle restarted'), hint: this._askAgainHint},
                 () => this._openVoice()));
             return;
         }
         if (!this._voiceOpen || !['listening', ...VOICE_WORKING].includes(this._voice.phase))
             return;
-        this._voice.setState({phase: 'error', error: 'Isle restarted', hint: this._askAgainHint});
+        this._voice.setState({phase: 'error', error: _('Isle restarted'), hint: this._askAgainHint});
         this._setKeyboard(false);
         this._render();
         this._scheduleVoiceClose(VOICE_ERROR_MS);

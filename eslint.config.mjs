@@ -25,13 +25,11 @@ const gjsGlobals = {
     TextDecoder: 'readonly',
 };
 
-// What GNOME Shell adds in its own process (js/ui/environment.js).
+// What GNOME Shell adds in its own process (js/ui/environment.js). Not its `_`, `C_`, `N_` and `ngettext`:
+// they translate with GNOME Shell's own words; Isle's come from src/i18n.js, so a text that forgets the
+// import is an error.
 const shellGlobals = {
     global: 'readonly',
-    _: 'readonly',
-    C_: 'readonly',
-    N_: 'readonly',
-    ngettext: 'readonly',
 };
 
 // A local `global`, `log` or `Proxy` hides the real one. Core no-shadow also flags the

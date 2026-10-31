@@ -20,7 +20,7 @@ const SAMPLE_RATE: usize = 16_000;
 const MIN_SAMPLES: usize = SAMPLE_RATE * 3 / 2;
 
 /// Phrases Whisper makes up from noise (it learnt them from video subtitles).
-const HALLUCINATIONS: [&str; 8] = [
+const HALLUCINATIONS: [&str; 13] = [
     "terima kasih",
     "thank you",
     "thanks for watching",
@@ -29,6 +29,12 @@ const HALLUCINATIONS: [&str; 8] = [
     "sampai jumpa",
     "subtitle",
     "selamat menonton",
+    // Russian videos' credits and sign-offs ("Субтитры сделал…", "Продолжение следует…").
+    "субтитры",
+    "редактор субтитров",
+    "продолжение следует",
+    "спасибо за просмотр",
+    "подписывайтесь на канал",
 ];
 
 /// Whisper hears Indonesian as Malay at times; both mean Indonesian here.
@@ -259,6 +265,9 @@ mod tests {
         assert!(heard("thank you, that's all", 0.05));
         // Only at the start: a request that ends in thanks is kept.
         assert!(heard("Open Files, thank you", 0.3));
+        assert!(!heard(" Продолжение следует...", 0.3));
+        assert!(!heard("Субтитры сделал DimaTorzok", 0.25));
+        assert!(heard("Открой файлы, спасибо за просмотр", 0.3));
     }
 
     #[test]

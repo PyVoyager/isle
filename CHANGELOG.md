@@ -6,6 +6,16 @@ All notable changes to Isle are listed here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Isle in Russian: the island, its alerts, the assistant's panel and Settings follow the desktop's language,
+  through gettext (`po/`, compiled on install). Settings → Assistant → Language offers Russian, and Russian or
+  English, for speech, and speech recognition drops the credits Whisper makes up from silence in Russian
+  ("Продолжение следует…"). Words that come from isled (the assistant's steps, AI limit names) are still in
+  English.
+- Notification buttons that turn something down are also known in Russian ("Отклонить"), so they are never
+  the one shown to press.
+
 ## [1.5.3] - 2026-11-01
 
 A quick fix for 1.5.2's clock. To update: click Update on the new-version alert (or Settings → About →

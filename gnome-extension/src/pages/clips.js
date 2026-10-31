@@ -15,6 +15,7 @@ import St from 'gi://St';
 import {thumbSize} from '../clipRules.js';
 import {VERTICAL, onUiScale, uiScale} from '../compat.js';
 import * as Format from '../format.js';
+import {_} from '../i18n.js';
 import {icon, iconButton, label, wrapLines} from '../widgets.js';
 import {SHELF_CAPACITY} from './files.js';
 
@@ -274,20 +275,20 @@ export const ClipsView = GObject.registerClass({
         const searching = this._query || this._kind;
         if (this._hidden) {
             this._emptyIcon.gicon = icon('isle-clipboard');
-            this._emptyTitle.text = 'Hidden while you share your screen';
-            this._emptyHint.text = 'Your clipboard shows again once sharing stops';
+            this._emptyTitle.text = _('Hidden while you share your screen');
+            this._emptyHint.text = _('Your clipboard shows again once sharing stops');
         } else if (searching) {
             this._emptyIcon.gicon = icon('isle-search');
-            this._emptyTitle.text = 'Nothing found';
-            this._emptyHint.text = 'Try other words or another filter';
+            this._emptyTitle.text = _('Nothing found');
+            this._emptyHint.text = _('Try other words or another filter');
         } else if (this._off) {
             this._emptyIcon.gicon = icon('isle-clipboard');
-            this._emptyTitle.text = 'Clipboard history is off';
-            this._emptyHint.text = 'Turn it on in Isle’s settings';
+            this._emptyTitle.text = _('Clipboard history is off');
+            this._emptyHint.text = _('Turn it on in Isle’s settings');
         } else {
             this._emptyIcon.gicon = icon('isle-clipboard');
-            this._emptyTitle.text = 'Nothing copied yet';
-            this._emptyHint.text = 'Text, links, images and files you copy show up here';
+            this._emptyTitle.text = _('Nothing copied yet');
+            this._emptyHint.text = _('Text, links, images and files you copy show up here');
         }
     }
 
@@ -543,10 +544,12 @@ export const ClipsView = GObject.registerClass({
     _shelveImage(item) {
         const dir = GLib.build_filenamev([GLib.get_user_data_dir(), 'isle', 'shelf']);
         GLib.mkdir_with_parents(dir, 0o700);
-        const stamp = GLib.DateTime.new_now_local().format('%Y-%m-%d at %H.%M.%S');
+        // TRANSLATORS: the time in a saved picture's file name (GLib.DateTime.format codes); no "/" or ":".
+        const stamp = GLib.DateTime.new_now_local().format(_('%Y-%m-%d at %H.%M.%S'));
         // Two in the same second get " 2", " 3"…: never one over another.
         const attempt = n => {
-            const target = Gio.File.new_for_path(GLib.build_filenamev([dir, `Clipboard image ${stamp}${n > 1 ? ` ${n}` : ''}.png`]));
+            const name = _('Clipboard image {time}', {time: stamp});
+            const target = Gio.File.new_for_path(GLib.build_filenamev([dir, `${name}${n > 1 ? ` ${n}` : ''}.png`]));
             Gio.File.new_for_path(item.image).copy_async(target, Gio.FileCopyFlags.NONE,
                 GLib.PRIORITY_DEFAULT, null, null, (source, result) => {
                     try {
@@ -580,45 +583,45 @@ export const ClipsView = GObject.registerClass({
 
         // Pinned items stay at the front and survive Clear all.
         actions.add_child(button(item.pinned ? 'isle-pin-fill' : 'isle-pin',
-            item.pinned ? 'Unpin' : 'Pin',
+            item.pinned ? _('Unpin') : _('Pin'),
             () => {
                 const pinned = (this._daemon.state.clipboard ?? []).filter(other => other.pinned).length;
                 if (!item.pinned && pinned >= MAX_PINNED) {
-                    this.flash(item, 'isle-pin', 'Pins full · unpin one');
+                    this.flash(item, 'isle-pin', _('Pins full · unpin one'));
                     return;
                 }
                 this._daemon.call('clipboard', 'SetPinned', item.id, !item.pinned);
                 if (!item.pinned)
-                    this.flash(item, 'isle-pin-fill', 'Pinned');
+                    this.flash(item, 'isle-pin-fill', _('Pinned'));
             }));
 
         if (item.kind === 'image' || item.kind === 'files') {
-            actions.add_child(button('isle-shelf', 'Add to the Files tab', () => {
+            actions.add_child(button('isle-shelf', _('Add to the Files tab'), () => {
                 const shelf = this._daemon.state.shelf ?? [];
                 const fresh = item.kind === 'image'
                     ? 1
                     : item.uris.filter(uri => !shelf.some(file => file.uri === uri)).length;
                 if (shelf.length + fresh > SHELF_CAPACITY) {
-                    this.flash(item, 'isle-shelf', 'Files is full');
+                    this.flash(item, 'isle-shelf', _('Files is full'));
                     return;
                 }
                 if (item.kind === 'image')
                     this._shelveImage(item);
                 else
                     this._daemon.call('shelf', 'Add', item.uris);
-                this.flash(item, 'isle-shelf', 'Added to Files');
+                this.flash(item, 'isle-shelf', _('Added to Files'));
             }));
         } else {
-            actions.add_child(button('isle-tasks', 'Add to Reminders', () => {
+            actions.add_child(button('isle-tasks', _('Add to Reminders'), () => {
                 const title = item.preview.split('\n').find(line => line.trim())?.trim().slice(0, 120);
                 if (!title)
                     return;
                 this._daemon.call('todo', 'Add', title);
-                this.flash(item, 'isle-tasks', 'Added to Reminders');
+                this.flash(item, 'isle-tasks', _('Added to Reminders'));
             }));
         }
 
-        actions.add_child(button('isle-close-symbolic', 'Remove', () => {
+        actions.add_child(button('isle-close-symbolic', _('Remove'), () => {
             // Removed at once; the card shrinks away until the list redraws.
             this._daemon.call('clipboard', 'Remove', item.id);
             card._removed = true;

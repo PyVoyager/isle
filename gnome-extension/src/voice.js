@@ -21,14 +21,15 @@ import {ChatView, CommandCard, answerMarkup, elapsed} from './chat.js';
 import {isTerminal} from './clipboard.js';
 import {answerPlain} from './format.js';
 import {VERTICAL, eventActor, maximize, onUiScale, px, uiScale, unmaximize} from './compat.js';
+import {_, N_} from './i18n.js';
 import {plainBody} from './notifications.js';
 import {cornerClose, icon, iconButton, pillButton, revealClose, wrapLines} from './widgets.js';
 
 
 /** Sizes in CSS pixels (see `px`). */
 const FACE_SIZE = 36;
-/** Steps that read oddly once over, as they are kept in the list of steps done. */
-const DONE_AS = {'Asking to run it…': 'Asked to run it'};
+/** Steps that read oddly once over, as they are kept in the list of steps done (in the user's language). */
+const doneAs = step => step === _('Asking to run it…') ? _('Asked to run it') : null;
 /** The pill while listening, and the panel an answer and the conversation open into: as wide as the open island. */
 const LISTENING_WIDTH = 280;
 const ANSWER_WIDTH = 600;
@@ -54,11 +55,12 @@ const FADE_IN_MS = 220;
 const FADE_IN_DELAY_MS = 40;
 /** With no new step for this long (s), a quiet "Still working · 0:12" shows it hasn't stalled. */
 const STILL_WORKING_S = 8;
-/** What to try, under an empty field: the chip, the words it puts in, and whether it asks at once. */
+/** What to try, under an empty field: the chip, the words it puts in, and whether it asks at once (translated as
+ * they show: the assistant answers in the language it is asked in). */
 const IDEAS = [
-    ['Today’s plan', 'What’s on my calendar today?', true],
-    ['Install an app…', 'Install ', false],
-    ['Find a file…', 'Find ', false],
+    [N_('Today’s plan'), N_('What’s on my calendar today?'), true],
+    [N_('Install an app…'), N_('Install '), false],
+    [N_('Find a file…'), N_('Find '), false],
 ];
 /** "New chat · Undo" stays this long (ms); the old chat is deleted only after it. */
 export const UNDO_MS = 5000;
@@ -243,7 +245,7 @@ export const VoiceView = GObject.registerClass({
         this._faceButton = new St.Button({
             style_class: 'isle-voice-orb',
             child: this._face,
-            accessible_name: 'Speak',
+            accessible_name: _('Speak'),
             y_align: Clutter.ActorAlign.CENTER,
         });
         this._faceButton.connect('clicked', () => this.emit(this.typing ? 'speak' : 'orb-clicked'));
@@ -265,12 +267,12 @@ export const VoiceView = GObject.registerClass({
         heardRow.add_child(this._earlier);
         heardRow.add_child(this._heard);
         this._heardButton = new St.Button({child: heardRow, style_class: 'isle-voice-heard-button', reactive: false,
-            x_align: Clutter.ActorAlign.START, accessible_name: 'Show the conversation'});
+            x_align: Clutter.ActorAlign.START, accessible_name: _('Show the conversation')});
         this._heardButton.connect('clicked', () => this.openChat());
         // After +: the old conversation can come back for a moment.
         this._undo = new St.BoxLayout({style_class: 'isle-voice-undo', visible: false});
-        this._undo.add_child(new St.Label({text: 'Started a new chat', style_class: 'isle-voice-undo-text', y_align: Clutter.ActorAlign.CENTER}));
-        this._undo.add_child(pillButton('Undo', 'isle-pill-small isle-voice-undo-button', () => {
+        this._undo.add_child(new St.Label({text: _('Started a new chat'), style_class: 'isle-voice-undo-text', y_align: Clutter.ActorAlign.CENTER}));
+        this._undo.add_child(pillButton(_('Undo'), 'isle-pill-small isle-voice-undo-button', () => {
             this.showUndo(false);
             this.emit('undo-new-chat');
         }));
@@ -290,9 +292,9 @@ export const VoiceView = GObject.registerClass({
         for (const label of [this._text, this._hint])
             wrapLines(label);
         // Not wider than its label, at the start of the line.
-        this._signIn = pillButton('Sign in', 'isle-pill-small isle-voice-sign-in', () => this.emit('sign-in'));
+        this._signIn = pillButton(_('Sign in'), 'isle-pill-small isle-voice-sign-in', () => this.emit('sign-in'));
         this._signIn.x_align = Clutter.ActorAlign.START;
-        this._setUp = pillButton('Set up', 'isle-pill-small isle-voice-sign-in', () => this.emit('set-up'));
+        this._setUp = pillButton(_('Set up'), 'isle-pill-small isle-voice-sign-in', () => this.emit('set-up'));
         this._setUp.x_align = Clutter.ActorAlign.START;
         /** The steps of the request being worked on, done ones first. */
         this._steps = [];
@@ -301,9 +303,9 @@ export const VoiceView = GObject.registerClass({
         // Ideas under an empty field, so what it can do is never a guess: one asks at once, one starts the words.
         this._ideas = new St.BoxLayout({style_class: 'isle-voice-ideas', visible: false});
         for (const [text, words, send] of IDEAS) {
-            const chip = new St.Button({label: text, style_class: 'isle-voice-idea', can_focus: true});
+            const chip = new St.Button({label: _(text), style_class: 'isle-voice-idea', can_focus: true});
             chip.connect('clicked', () => {
-                this._entry.text = words;
+                this._entry.text = _(words);
                 this._entry.clutter_text.set_cursor_position(-1);
                 this._entry.grab_key_focus();
                 if (send)
@@ -312,7 +314,7 @@ export const VoiceView = GObject.registerClass({
             this._ideas.add_child(chip);
         }
         // A typed request, instead of a spoken one (see `startTyping`).
-        this._entry = new St.Entry({style_class: 'isle-voice-entry', hint_text: 'Ask anything…', can_focus: true,
+        this._entry = new St.Entry({style_class: 'isle-voice-entry', hint_text: _('Ask anything…'), can_focus: true,
             x_expand: true, visible: false});
         const caret = this._entry.clutter_text;
         caret.connect('activate', () => this._send());
@@ -356,9 +358,9 @@ export const VoiceView = GObject.registerClass({
         this._action = new St.Widget({layout_manager: new Clutter.BinLayout(), y_align: Clutter.ActorAlign.CENTER});
         onUiScale(this._action, scale => this._action.set_size(ACTION_SIZE * scale, ACTION_SIZE * scale));
         this._typeButton = iconButton('isle-keyboard-symbolic', 'isle-voice-action', () => this.emit('type-requested'),
-            {accessibleName: 'Type instead'});
+            {accessibleName: _('Type instead')});
         this._stop = iconButton('isle-stop-symbolic', 'isle-voice-action isle-voice-stop', () => this.emit('stop'),
-            {size: 12, accessibleName: 'Stop'});
+            {size: 12, accessibleName: _('Stop')});
         for (const button of [this._typeButton, this._stop]) {
             button.set_pivot_point(0.5, 0.5);
             this._action.add_child(button);
@@ -416,13 +418,13 @@ export const VoiceView = GObject.registerClass({
         const [top, main, dim, markdown] = {
             // The first time it opens it greets you.
             listening: [this.followUp ?? '', this._listeningText(), this._micWaiting || !this.greeting],
-            transcribing: [this.followUp ?? '', 'One moment…', true],
+            transcribing: [this.followUp ?? '', _('One moment…'), true],
             // Its answer as it writes it; else an agent's step as it happens ("Searching ~/Downloads for
             // “ttd”…"), else thinking.
-            thinking: [heard, clip(state.draft ?? '') || step || 'Thinking…', !state.draft, Boolean(state.draft)],
+            thinking: [heard, clip(state.draft ?? '') || step || _('Thinking…'), !state.draft, Boolean(state.draft)],
             acting: [heard, step, true],
             reply: [heard, clip(state.reply ?? ''), false, true],
-            error: [heard, state.error || 'Something went wrong', false],
+            error: [heard, state.error || _('Something went wrong'), false],
         }[state.phase] ?? ['', '', true];
         this._heard.text = top;
         this._heardButton.visible = Boolean(top) && !this.chatOpen;
@@ -650,7 +652,7 @@ export const VoiceView = GObject.registerClass({
         this._sendShows = shows;
         this._sendIcon.gicon = icon(shows === 'send' ? 'isle-send-symbolic' : 'isle-mic-symbolic');
         this._sendButton.style_class = shows === 'send' ? 'isle-voice-send' : 'isle-voice-send isle-voice-send-mic';
-        this._sendButton.accessible_name = shows === 'send' ? 'Send' : 'Speak instead';
+        this._sendButton.accessible_name = shows === 'send' ? _('Send') : _('Speak instead');
         if (!St.Settings.get().enable_animations || !this._sendButton.mapped)
             return;
         this._sendButton.remove_all_transitions();
@@ -711,7 +713,7 @@ export const VoiceView = GObject.registerClass({
 
     /** The dim line while it listens. */
     _listeningText() {
-        return this._micWaiting ? 'Getting ready…' : this.greeting ?? 'Listening…';
+        return this._micWaiting ? _('Getting ready…') : this.greeting ?? _('Listening…');
     }
 
     /** Whether the pointer is on the island: an answer then shows its × (see `_syncClose`). */
@@ -792,7 +794,7 @@ export const VoiceView = GObject.registerClass({
         if (!WORKING.includes(this._lastPhase ?? ''))
             this._steps = [];
         // Kept as it was said, but for one that reads oddly once over ("Asking to run it").
-        const done = DONE_AS[step] ?? step?.replace(/…$/, '');
+        const done = doneAs(step) ?? step?.replace(/…$/, '');
         if (done && this._steps.at(-1) !== done)
             this._steps.push(done);
     }
@@ -915,7 +917,7 @@ export const VoiceView = GObject.registerClass({
     _syncStill() {
         const now = Date.now() / 1000;
         const working = WORKING.includes(this._phase) && !this._card.visible;
-        const text = working && now - this._stepAt > STILL_WORKING_S ? `Still working · ${elapsed(now - this._workingAt)}` : '';
+        const text = working && now - this._stepAt > STILL_WORKING_S ? _('Still working · {time}', {time: elapsed(now - this._workingAt)}) : '';
         if (text === this._stillShown)
             return;
         const resize = Boolean(text) !== Boolean(this._stillShown);
@@ -1037,7 +1039,7 @@ const SIGN_IN = {agy: ['agy'], claude: ['claude'], codex: ['codex', 'login'], gr
 
 /** What to do when no terminal could be opened to sign in. */
 export function signInHint(provider) {
-    return `Open a terminal, type “${(SIGN_IN[provider] ?? SIGN_IN.agy).join(' ')}” to sign in, then ask again.`;
+    return _('Open a terminal, type “{command}” to sign in, then ask again.', {command: (SIGN_IN[provider] ?? SIGN_IN.agy).join(' ')});
 }
 
 /** The AI picked in Settings and the model picked for each, as isled reads them. */
@@ -1083,8 +1085,8 @@ function typeInTerminal(command) {
     return inTerminal(['bash', '-c', TYPED_COMMAND, 'isle', line]) ? 'typed into a terminal' : failed('no terminal app found');
 }
 
-/** The greeting it opens with; it understands any language spoken back. */
-export const GREETING = 'How can I help?';
+/** The greeting it opens with (translated as it shows); it understands any language spoken back. */
+export const GREETING = N_('How can I help?');
 
 /** Starts `argv` (systemd-run; for root, GNOME's password dialog shows first): whether it started. */
 function startUnit(argv) {

@@ -3,50 +3,59 @@
 
 // The assistant's rules that need nothing of GNOME, kept apart so tests run them anywhere (tests/).
 
+import {_, ngettext} from './i18n.js';
+
 /** What actions run mid-way do, for the island: "Opening Files…", or how many there are. */
 export function describeActions(actions = []) {
     const [first] = actions;
     if (!first)
-        return 'Working…';
+        return _('Working…');
     // On unless the action says off.
-    const turning = (name, on) => `Turning ${name} ${on === false ? 'off' : 'on'}…`;
+    const turning = (on, onText, offText) => on === false ? offText : onText;
+    const app = first.app ?? _('the app');
     const what = {
-        open_app: `Opening ${first.app ?? 'the app'}…`,
-        open_url: 'Opening the page…',
-        open_file: 'Opening the file…',
-        reveal_file: 'Showing the file in Files…',
-        open_folder: 'Opening the folder…',
-        chrome_profile: 'Opening Chrome…',
-        window: 'Moving the window…',
-        arrange: 'Arranging the windows…',
-        play_music: 'Playing music…',
-        media: 'Controlling the music…',
-        close_app: `Closing ${first.app ?? 'the app'}…`,
-        volume: Number.isFinite(first.level) ? `Setting the volume to ${first.level}%…` : 'Changing the volume…',
-        brightness: Number.isFinite(first.level) ? `Setting the brightness to ${first.level}%…` : 'Changing the brightness…',
-        wifi: turning('Wi-Fi', first.on),
-        bluetooth: turning('Bluetooth', first.on),
-        dnd: turning('Do Not Disturb', first.on),
-        dark_mode: turning('dark style', first.on),
-        night_light: turning('Night Light', first.on),
-        power_mode: 'Switching the power mode…',
-        settings: 'Opening Settings…',
-        add_task: 'Adding a to-do…',
-        done_task: 'Ticking off the to-do…',
-        remove_task: 'Removing the to-do…',
-        add_event: 'Adding it to your calendar…',
-        remove_event: 'Removing the event…',
-        remind: 'Setting a reminder…',
-        cancel_reminder: 'Cancelling the reminder…',
-        focus: 'Starting the timer…',
-        terminal: 'Opening a terminal…',
-        run: 'Asking to run it…',
-        notifications: 'Opening your notifications…',
-        screenshot: 'Taking a screenshot…',
-        lock: 'Locking the screen…',
-        write: 'Typing it out…',
-    }[first.type] ?? 'Working on it…';
-    return actions.length > 1 ? `${what.replace(/…$/, '')} and ${actions.length - 1} more…` : what;
+        open_app: _('Opening {app}…', {app}),
+        open_url: _('Opening the page…'),
+        open_file: _('Opening the file…'),
+        reveal_file: _('Showing the file in Files…'),
+        open_folder: _('Opening the folder…'),
+        chrome_profile: _('Opening Chrome…'),
+        window: _('Moving the window…'),
+        arrange: _('Arranging the windows…'),
+        play_music: _('Playing music…'),
+        media: _('Controlling the music…'),
+        close_app: _('Closing {app}…', {app}),
+        volume: Number.isFinite(first.level) ? _('Setting the volume to {level}%…', {level: first.level})
+            : _('Changing the volume…'),
+        brightness: Number.isFinite(first.level) ? _('Setting the brightness to {level}%…', {level: first.level})
+            : _('Changing the brightness…'),
+        wifi: turning(first.on, _('Turning Wi-Fi on…'), _('Turning Wi-Fi off…')),
+        bluetooth: turning(first.on, _('Turning Bluetooth on…'), _('Turning Bluetooth off…')),
+        dnd: turning(first.on, _('Turning Do Not Disturb on…'), _('Turning Do Not Disturb off…')),
+        dark_mode: turning(first.on, _('Turning dark style on…'), _('Turning dark style off…')),
+        night_light: turning(first.on, _('Turning Night Light on…'), _('Turning Night Light off…')),
+        power_mode: _('Switching the power mode…'),
+        settings: _('Opening Settings…'),
+        add_task: _('Adding a to-do…'),
+        done_task: _('Ticking off the to-do…'),
+        remove_task: _('Removing the to-do…'),
+        add_event: _('Adding it to your calendar…'),
+        remove_event: _('Removing the event…'),
+        remind: _('Setting a reminder…'),
+        cancel_reminder: _('Cancelling the reminder…'),
+        focus: _('Starting the timer…'),
+        terminal: _('Opening a terminal…'),
+        run: _('Asking to run it…'),
+        notifications: _('Opening your notifications…'),
+        screenshot: _('Taking a screenshot…'),
+        lock: _('Locking the screen…'),
+        write: _('Typing it out…'),
+    }[first.type] ?? _('Working on it…');
+    if (actions.length === 1)
+        return what;
+    // TRANSLATORS: "Opening Files and 2 more…": the first action, then how many come after it.
+    return ngettext('{what} and {count} more…', '{what} and {count} more…', actions.length - 1,
+        {what: what.replace(/…$/, '')});
 }
 
 /** What isled's runner wraps each command in (see tasks.rs); a command to start must use exactly this. */

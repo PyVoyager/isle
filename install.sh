@@ -144,6 +144,14 @@ chmod 755 "$STAGE"
 mkdir -p "$(dirname "$DEST")"
 cp -r gnome-extension/. "$STAGE/"
 glib-compile-schemas "$STAGE/schemas"
+# Its words in your language, from po/; a release package has them ready-made in the extension's locale/.
+if [ -d po ] && [ ! -d gnome-extension/locale ]; then
+    if command -v msgfmt >/dev/null; then
+        scripts/translations.sh compile "$STAGE"
+    else
+        echo "msgfmt isn't installed (the gettext package), so Isle stays in English; install it and run this again for your language."
+    fi
+fi
 rm -rf "$DEST"
 mv "$STAGE" "$DEST"
 

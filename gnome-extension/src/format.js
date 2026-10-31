@@ -6,6 +6,8 @@
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 
+import {_} from './i18n.js';
+
 let interfaceSettings = null;
 // Isle's own choice (Settings → Appearance → Clock): 'system', '24h' or '12h'.
 let clockFormat = 'system';
@@ -73,11 +75,13 @@ export function ago(dateTime) {
     const now = GLib.DateTime.new_now_local();
     const minutes = Math.floor(now.difference(dateTime) / 60e6);
     if (minutes < 1)
-        return 'now';
+        return _('now');
     if (minutes < 60)
-        return `${minutes}m`;
+        // TRANSLATORS: minutes, as short as it can be: "5m" (5 minutes ago, or 5 minutes long).
+        return _('{minutes}m', {minutes});
     if (minutes < 24 * 60)
-        return `${Math.floor(minutes / 60)}h`;
+        // TRANSLATORS: hours, as short as it can be: "2h" (2 hours ago, or 2 hours long).
+        return _('{hours}h', {hours: Math.floor(minutes / 60)});
     // Within the week its day; older, the date ("12 Oct").
     return dateTime.format(minutes < 6 * 24 * 60 ? '%a' : '%-d %b');
 }
@@ -85,21 +89,22 @@ export function ago(dateTime) {
 /** A span of time as "1h 15m", "25m", "<1m" or "0m". */
 export function hoursMinutes(ms) {
     if (ms < 60000)
-        return ms > 0 ? '<1m' : '0m';
+        return ms > 0 ? _('<1m') : _('{minutes}m', {minutes: 0});
     const minutes = Math.round(ms / 60000);
     const hours = Math.floor(minutes / 60);
     if (!hours)
-        return `${minutes}m`;
-    return minutes % 60 ? `${hours}h ${minutes % 60}m` : `${hours}h`;
+        return _('{minutes}m', {minutes});
+    // TRANSLATORS: a span of time, short: "1h 15m".
+    return minutes % 60 ? _('{hours}h {minutes}m', {hours, minutes: minutes % 60}) : _('{hours}h', {hours});
 }
 
 /** Human name for a pomodoro phase. */
 export function phaseName(phase) {
     return {
-        idle: 'Ready to focus',
-        focus: 'Focus',
-        short_break: 'Short break',
-        long_break: 'Long break',
+        idle: _('Ready to focus'),
+        focus: _('Focus'),
+        short_break: _('Short break'),
+        long_break: _('Long break'),
     }[phase] ?? phase;
 }
 

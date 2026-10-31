@@ -1,0 +1,3195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Isle package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Isle\n"
+"Report-Msgid-Bugs-To: https://github.com/zickrian/isle/issues\n"
+"POT-Creation-Date: 2026-10-31 21:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: gnome-extension/prefs.js:71
+#, no-javascript-format
+msgid "About"
+msgstr ""
+
+#: gnome-extension/prefs.js:72
+#, no-javascript-format
+msgid "Isle {version}"
+msgstr ""
+
+#: gnome-extension/prefs.js:73
+#, no-javascript-format
+msgid ""
+"A notch-style island for GNOME. © 2026 zickrian, free software under the GPL."
+msgstr ""
+
+#: gnome-extension/prefs.js:83
+#, no-javascript-format
+msgid "Features, installing and updating"
+msgstr ""
+
+#: gnome-extension/prefs.js:83
+#, no-javascript-format
+msgid "Website"
+msgstr ""
+
+#: gnome-extension/prefs.js:84
+#, no-javascript-format
+msgid "On GitHub; paste the report below in it"
+msgstr ""
+
+#: gnome-extension/prefs.js:84
+#, no-javascript-format
+msgid "Report a problem"
+msgstr ""
+
+#: gnome-extension/prefs.js:85
+#, no-javascript-format
+msgid "Copy a bug report"
+msgstr ""
+
+#: gnome-extension/prefs.js:85
+#, no-javascript-format
+msgid ""
+"What’s installed, what works, and recent activity, ready to paste into a "
+"report"
+msgstr ""
+
+#: gnome-extension/prefs.js:92 gnome-extension/src/alerts.js:600
+#: gnome-extension/src/expanded.js:203
+#, no-javascript-format
+msgid "Settings"
+msgstr ""
+
+#: gnome-extension/prefs.js:93
+#, no-javascript-format
+msgid "Back to how Isle came; your data stays"
+msgstr ""
+
+#: gnome-extension/prefs.js:93
+#, no-javascript-format
+msgid "Reset all settings"
+msgstr ""
+
+#: gnome-extension/prefs.js:96
+#, no-javascript-format
+msgid "Reset all of Isle’s settings?"
+msgstr ""
+
+#: gnome-extension/prefs.js:97
+#, no-javascript-format
+msgid ""
+"Every option goes back to its default. Your tasks, events, clipboard history "
+"and files stay."
+msgstr ""
+
+#: gnome-extension/prefs.js:98
+#, no-javascript-format
+msgid "Reset"
+msgstr ""
+
+#: gnome-extension/prefs.js:112 gnome-extension/prefs.js:115
+#: gnome-extension/prefs.js:847
+#, no-javascript-format
+msgid "AI Usage"
+msgstr ""
+
+#: gnome-extension/prefs.js:117
+#, no-javascript-format
+msgid ""
+"How much of your plans' limits is used, on a Usage page in the open island, "
+"with a warning as one nears its end. Found from the apps you are signed in "
+"to; nothing else to set up."
+msgstr ""
+
+#: gnome-extension/prefs.js:119
+#, no-javascript-format
+msgid "Sign in to Claude Code, Codex or Grok and your plan shows up here."
+msgstr ""
+
+#: gnome-extension/prefs.js:121
+#, no-javascript-format
+msgid "Show AI usage"
+msgstr ""
+
+#: gnome-extension/prefs.js:121
+#, no-javascript-format
+msgid "The Usage page and its warnings"
+msgstr ""
+
+#: gnome-extension/prefs.js:124 gnome-extension/prefs.js:125
+#, no-javascript-format
+msgid "Share of a limit, in %"
+msgstr ""
+
+#: gnome-extension/prefs.js:124
+#, no-javascript-format
+msgid "Warn at"
+msgstr ""
+
+#: gnome-extension/prefs.js:125
+#, no-javascript-format
+msgid "Warn again at"
+msgstr ""
+
+#: gnome-extension/prefs.js:146
+#, no-javascript-format
+msgid "AI Agents"
+msgstr ""
+
+#: gnome-extension/prefs.js:147
+#, no-javascript-format
+msgid ""
+"Answer your coding agents from the island when they ask, and know when they "
+"are done. On by default; off, Isle stops getting that agent's alerts."
+msgstr ""
+
+#: gnome-extension/prefs.js:160
+#, no-javascript-format
+msgid "Assistant"
+msgstr ""
+
+#: gnome-extension/prefs.js:163
+#, no-javascript-format
+msgid "Voice Assistant"
+msgstr ""
+
+#: gnome-extension/prefs.js:164
+#, no-javascript-format
+msgid ""
+"Press the shortcut (or the ✦ in the open island) and speak. Speech is "
+"recognised on this computer (Set up downloads it, once); the request goes to "
+"the AI you pick, with your own sign-in and plan."
+msgstr ""
+
+#: gnome-extension/prefs.js:168 gnome-extension/prefs.js:855
+#, no-javascript-format
+msgid "AI Assistant"
+msgstr ""
+
+#: gnome-extension/prefs.js:169
+#, no-javascript-format
+msgid "The shortcut and the ✦ in the open island. Off: Isle never asks an AI"
+msgstr ""
+
+#: gnome-extension/prefs.js:170
+#, no-javascript-format
+msgid "Opens the assistant and listens"
+msgstr ""
+
+#: gnome-extension/prefs.js:170 gnome-extension/prefs.js:1260
+#, no-javascript-format
+msgid "Shortcut"
+msgstr ""
+
+#: gnome-extension/prefs.js:175
+#, no-javascript-format
+msgid "AI"
+msgstr ""
+
+#: gnome-extension/prefs.js:176
+#, no-javascript-format
+msgid "Answers with your own sign-in; Isle runs its actions"
+msgstr ""
+
+#: gnome-extension/prefs.js:177
+#, no-javascript-format
+msgid "Install Claude Code, Codex, Grok or Antigravity (agy), and sign in"
+msgstr ""
+
+#: gnome-extension/prefs.js:178
+#, no-javascript-format
+msgid "Automatic ({name})"
+msgstr ""
+
+#: gnome-extension/prefs.js:178
+#, no-javascript-format
+msgid "None installed"
+msgstr ""
+
+#: gnome-extension/prefs.js:181
+#, no-javascript-format
+msgid "Model"
+msgstr ""
+
+#: gnome-extension/prefs.js:206
+#, no-javascript-format
+msgid "Default ({model})"
+msgstr ""
+
+#: gnome-extension/prefs.js:207
+#, no-javascript-format
+msgid "{name}’s default"
+msgstr ""
+
+#: gnome-extension/prefs.js:213
+#, no-javascript-format
+msgid "{model} · not on your plan"
+msgstr ""
+
+#: gnome-extension/prefs.js:217
+#, no-javascript-format
+msgid "Checking which models your plan includes…"
+msgstr ""
+
+#: gnome-extension/prefs.js:239
+#, no-javascript-format
+msgid "Bigger is more accurate, and slower; downloaded once"
+msgstr ""
+
+#: gnome-extension/prefs.js:239
+#, no-javascript-format
+msgid "Speech recognition"
+msgstr ""
+
+#: gnome-extension/prefs.js:240
+#, no-javascript-format
+msgid "Tiny (44 MB)"
+msgstr ""
+
+#: gnome-extension/prefs.js:241
+#, no-javascript-format
+msgid "Base (82 MB)"
+msgstr ""
+
+#: gnome-extension/prefs.js:242
+#, no-javascript-format
+msgid "Small (265 MB)"
+msgstr ""
+
+#: gnome-extension/prefs.js:243
+#, no-javascript-format
+msgid "Medium (823 MB)"
+msgstr ""
+
+#: gnome-extension/prefs.js:245
+#, no-javascript-format
+msgid "Language"
+msgstr ""
+
+#: gnome-extension/prefs.js:245
+#, no-javascript-format
+msgid "The language you speak"
+msgstr ""
+
+#: gnome-extension/prefs.js:246
+#, no-javascript-format
+msgid "Any (detected)"
+msgstr ""
+
+#: gnome-extension/prefs.js:247
+#, no-javascript-format
+msgid "Indonesian or English"
+msgstr ""
+
+#: gnome-extension/prefs.js:248
+#, no-javascript-format
+msgid "Indonesian"
+msgstr ""
+
+#: gnome-extension/prefs.js:249
+#, no-javascript-format
+msgid "Russian or English"
+msgstr ""
+
+#: gnome-extension/prefs.js:250
+#, no-javascript-format
+msgid "Russian"
+msgstr ""
+
+#: gnome-extension/prefs.js:251
+#, no-javascript-format
+msgid "English"
+msgstr ""
+
+#: gnome-extension/prefs.js:253
+#, no-javascript-format
+msgid "Keep the conversation"
+msgstr ""
+
+#: gnome-extension/prefs.js:253
+#, no-javascript-format
+msgid "Never more than a day; then it is deleted, with the AI's copy"
+msgstr ""
+
+#: gnome-extension/prefs.js:254
+#, no-javascript-format
+msgid "Until midnight"
+msgstr ""
+
+#: gnome-extension/prefs.js:255
+#, no-javascript-format
+msgid "2 hours without a word"
+msgstr ""
+
+#: gnome-extension/prefs.js:256
+#, no-javascript-format
+msgid "30 minutes without a word"
+msgstr ""
+
+#: gnome-extension/prefs.js:258
+#, no-javascript-format
+msgid "Clear the conversation now"
+msgstr ""
+
+#: gnome-extension/prefs.js:258
+#, no-javascript-format
+msgid "Deletes it here and the AI's copy of it"
+msgstr ""
+
+#: gnome-extension/prefs.js:262
+#, no-javascript-format
+msgid "Clear the conversation?"
+msgstr ""
+
+#: gnome-extension/prefs.js:263
+#, no-javascript-format
+msgid ""
+"The assistant starts afresh; what was said is deleted here and from the AI's "
+"own history on this computer."
+msgstr ""
+
+#: gnome-extension/prefs.js:264 gnome-extension/prefs.js:888
+#: gnome-extension/prefs.js:1291 gnome-extension/src/pages/notifications.js:85
+#, no-javascript-format
+msgid "Clear"
+msgstr ""
+
+#: gnome-extension/prefs.js:268
+#, no-javascript-format
+msgid "Use selected text"
+msgstr ""
+
+#: gnome-extension/prefs.js:269
+#, no-javascript-format
+msgid ""
+"Send the text you have selected, so the AI can work on it; never from "
+"terminals or password managers"
+msgstr ""
+
+#: gnome-extension/prefs.js:270
+#, no-javascript-format
+msgid "Read notifications"
+msgstr ""
+
+#: gnome-extension/prefs.js:271
+#, no-javascript-format
+msgid "Let the AI read your recent notifications when you ask about them"
+msgstr ""
+
+#: gnome-extension/prefs.js:282
+#, no-javascript-format
+msgid "About the AIs"
+msgstr ""
+
+#: gnome-extension/prefs.js:283
+#, no-javascript-format
+msgid ""
+"Claude Code and Codex answer within your Claude or ChatGPT plan's limits. "
+"Antigravity's terms bar third-party tools from its service; Isle only runs "
+"the official agy app, but use it at your own risk. Each runs kept to "
+"answering: commands and file changes go through Isle, which asks you first."
+msgstr ""
+
+#: gnome-extension/prefs.js:294 gnome-extension/src/pages/shelf.js:22
+#, no-javascript-format
+msgid "Clipboard"
+msgstr ""
+
+#: gnome-extension/prefs.js:297
+#, no-javascript-format
+msgid "Clipboard History"
+msgstr ""
+
+#: gnome-extension/prefs.js:298
+#, no-javascript-format
+msgid "Super+V opens it. Everything stays on this computer."
+msgstr ""
+
+#: gnome-extension/prefs.js:300
+#, no-javascript-format
+msgid "Keep clipboard history"
+msgstr ""
+
+#: gnome-extension/prefs.js:301
+#, no-javascript-format
+msgid ""
+"Text, links, images and files you copy. Passwords from password managers are "
+"never kept."
+msgstr ""
+
+#: gnome-extension/prefs.js:302
+#, no-javascript-format
+msgid "GNOME’s calendar shortcut"
+msgstr ""
+
+#: gnome-extension/prefs.js:303
+#, no-javascript-format
+msgid "Isle’s clipboard history"
+msgstr ""
+
+#: gnome-extension/prefs.js:304
+#, no-javascript-format
+msgid "GNOME’s calendar and notifications"
+msgstr ""
+
+#: gnome-extension/prefs.js:306
+#, no-javascript-format
+msgid "Clear history"
+msgstr ""
+
+#: gnome-extension/prefs.js:306
+#, no-javascript-format
+msgid "Pinned items are kept"
+msgstr ""
+
+#: gnome-extension/prefs.js:307 gnome-extension/prefs.js:884
+#, no-javascript-format
+msgid "Clear…"
+msgstr ""
+
+#: gnome-extension/prefs.js:314
+#, no-javascript-format
+msgid "Never Keep Copies From"
+msgstr ""
+
+#: gnome-extension/prefs.js:315
+#, no-javascript-format
+msgid "Known password managers are on the list from the start."
+msgstr ""
+
+#: gnome-extension/prefs.js:324 gnome-extension/prefs.js:327
+#, no-javascript-format
+msgid "Island"
+msgstr ""
+
+#: gnome-extension/prefs.js:326
+#, no-javascript-format
+msgid "Appearance"
+msgstr ""
+
+#: gnome-extension/prefs.js:327
+#, no-javascript-format
+msgid "Black, or clear glass that shows what is behind it, blurred"
+msgstr ""
+
+#: gnome-extension/prefs.js:328 gnome-extension/prefs.js:776
+#, no-javascript-format
+msgid "Black"
+msgstr ""
+
+#: gnome-extension/prefs.js:329 gnome-extension/prefs.js:722
+#: gnome-extension/prefs.js:774
+#, no-javascript-format
+msgid "Glass"
+msgstr ""
+
+#: gnome-extension/prefs.js:333
+#, no-javascript-format
+msgid "A slimmer top bar that frames the island like a bezel"
+msgstr ""
+
+#: gnome-extension/prefs.js:333
+#, no-javascript-format
+msgid "Compact top bar"
+msgstr ""
+
+#: gnome-extension/prefs.js:334
+#, no-javascript-format
+msgid "Island inside the top bar"
+msgstr ""
+
+#: gnome-extension/prefs.js:335
+#, no-javascript-format
+msgid "Like a notch: the closed island never covers windows"
+msgstr ""
+
+#: gnome-extension/prefs.js:337
+#, no-javascript-format
+msgid "How far the closed island hangs below the top bar, in pixels"
+msgstr ""
+
+#: gnome-extension/prefs.js:337
+#, no-javascript-format
+msgid "Island height"
+msgstr ""
+
+#: gnome-extension/prefs.js:340
+#, no-javascript-format
+msgid "Space below the island"
+msgstr ""
+
+#: gnome-extension/prefs.js:341
+#, no-javascript-format
+msgid "A little room between the closed island and the windows below"
+msgstr ""
+
+#: gnome-extension/prefs.js:344
+#, no-javascript-format
+msgid "Clock"
+msgstr ""
+
+#: gnome-extension/prefs.js:344
+#, no-javascript-format
+msgid "The time in the island and its pages"
+msgstr ""
+
+#: gnome-extension/prefs.js:345
+#, no-javascript-format
+msgid "As GNOME"
+msgstr ""
+
+#: gnome-extension/prefs.js:346
+#, no-javascript-format
+msgid "24-hour (20:40)"
+msgstr ""
+
+#: gnome-extension/prefs.js:347
+#, no-javascript-format
+msgid "12-hour (8:40 PM)"
+msgstr ""
+
+#: gnome-extension/prefs.js:349
+#, no-javascript-format
+msgid "Dots when the camera, microphone or screen sharing is in use"
+msgstr ""
+
+#: gnome-extension/prefs.js:349
+#, no-javascript-format
+msgid "Privacy indicators"
+msgstr ""
+
+#: gnome-extension/prefs.js:350 gnome-extension/src/alerts.js:57
+#, no-javascript-format
+msgid "Display"
+msgstr ""
+
+#: gnome-extension/prefs.js:350
+#, no-javascript-format
+msgid "With more than one display, where the island is"
+msgstr ""
+
+#: gnome-extension/prefs.js:351
+#, no-javascript-format
+msgid "Main display"
+msgstr ""
+
+#: gnome-extension/prefs.js:352
+#, no-javascript-format
+msgid "Display in use"
+msgstr ""
+
+#: gnome-extension/prefs.js:354
+#, no-javascript-format
+msgid "How the closed island opens"
+msgstr ""
+
+#: gnome-extension/prefs.js:354
+#, no-javascript-format
+msgctxt "how the island opens"
+msgid "Open"
+msgstr ""
+
+#: gnome-extension/prefs.js:355
+#, no-javascript-format
+msgid "On hover"
+msgstr ""
+
+#: gnome-extension/prefs.js:356
+#, no-javascript-format
+msgid "On click"
+msgstr ""
+
+#: gnome-extension/prefs.js:359
+#, no-javascript-format
+msgid "Rest before opening"
+msgstr ""
+
+#: gnome-extension/prefs.js:360
+#, no-javascript-format
+msgid "In milliseconds"
+msgstr ""
+
+#: gnome-extension/prefs.js:371
+#, no-javascript-format
+msgid "Alerts"
+msgstr ""
+
+#: gnome-extension/prefs.js:373 gnome-extension/prefs.js:820
+#: gnome-extension/src/expanded.js:32
+#: gnome-extension/src/pages/notifications.js:80
+#, no-javascript-format
+msgid "Notifications"
+msgstr ""
+
+#: gnome-extension/prefs.js:374
+#, no-javascript-format
+msgid ""
+"Apps’ notifications in the island, with their buttons, as GNOME shows them"
+msgstr ""
+
+#: gnome-extension/prefs.js:377
+#, no-javascript-format
+msgid "Show them in the island instead of the centre of the screen"
+msgstr ""
+
+#: gnome-extension/prefs.js:377
+#, no-javascript-format
+msgid "Volume and brightness"
+msgstr ""
+
+#: gnome-extension/prefs.js:378
+#, no-javascript-format
+msgid "Charging and battery"
+msgstr ""
+
+#: gnome-extension/prefs.js:378
+#, no-javascript-format
+msgid "Plugged in, unplugged, full and low"
+msgstr ""
+
+#: gnome-extension/prefs.js:379
+#, no-javascript-format
+msgid "Network"
+msgstr ""
+
+#: gnome-extension/prefs.js:379
+#, no-javascript-format
+msgid "When the connection drops"
+msgstr ""
+
+#: gnome-extension/prefs.js:380
+#, no-javascript-format
+msgid "Devices connecting, with their battery"
+msgstr ""
+
+#: gnome-extension/prefs.js:381
+#, no-javascript-format
+msgid "When it turns on or off"
+msgstr ""
+
+#: gnome-extension/prefs.js:382
+#, no-javascript-format
+msgid "Calendar events"
+msgstr ""
+
+#: gnome-extension/prefs.js:383
+#, no-javascript-format
+msgid "Before each event with a time, with Join for a Meet, Zoom or Teams link"
+msgstr ""
+
+#: gnome-extension/prefs.js:384
+#, no-javascript-format
+msgid "Minutes before an event"
+msgstr ""
+
+#: gnome-extension/prefs.js:387
+#, no-javascript-format
+msgid "Briefly show the song when the track changes"
+msgstr ""
+
+#: gnome-extension/prefs.js:387
+#, no-javascript-format
+msgid "New song"
+msgstr ""
+
+#: gnome-extension/prefs.js:388
+#, no-javascript-format
+msgid "Look up the playing song’s lyrics on LRCLIB"
+msgstr ""
+
+#: gnome-extension/prefs.js:388
+#, no-javascript-format
+msgid "Lyrics"
+msgstr ""
+
+#: gnome-extension/prefs.js:389
+#, no-javascript-format
+msgid "Chime when a focus session or break ends, and for reminders"
+msgstr ""
+
+#: gnome-extension/prefs.js:389
+#, no-javascript-format
+msgid "Sounds"
+msgstr ""
+
+#: gnome-extension/prefs.js:393
+#, no-javascript-format
+msgid "Calls"
+msgstr ""
+
+#: gnome-extension/prefs.js:394
+#, no-javascript-format
+msgid "WhatsApp, Telegram, Meet and other calls, in any app or browser."
+msgstr ""
+
+#: gnome-extension/prefs.js:396
+#, no-javascript-format
+msgid "Calls in the island"
+msgstr ""
+
+#: gnome-extension/prefs.js:396
+#, no-javascript-format
+msgid "The call’s length, mute and a way back to it"
+msgstr ""
+
+#: gnome-extension/prefs.js:397
+#, no-javascript-format
+msgid "Live preview"
+msgstr ""
+
+#: gnome-extension/prefs.js:398
+#, no-javascript-format
+msgid "See yourself and whoever you call, live in the open island"
+msgstr ""
+
+#: gnome-extension/prefs.js:407 gnome-extension/prefs.js:821
+#: gnome-extension/src/expanded.js:33
+#, no-javascript-format
+msgid "Timer"
+msgstr ""
+
+#: gnome-extension/prefs.js:408
+#, no-javascript-format
+msgid "While Focusing"
+msgstr ""
+
+#: gnome-extension/prefs.js:409 gnome-extension/src/pages/notifications.js:83
+#, no-javascript-format
+msgid "Do Not Disturb"
+msgstr ""
+
+#: gnome-extension/prefs.js:409
+#, no-javascript-format
+msgid ""
+"Silence notifications during focus sessions, and restore them afterwards"
+msgstr ""
+
+#: gnome-extension/prefs.js:413
+#, no-javascript-format
+msgid "Pomodoro"
+msgstr ""
+
+#: gnome-extension/prefs.js:414
+#, no-javascript-format
+msgid ""
+"Focus sessions with short breaks, and a long break after a few sessions."
+msgstr ""
+
+#: gnome-extension/prefs.js:429
+#, no-javascript-format
+msgid "The timer settings aren’t available right now"
+msgstr ""
+
+#: gnome-extension/prefs.js:430
+#, no-javascript-format
+msgid ""
+"Isle isn’t running in the background. Log out and back in, or install Isle "
+"again."
+msgstr ""
+
+#: gnome-extension/prefs.js:479
+#, no-javascript-format
+msgid "Focus (minutes)"
+msgstr ""
+
+#: gnome-extension/prefs.js:480
+#, no-javascript-format
+msgid "Short break (minutes)"
+msgstr ""
+
+#: gnome-extension/prefs.js:481
+#, no-javascript-format
+msgid "Long break (minutes)"
+msgstr ""
+
+#: gnome-extension/prefs.js:482
+#, no-javascript-format
+msgid "Sessions before a long break"
+msgstr ""
+
+#: gnome-extension/prefs.js:483
+#, no-javascript-format
+msgid "Start breaks automatically"
+msgstr ""
+
+#: gnome-extension/prefs.js:484
+#, no-javascript-format
+msgid "After a break ends"
+msgstr ""
+
+#: gnome-extension/prefs.js:484
+#, no-javascript-format
+msgid "Start focus automatically"
+msgstr ""
+
+#: gnome-extension/prefs.js:557
+#, no-javascript-format
+msgid "How the assistant looks, and the light it brings to the island."
+msgstr ""
+
+#: gnome-extension/prefs.js:557
+#, no-javascript-format
+msgid "Look"
+msgstr ""
+
+#: gnome-extension/prefs.js:592
+#, no-javascript-format
+msgid "LibreOffice is installed."
+msgstr ""
+
+#: gnome-extension/prefs.js:592 gnome-extension/src/voice.js:716
+#, no-javascript-format
+msgid "Listening…"
+msgstr ""
+
+#: gnome-extension/prefs.js:592
+#, no-javascript-format
+msgid "Searching the web…"
+msgstr ""
+
+#: gnome-extension/prefs.js:615
+#, no-javascript-format
+msgid "Shape"
+msgstr ""
+
+#: gnome-extension/prefs.js:625
+#, no-javascript-format
+msgid "A colour of your own"
+msgstr ""
+
+#: gnome-extension/prefs.js:638
+#, no-javascript-format
+msgid "Assistant colour"
+msgstr ""
+
+#: gnome-extension/prefs.js:647
+#, no-javascript-format
+msgid "Colour"
+msgstr ""
+
+#: gnome-extension/prefs.js:652
+#, no-javascript-format
+msgid "Glow"
+msgstr ""
+
+#: gnome-extension/prefs.js:652
+#, no-javascript-format
+msgid "The light along the island's edge"
+msgstr ""
+
+#: gnome-extension/prefs.js:653
+#, no-javascript-format
+msgid "Classic"
+msgstr ""
+
+#: gnome-extension/prefs.js:653
+#, no-javascript-format
+msgid "Custom"
+msgstr ""
+
+#: gnome-extension/prefs.js:653
+#, no-javascript-format
+msgid "Match"
+msgstr ""
+
+#: gnome-extension/prefs.js:654
+#, no-javascript-format
+msgid "Glow colour"
+msgstr ""
+
+#: gnome-extension/prefs.js:707
+#, no-javascript-format
+msgid "Allow, deny or always allow, and when it is done"
+msgstr ""
+
+#: gnome-extension/prefs.js:708
+#, no-javascript-format
+msgid ""
+"Allow or deny, and when it is done · in Codex, type /hooks once and allow "
+"Isle"
+msgstr ""
+
+#: gnome-extension/prefs.js:728
+#, no-javascript-format
+msgctxt "glass"
+msgid "Clear"
+msgstr ""
+
+#: gnome-extension/prefs.js:730
+#, no-javascript-format
+msgctxt "glass"
+msgid "Dark"
+msgstr ""
+
+#: gnome-extension/prefs.js:734
+#, no-javascript-format
+msgid "Clear glass: what is behind shows through"
+msgstr ""
+
+#: gnome-extension/prefs.js:735
+#, no-javascript-format
+msgid "Dark frosted glass"
+msgstr ""
+
+#: gnome-extension/prefs.js:735
+#, no-javascript-format
+msgid "{percent}% darker"
+msgstr ""
+
+#: gnome-extension/prefs.js:767
+#, no-javascript-format
+msgid "Top bar"
+msgstr ""
+
+#: gnome-extension/prefs.js:783
+#, no-javascript-format
+msgid "See-through glass"
+msgstr ""
+
+#: gnome-extension/prefs.js:783
+#, no-javascript-format
+msgid "The island blends into the bar"
+msgstr ""
+
+#: gnome-extension/prefs.js:784
+#, no-javascript-format
+msgid "{percent}% black"
+msgstr ""
+
+#: gnome-extension/prefs.js:819 gnome-extension/src/expanded.js:31
+#, no-javascript-format
+msgid "Music"
+msgstr ""
+
+#: gnome-extension/prefs.js:819
+#, no-javascript-format
+msgid "The player and lyrics, and the song in the closed island"
+msgstr ""
+
+#: gnome-extension/prefs.js:820
+#, no-javascript-format
+msgid "The list to look back at, and its unread dot; alerts show either way"
+msgstr ""
+
+#: gnome-extension/prefs.js:821
+#, no-javascript-format
+msgid "Pomodoro focus sessions and breaks"
+msgstr ""
+
+#: gnome-extension/prefs.js:822 gnome-extension/src/expanded.js:34
+#: gnome-extension/src/pages/tasks.js:132
+#, no-javascript-format
+msgid "Reminders"
+msgstr ""
+
+#: gnome-extension/prefs.js:822
+#, no-javascript-format
+msgid "Your to-do list"
+msgstr ""
+
+#: gnome-extension/prefs.js:823
+#, no-javascript-format
+msgid "Clipboard history (Super+V) and the files tray"
+msgstr ""
+
+#: gnome-extension/prefs.js:823 gnome-extension/src/expanded.js:35
+#, no-javascript-format
+msgid "Shelf"
+msgstr ""
+
+#: gnome-extension/prefs.js:824 gnome-extension/src/expanded.js:36
+#, no-javascript-format
+msgid "Calendar"
+msgstr ""
+
+#: gnome-extension/prefs.js:824
+#, no-javascript-format
+msgid "The month, its events and world clocks"
+msgstr ""
+
+#: gnome-extension/prefs.js:829
+#, no-javascript-format
+msgid "Pages"
+msgstr ""
+
+#: gnome-extension/prefs.js:829
+#, no-javascript-format
+msgid "The tabs of the open island. Turn off the ones you don’t use."
+msgstr ""
+
+#: gnome-extension/prefs.js:844 gnome-extension/src/expanded.js:37
+#, no-javascript-format
+msgid "Apps"
+msgstr ""
+
+#: gnome-extension/prefs.js:844
+#, no-javascript-format
+msgid "Time spent in each app, kept on this computer for 30 days"
+msgstr ""
+
+#: gnome-extension/prefs.js:847
+#, no-javascript-format
+msgid "Your AI plans’ limits, and warnings as one nears its end"
+msgstr ""
+
+#: gnome-extension/prefs.js:851
+#, no-javascript-format
+msgid "Sign in to Claude Code, Codex or Grok to see your plan"
+msgstr ""
+
+#: gnome-extension/prefs.js:855
+#, no-javascript-format
+msgid "The ✦ in the open island and its shortcut"
+msgstr ""
+
+#: gnome-extension/prefs.js:865
+#, no-javascript-format
+msgid "The island keeps at least one page"
+msgstr ""
+
+#: gnome-extension/prefs.js:880 gnome-extension/src/pages/apps.js:80
+#, no-javascript-format
+msgid "App Usage"
+msgstr ""
+
+#: gnome-extension/prefs.js:881
+#, no-javascript-format
+msgid ""
+"With the Apps page on, the app in front is timed. Five minutes without input "
+"pause it, unless a video keeps the screen awake."
+msgstr ""
+
+#: gnome-extension/prefs.js:883
+#, no-javascript-format
+msgid "Clear app usage"
+msgstr ""
+
+#: gnome-extension/prefs.js:883
+#, no-javascript-format
+msgid "Forget every day recorded so far"
+msgstr ""
+
+#: gnome-extension/prefs.js:886
+#, no-javascript-format
+msgid "Clear app usage?"
+msgstr ""
+
+#: gnome-extension/prefs.js:887
+#, no-javascript-format
+msgid "Every app’s time recorded so far is removed. This cannot be undone."
+msgstr ""
+
+#: gnome-extension/prefs.js:899 gnome-extension/src/pages/calendar.js:787
+#, no-javascript-format
+msgid "World Clocks"
+msgstr ""
+
+#: gnome-extension/prefs.js:900
+#, no-javascript-format
+msgid ""
+"The time in other cities on the Calendar page. The same list as GNOME’s "
+"calendar menu and Clocks app."
+msgstr ""
+
+#: gnome-extension/prefs.js:902
+#, no-javascript-format
+msgid "Show world clocks"
+msgstr ""
+
+#: gnome-extension/prefs.js:902
+#, no-javascript-format
+msgid "Under the day’s events; click them for more"
+msgstr ""
+
+#: gnome-extension/prefs.js:906
+#, no-javascript-format
+msgid "GNOME’s world clocks are not available here"
+msgstr ""
+
+#: gnome-extension/prefs.js:910 gnome-extension/prefs.js:911
+#, no-javascript-format
+msgid "Add a City…"
+msgstr ""
+
+#: gnome-extension/prefs.js:933
+#, no-javascript-format
+msgid "Same time as here"
+msgstr ""
+
+#: gnome-extension/prefs.js:941
+#, no-javascript-format
+msgid "Remove this city"
+msgstr ""
+
+#: gnome-extension/prefs.js:985
+#, no-javascript-format
+msgid "Add a City"
+msgstr ""
+
+#: gnome-extension/prefs.js:989
+#, no-javascript-format
+msgid "Search for a city"
+msgstr ""
+
+#: gnome-extension/prefs.js:994 gnome-extension/prefs.js:1016
+#, no-javascript-format
+msgid "Search for a City"
+msgstr ""
+
+#: gnome-extension/prefs.js:995 gnome-extension/prefs.js:1017
+#, no-javascript-format
+msgid "Type a city’s name, like Tokyo or New York"
+msgstr ""
+
+#: gnome-extension/prefs.js:1016
+#, no-javascript-format
+msgid "No City Found"
+msgstr ""
+
+#: gnome-extension/prefs.js:1017
+#, no-javascript-format
+msgid "Try another spelling, or a bigger city nearby"
+msgstr ""
+
+#: gnome-extension/prefs.js:1028
+#, no-javascript-format
+msgid "what Claude answers with"
+msgstr ""
+
+#: gnome-extension/prefs.js:1030
+#, no-javascript-format
+msgid "what ChatGPT answers with, quickly"
+msgstr ""
+
+#: gnome-extension/prefs.js:1032
+#, no-javascript-format
+msgid "what Grok answers with, quickly"
+msgstr ""
+
+#: gnome-extension/prefs.js:1034
+#, no-javascript-format
+msgid "what Antigravity answers with"
+msgstr ""
+
+#: gnome-extension/prefs.js:1204
+#, no-javascript-format
+msgid "Signed in with Claude Code"
+msgstr ""
+
+#: gnome-extension/prefs.js:1208
+#, no-javascript-format
+msgid "Signed in with Codex"
+msgstr ""
+
+#: gnome-extension/prefs.js:1210
+#, no-javascript-format
+msgid "Signed in with Grok"
+msgstr ""
+
+#: gnome-extension/prefs.js:1248 gnome-extension/src/alerts.js:48
+#: gnome-extension/src/alerts.js:50 gnome-extension/src/alerts.js:52
+#: gnome-extension/src/alerts.js:54 gnome-extension/src/alerts.js:56
+#: gnome-extension/src/alerts.js:103
+#, no-javascript-format
+msgid "Off"
+msgstr ""
+
+#: gnome-extension/prefs.js:1262
+#, no-javascript-format
+msgid "Press the new shortcut"
+msgstr ""
+
+#: gnome-extension/prefs.js:1263
+#, no-javascript-format
+msgid "With Super, Ctrl or Alt. Esc cancels; Backspace turns it off."
+msgstr ""
+
+#: gnome-extension/prefs.js:1289
+#, no-javascript-format
+msgid "Clear clipboard history?"
+msgstr ""
+
+#: gnome-extension/prefs.js:1290
+#, no-javascript-format
+msgid "Everything you copied is removed. Pinned items stay."
+msgstr ""
+
+#: gnome-extension/prefs.js:1301
+#, no-javascript-format
+msgid "Cancel"
+msgstr ""
+
+#: gnome-extension/prefs.js:1348
+#, no-javascript-format
+msgid "today"
+msgstr ""
+
+#: gnome-extension/prefs.js:1348
+#, no-javascript-format
+msgid "yesterday"
+msgstr ""
+
+#: gnome-extension/prefs.js:1374
+#, no-javascript-format
+msgid "Isle couldn’t reach GitHub; check the internet connection"
+msgstr ""
+
+#: gnome-extension/prefs.js:1375
+#, no-javascript-format
+msgid "GitHub limits how often it is asked; try again in an hour"
+msgstr ""
+
+#: gnome-extension/prefs.js:1376
+#, no-javascript-format
+msgid "GitHub had a problem just now; try again in a while"
+msgstr ""
+
+#: gnome-extension/prefs.js:1377
+#, no-javascript-format
+msgid "That version isn’t on GitHub yet; try again later"
+msgstr ""
+
+#: gnome-extension/prefs.js:1378
+#, no-javascript-format
+msgid "The download didn’t come through whole; try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1379
+#, no-javascript-format
+msgid ""
+"This version of Isle doesn’t support this GNOME yet; nothing was changed"
+msgstr ""
+
+#: gnome-extension/prefs.js:1380
+#, no-javascript-format
+msgid "The disk is full; free some space and try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1381
+#, no-javascript-format
+msgid "Isle couldn’t write its files; try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1384
+#, no-javascript-format
+msgid ""
+"There’s no ready-made Isle for this computer; build it from source instead"
+msgstr ""
+
+#: gnome-extension/prefs.js:1385
+#, no-javascript-format
+msgid "Another install of Isle is running; wait for it, then try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1387
+#, no-javascript-format
+msgid "The update didn’t start; try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1392
+#, no-javascript-format
+msgid "Install {program}, then try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1394
+#, no-javascript-format
+msgid "The update didn’t finish; try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1394
+#, no-javascript-format
+msgid "the installer stopped"
+msgstr ""
+
+#: gnome-extension/prefs.js:1473
+#, no-javascript-format
+msgid "How"
+msgstr ""
+
+#: gnome-extension/prefs.js:1475 gnome-extension/prefs.js:1481
+#, no-javascript-format
+msgid "Copy command"
+msgstr ""
+
+#: gnome-extension/prefs.js:1479 gnome-extension/src/chat.js:435
+#: gnome-extension/src/chat.js:610 gnome-extension/src/pages/shelf.js:512
+#, no-javascript-format
+msgid "Copied"
+msgstr ""
+
+#: gnome-extension/prefs.js:1485
+#, no-javascript-format
+msgid "Download"
+msgstr ""
+
+#: gnome-extension/prefs.js:1487 gnome-extension/prefs.js:1560
+#: gnome-extension/src/alerts.js:646
+#, no-javascript-format
+msgid "Update"
+msgstr ""
+
+#: gnome-extension/prefs.js:1488
+#, no-javascript-format
+msgid "Log Out"
+msgstr ""
+
+#: gnome-extension/prefs.js:1492
+#, no-javascript-format
+msgid "Asks GitHub once a day; nothing else is sent"
+msgstr ""
+
+#: gnome-extension/prefs.js:1492
+#, no-javascript-format
+msgid "Check for new versions"
+msgstr ""
+
+#: gnome-extension/prefs.js:1538
+#, no-javascript-format
+msgid "Downloading and installing; Settings can be closed"
+msgstr ""
+
+#: gnome-extension/prefs.js:1538
+#, no-javascript-format
+msgid "Updating to Isle {version}…"
+msgstr ""
+
+#: gnome-extension/prefs.js:1541
+#, no-javascript-format
+msgid "Try Again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1542
+#, no-javascript-format
+msgid "it was cut off before it finished"
+msgstr ""
+
+#: gnome-extension/prefs.js:1543
+#, no-javascript-format
+msgid "Couldn’t update"
+msgstr ""
+
+#: gnome-extension/prefs.js:1544
+#, no-javascript-format
+msgid "{reason}. Or paste the command in a terminal"
+msgstr ""
+
+#: gnome-extension/prefs.js:1547
+#, no-javascript-format
+msgid "Isle {version} is installed"
+msgstr ""
+
+#: gnome-extension/prefs.js:1548
+#, no-javascript-format
+msgid "Log out and back in to finish"
+msgstr ""
+
+#: gnome-extension/prefs.js:1550
+#, no-javascript-format
+msgid "Not checking for new versions"
+msgstr ""
+
+#: gnome-extension/prefs.js:1551
+#, no-javascript-format
+msgid "Turn it on below to hear when one is out"
+msgstr ""
+
+#: gnome-extension/prefs.js:1554 gnome-extension/prefs.js:1561
+#: gnome-extension/src/alerts.js:643
+#, no-javascript-format
+msgid "Isle {version} is out"
+msgstr ""
+
+#: gnome-extension/prefs.js:1555
+#, no-javascript-format
+msgid ""
+"Update it the way you installed it from the AUR, then log out and back in"
+msgstr ""
+
+#: gnome-extension/prefs.js:1556
+#, no-javascript-format
+msgid "Download its .{format} and open it to install, then log out and back in"
+msgstr ""
+
+#: gnome-extension/prefs.js:1562
+#, no-javascript-format
+msgid "Your tasks, events and settings stay"
+msgstr ""
+
+#: gnome-extension/prefs.js:1564
+#, no-javascript-format
+msgid "Checked {when}"
+msgstr ""
+
+#: gnome-extension/prefs.js:1564
+#, no-javascript-format
+msgid "You’re up to date"
+msgstr ""
+
+#: gnome-extension/prefs.js:1566
+#, no-javascript-format
+msgid "Isle asks GitHub once a day"
+msgstr ""
+
+#: gnome-extension/prefs.js:1566
+#, no-javascript-format
+msgid "Not checked yet"
+msgstr ""
+
+#: gnome-extension/prefs.js:1606
+#, no-javascript-format
+msgid "Isle isn’t fully installed; install it again, then try this"
+msgstr ""
+
+#: gnome-extension/prefs.js:1614
+#, no-javascript-format
+msgid "Copied: paste it into the report on GitHub"
+msgstr ""
+
+#: gnome-extension/prefs.js:1617
+#, no-javascript-format
+msgid "Couldn’t make the report; try again"
+msgstr ""
+
+#: gnome-extension/prefs.js:1631
+#, no-javascript-format
+msgid "Add an app"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:12
+#, no-javascript-format
+msgid "Working…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:15
+#, no-javascript-format
+msgid "the app"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:17
+#, no-javascript-format
+msgid "Opening {app}…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:18
+#, no-javascript-format
+msgid "Opening the page…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:19
+#, no-javascript-format
+msgid "Opening the file…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:20
+#, no-javascript-format
+msgid "Showing the file in Files…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:21
+#, no-javascript-format
+msgid "Opening the folder…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:22
+#, no-javascript-format
+msgid "Opening Chrome…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:23
+#, no-javascript-format
+msgid "Moving the window…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:24
+#, no-javascript-format
+msgid "Arranging the windows…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:25
+#, no-javascript-format
+msgid "Playing music…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:26
+#, no-javascript-format
+msgid "Controlling the music…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:27
+#, no-javascript-format
+msgid "Closing {app}…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:28
+#, no-javascript-format
+msgid "Setting the volume to {level}%…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:29
+#, no-javascript-format
+msgid "Changing the volume…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:30
+#, no-javascript-format
+msgid "Setting the brightness to {level}%…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:31
+#, no-javascript-format
+msgid "Changing the brightness…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:32
+#, no-javascript-format
+msgid "Turning Wi-Fi off…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:32
+#, no-javascript-format
+msgid "Turning Wi-Fi on…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:33
+#, no-javascript-format
+msgid "Turning Bluetooth off…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:33
+#, no-javascript-format
+msgid "Turning Bluetooth on…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:34
+#, no-javascript-format
+msgid "Turning Do Not Disturb off…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:34
+#, no-javascript-format
+msgid "Turning Do Not Disturb on…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:35
+#, no-javascript-format
+msgid "Turning dark style off…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:35
+#, no-javascript-format
+msgid "Turning dark style on…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:36
+#, no-javascript-format
+msgid "Turning Night Light off…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:36
+#, no-javascript-format
+msgid "Turning Night Light on…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:37
+#, no-javascript-format
+msgid "Switching the power mode…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:38
+#, no-javascript-format
+msgid "Opening Settings…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:39
+#, no-javascript-format
+msgid "Adding a to-do…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:40
+#, no-javascript-format
+msgid "Ticking off the to-do…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:41
+#, no-javascript-format
+msgid "Removing the to-do…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:42
+#, no-javascript-format
+msgid "Adding it to your calendar…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:43
+#, no-javascript-format
+msgid "Removing the event…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:44
+#, no-javascript-format
+msgid "Setting a reminder…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:45
+#, no-javascript-format
+msgid "Cancelling the reminder…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:46
+#, no-javascript-format
+msgid "Starting the timer…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:47
+#, no-javascript-format
+msgid "Opening a terminal…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:48 gnome-extension/src/voice.js:32
+#, no-javascript-format
+msgid "Asking to run it…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:49
+#, no-javascript-format
+msgid "Opening your notifications…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:50
+#, no-javascript-format
+msgid "Taking a screenshot…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:51
+#, no-javascript-format
+msgid "Locking the screen…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:52
+#, no-javascript-format
+msgid "Typing it out…"
+msgstr ""
+
+#: gnome-extension/src/actionRules.js:53
+#, no-javascript-format
+msgid "Working on it…"
+msgstr ""
+
+#. TRANSLATORS: "Opening Files and 2 more…": the first action, then how many come after it.
+#: gnome-extension/src/actionRules.js:57
+#, no-javascript-format
+msgid "{what} and {count} more…"
+msgid_plural "{what} and {count} more…"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gnome-extension/src/alerts.js:43
+#, no-javascript-format
+msgid "Volume"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:44 gnome-extension/src/alerts.js:45
+#, no-javascript-format
+msgid "Microphone"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:44 gnome-extension/src/pages/call.js:316
+#: gnome-extension/src/pages/media.js:448
+#, no-javascript-format
+msgid "Muted"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:46
+#, no-javascript-format
+msgid "Keyboard light"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:47
+#, no-javascript-format
+msgid "Brightness"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:48 gnome-extension/src/alerts.js:49
+#, no-javascript-format
+msgid "Touchpad"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:49 gnome-extension/src/alerts.js:51
+#: gnome-extension/src/alerts.js:53 gnome-extension/src/alerts.js:55
+#: gnome-extension/src/alerts.js:103
+#, no-javascript-format
+msgid "On"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:50 gnome-extension/src/alerts.js:51
+#, no-javascript-format
+msgid "Airplane mode"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:52 gnome-extension/src/alerts.js:53
+#, no-javascript-format
+msgid "Camera"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:61
+#, no-javascript-format
+msgid "Built-in Display"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:61
+#, no-javascript-format
+msgid "Keyboard"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:121
+#, no-javascript-format
+msgid "Charging"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:121
+#, no-javascript-format
+msgid "On battery"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:122
+#, no-javascript-format
+msgid "Charger connected"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:122
+#, no-javascript-format
+msgid "Charger disconnected"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:133
+#, no-javascript-format
+msgid "Low battery"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:134
+#, no-javascript-format
+msgid "Plug in your charger soon"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:145
+#, no-javascript-format
+msgid "Fully charged"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:146
+#, no-javascript-format
+msgid "You can unplug your charger"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:159
+#, no-javascript-format
+msgid "Offline"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:160
+#, no-javascript-format
+msgid "The network connection was lost"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:173
+#, no-javascript-format
+msgid "Connected"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:173
+#, no-javascript-format
+msgid "Disconnected"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:193
+#, no-javascript-format
+msgid "Focus session done"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:194
+#, no-javascript-format
+msgid "Take a break when you’re ready"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:195
+#, no-javascript-format
+msgid "Enjoy a {count}-minute break"
+msgid_plural "Enjoy a {count}-minute break"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gnome-extension/src/alerts.js:197
+#, no-javascript-format
+msgid "Start break"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:206
+#, no-javascript-format
+msgid "Break is over"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:207
+#, no-javascript-format
+msgid "Ready for another focus session?"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:208
+#, no-javascript-format
+msgid "{count} minute of focus"
+msgid_plural "{count} minutes of focus"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gnome-extension/src/alerts.js:210
+#, no-javascript-format
+msgid "Start focus"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:284
+#, no-javascript-format
+msgid "New notification"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:357
+#, no-javascript-format
+msgid "5-hour limit"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:360
+#, no-javascript-format
+msgid "Weekly limit"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:360
+#, no-javascript-format
+msgid "Weekly {model} limit"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:362
+#, no-javascript-format
+msgid "{span} limit"
+msgstr ""
+
+#. TRANSLATORS: an AI plan's limit over a span isled names ("Day"), perhaps for one model ("Day Opus limit").
+#: gnome-extension/src/alerts.js:362
+#, no-javascript-format
+msgid "{span} {model} limit"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:378
+#, no-javascript-format
+msgid "{limit} · resets {time}"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:400
+#, no-javascript-format
+msgid "Reminder"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:435
+#, no-javascript-format
+msgid "{title} in {count} min"
+msgid_plural "{title} in {count} min"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gnome-extension/src/alerts.js:436
+#, no-javascript-format
+msgid "{title} now"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:442
+#, no-javascript-format
+msgid "Join"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:466 gnome-extension/src/alerts.js:609
+#: gnome-extension/src/alerts.js:625
+#, no-javascript-format
+msgid "Your AI"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:468
+#, no-javascript-format
+msgid "{name} is waiting for you"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:468
+#, no-javascript-format
+msgid "{name} needs your OK"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:469
+#, no-javascript-format
+msgid "{name} is done"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:472
+#, no-javascript-format
+msgid "Allow {tool}?"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:484
+#, no-javascript-format
+msgid "Show"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:510 gnome-extension/src/alerts.js:582
+#: gnome-extension/src/chat.js:310
+#, no-javascript-format
+msgid "Deny"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:511
+#, no-javascript-format
+msgid "Always"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:511
+#, no-javascript-format
+msgid "Always allowed here"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:512
+#, no-javascript-format
+msgid "Allow"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:517
+#, no-javascript-format
+msgid "{name} needs permission"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:535
+#, no-javascript-format
+msgid "Finished"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:541
+#, no-javascript-format
+msgid "{name} finished"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:547
+#, no-javascript-format
+msgid "Open terminal"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:548 gnome-extension/src/alerts.js:601
+#, no-javascript-format
+msgid "OK"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:577
+#, no-javascript-format
+msgid "Isle wants to run this"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:577
+#, no-javascript-format
+msgid "Isle wants to run this · asks for your password"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:583 gnome-extension/src/chat.js:311
+#, no-javascript-format
+msgid "Run"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:583
+#, no-javascript-format
+msgid "Running"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:596
+#, no-javascript-format
+msgid "{name} is connected"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:597
+#, no-javascript-format
+msgid "Answer it from here when it asks"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:597
+#, no-javascript-format
+msgid "In Codex, type /hooks once and allow Isle"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:613
+#, no-javascript-format
+msgid "{model} isn’t available"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:613
+#, no-javascript-format
+msgid "{name} {plan} doesn’t include {model}"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:617
+#, no-javascript-format
+msgid "Using {model} for now"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:630
+#, no-javascript-format
+msgid "Couldn’t turn on {name} alerts"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:644
+#, no-javascript-format
+msgid "Update in a click; your things stay"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:644
+#, no-javascript-format
+msgid "Update its package to get it"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:657 gnome-extension/src/controller.js:2000
+#, no-javascript-format
+msgid "Isle’s service isn’t running"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:658
+#, no-javascript-format
+msgid "Music, timer and reminders need it"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:660
+#, no-javascript-format
+msgid "Restart"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:673
+#, no-javascript-format
+msgid "{count} new notification"
+msgid_plural "{count} new notifications"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gnome-extension/src/alerts.js:674
+#, no-javascript-format
+msgid "Open the island to read it"
+msgid_plural "Open the island to read them"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gnome-extension/src/alerts.js:693 gnome-extension/src/chat.js:35
+#: gnome-extension/src/pages/calendar.js:353
+#, no-javascript-format
+msgid "Done"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:693 gnome-extension/src/voice.js:427
+#, no-javascript-format
+msgid "Something went wrong"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:701
+#, no-javascript-format
+msgid "Isle Assistant"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:702
+#, no-javascript-format
+msgid "Isle Assistant · Click to read more"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:716
+#, no-javascript-format
+msgid "Recording screen"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:717
+#, no-javascript-format
+msgid "Stop it from the red dot in the island"
+msgstr ""
+
+#: gnome-extension/src/alerts.js:719 gnome-extension/src/chat.js:309
+#: gnome-extension/src/chat.js:420 gnome-extension/src/voice.js:363
+#, no-javascript-format
+msgid "Stop"
+msgstr ""
+
+#: gnome-extension/src/bot.js:103
+#, no-javascript-format
+msgid "Circle"
+msgstr ""
+
+#: gnome-extension/src/bot.js:104
+#, no-javascript-format
+msgid "Pebble"
+msgstr ""
+
+#: gnome-extension/src/bot.js:105
+#, no-javascript-format
+msgid "Squircle"
+msgstr ""
+
+#: gnome-extension/src/bot.js:106
+#, no-javascript-format
+msgid "Capsule"
+msgstr ""
+
+#: gnome-extension/src/bot.js:107 gnome-extension/src/bot.js:125
+#, no-javascript-format
+msgid "Cloud"
+msgstr ""
+
+#: gnome-extension/src/bot.js:109
+#, no-javascript-format
+msgid "Hexagon"
+msgstr ""
+
+#: gnome-extension/src/bot.js:110
+#, no-javascript-format
+msgid "Drop"
+msgstr ""
+
+#: gnome-extension/src/bot.js:111
+#, no-javascript-format
+msgid "Ghost"
+msgstr ""
+
+#: gnome-extension/src/bot.js:126
+#, no-javascript-format
+msgid "Ink"
+msgstr ""
+
+#: gnome-extension/src/bot.js:127
+#, no-javascript-format
+msgid "Peach"
+msgstr ""
+
+#: gnome-extension/src/bot.js:128
+#, no-javascript-format
+msgid "Coral"
+msgstr ""
+
+#: gnome-extension/src/bot.js:129
+#, no-javascript-format
+msgid "Amber"
+msgstr ""
+
+#: gnome-extension/src/bot.js:130
+#, no-javascript-format
+msgid "Mint"
+msgstr ""
+
+#: gnome-extension/src/bot.js:131
+#, no-javascript-format
+msgid "Teal"
+msgstr ""
+
+#: gnome-extension/src/bot.js:132
+#, no-javascript-format
+msgid "Sky"
+msgstr ""
+
+#: gnome-extension/src/bot.js:133
+#, no-javascript-format
+msgid "Lavender"
+msgstr ""
+
+#: gnome-extension/src/bot.js:134
+#, no-javascript-format
+msgid "Rose"
+msgstr ""
+
+#: gnome-extension/src/bot.js:135
+#, no-javascript-format
+msgid "Graphite"
+msgstr ""
+
+#: gnome-extension/src/call.js:140 gnome-extension/src/expanded.js:30
+#, no-javascript-format
+msgid "Call"
+msgstr ""
+
+#: gnome-extension/src/chat.js:29
+#, no-javascript-format
+msgid "Removes files or apps"
+msgstr ""
+
+#: gnome-extension/src/chat.js:30
+#, no-javascript-format
+msgid "Runs a script from the web"
+msgstr ""
+
+#: gnome-extension/src/chat.js:31
+#, no-javascript-format
+msgid "Needs your password"
+msgstr ""
+
+#: gnome-extension/src/chat.js:36
+#, no-javascript-format
+msgid "Failed"
+msgstr ""
+
+#: gnome-extension/src/chat.js:37 gnome-extension/src/peek.js:451
+#, no-javascript-format
+msgid "Denied"
+msgstr ""
+
+#: gnome-extension/src/chat.js:38
+#, no-javascript-format
+msgid "Stopped"
+msgstr ""
+
+#: gnome-extension/src/chat.js:102
+#, no-javascript-format
+msgid "Copy the command"
+msgstr ""
+
+#: gnome-extension/src/chat.js:338
+#, no-javascript-format
+msgid "Running · {time}"
+msgstr ""
+
+#: gnome-extension/src/chat.js:350 gnome-extension/src/chat.js:423
+#, no-javascript-format
+msgid "May leave it half installed"
+msgstr ""
+
+#: gnome-extension/src/chat.js:420
+#, no-javascript-format
+msgid "Stop anyway"
+msgstr ""
+
+#: gnome-extension/src/chat.js:486
+#, no-javascript-format
+msgid "Chat"
+msgstr ""
+
+#: gnome-extension/src/chat.js:489
+#, no-javascript-format
+msgid "New chat"
+msgstr ""
+
+#: gnome-extension/src/chat.js:491
+#, no-javascript-format
+msgid "Hide the conversation"
+msgstr ""
+
+#: gnome-extension/src/chat.js:561 gnome-extension/src/chat.js:616
+#, no-javascript-format
+msgid "Conversation"
+msgstr ""
+
+#: gnome-extension/src/controller.js:2000
+#, no-javascript-format
+msgid "Isle couldn’t take that"
+msgstr ""
+
+#: gnome-extension/src/controller.js:2056
+#, no-javascript-format
+msgid "Press {shortcut} to ask again."
+msgstr ""
+
+#: gnome-extension/src/controller.js:2057
+#, no-javascript-format
+msgid "Ask again from the mic in the island."
+msgstr ""
+
+#: gnome-extension/src/controller.js:2355
+#: gnome-extension/src/controller.js:2361
+#, no-javascript-format
+msgid "Isle restarted"
+msgstr ""
+
+#: gnome-extension/src/expanded.js:38
+#, no-javascript-format
+msgid "Usage"
+msgstr ""
+
+#: gnome-extension/src/expanded.js:174
+#, no-javascript-format
+msgid "Stop recording"
+msgstr ""
+
+#: gnome-extension/src/expanded.js:186
+#, no-javascript-format
+msgid "AI assistant"
+msgstr ""
+
+#: gnome-extension/src/format.js:78
+#, no-javascript-format
+msgid "now"
+msgstr ""
+
+#. TRANSLATORS: minutes, as short as it can be: "5m" (5 minutes ago, or 5 minutes long).
+#: gnome-extension/src/format.js:81 gnome-extension/src/format.js:92
+#: gnome-extension/src/format.js:96
+#, no-javascript-format
+msgid "{minutes}m"
+msgstr ""
+
+#. TRANSLATORS: hours, as short as it can be: "2h" (2 hours ago, or 2 hours long).
+#: gnome-extension/src/format.js:84 gnome-extension/src/format.js:98
+#, no-javascript-format
+msgid "{hours}h"
+msgstr ""
+
+#: gnome-extension/src/format.js:92
+#, no-javascript-format
+msgid "<1m"
+msgstr ""
+
+#. TRANSLATORS: a span of time, short: "1h 15m".
+#: gnome-extension/src/format.js:98
+#, no-javascript-format
+msgid "{hours}h {minutes}m"
+msgstr ""
+
+#: gnome-extension/src/format.js:104
+#, no-javascript-format
+msgid "Ready to focus"
+msgstr ""
+
+#: gnome-extension/src/format.js:105 gnome-extension/src/pages/timer.js:20
+#: gnome-extension/src/pages/timer.js:21 gnome-extension/src/pages/timer.js:56
+#, no-javascript-format
+msgid "Focus"
+msgstr ""
+
+#: gnome-extension/src/format.js:106
+#, no-javascript-format
+msgid "Short break"
+msgstr ""
+
+#: gnome-extension/src/format.js:107 gnome-extension/src/pages/timer.js:23
+#, no-javascript-format
+msgid "Long break"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:21
+#: gnome-extension/src/pages/calendar.js:349
+#: gnome-extension/src/pages/calendar.js:784
+#, no-javascript-format
+msgid "Today"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:21
+#, no-javascript-format
+msgid "{time} today"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:22
+#, no-javascript-format
+msgid "7 days"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:22
+#, no-javascript-format
+msgid "{time} in 7 days"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:23
+#, no-javascript-format
+msgid "30 days"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:23
+#, no-javascript-format
+msgid "{time} in 30 days"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:118
+#, no-javascript-format
+msgid "No usage yet"
+msgstr ""
+
+#: gnome-extension/src/pages/apps.js:119
+#, no-javascript-format
+msgid "Time in the app in front shows up here"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:302
+#, no-javascript-format
+msgid "Go to today"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:308
+#, no-javascript-format
+msgid "Previous month"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:310
+#, no-javascript-format
+msgid "Next month"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:343
+#: gnome-extension/src/pages/calendar.js:433
+#, no-javascript-format
+msgid "World clocks"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:374
+#, no-javascript-format
+msgid "Calendar for new events"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:409
+#, no-javascript-format
+msgid "No events"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:411
+#, no-javascript-format
+msgid "Add calendars in Online Accounts"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:599
+#, no-javascript-format
+msgid "Untitled"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:784
+#: gnome-extension/src/worldClocks.js:87
+#, no-javascript-format
+msgid "Tomorrow"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:784
+#: gnome-extension/src/worldClocks.js:87
+#, no-javascript-format
+msgid "Yesterday"
+msgstr ""
+
+#. TRANSLATORS: the day over its events: "Today, 21 October" (the date as the locale writes it).
+#: gnome-extension/src/pages/calendar.js:786
+#, no-javascript-format
+msgid "{day}, {date}"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:787
+#, no-javascript-format
+msgid "New events go to"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:797
+#, no-javascript-format
+msgid "Add event · e.g. Dinner {time}"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:797
+#, no-javascript-format
+msgid "e.g. Dinner {time}"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:798
+#, no-javascript-format
+msgid "Offline · syncs once online"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:798
+#, no-javascript-format
+msgid "Saved in Isle instead"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:950
+#, no-javascript-format
+msgid "On this computer"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:998
+#: gnome-extension/src/pages/calendar.js:1101
+#, no-javascript-format
+msgid "All day"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:1002
+#, no-javascript-format
+msgid "until {time}"
+msgstr ""
+
+#: gnome-extension/src/pages/calendar.js:1016
+#, no-javascript-format
+msgid "Remove event"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:222
+#, no-javascript-format
+msgid "Go to the call"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:248 gnome-extension/src/pages/call.js:316
+#: gnome-extension/src/pages/media.js:298
+#, no-javascript-format
+msgid "Mute"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:249
+#, no-javascript-format
+msgid "Open"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:308
+#, no-javascript-format
+msgid "Video call"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:308
+#, no-javascript-format
+msgid "Voice call"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:317
+#, no-javascript-format
+msgid "Mute the microphone"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:317
+#, no-javascript-format
+msgid "Unmute the microphone"
+msgstr ""
+
+#: gnome-extension/src/pages/call.js:333
+#, no-javascript-format
+msgid "Hidden while sharing"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:278
+#, no-javascript-format
+msgid "Hidden while you share your screen"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:279
+#, no-javascript-format
+msgid "Your clipboard shows again once sharing stops"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:282
+#, no-javascript-format
+msgid "Nothing found"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:283
+#, no-javascript-format
+msgid "Try other words or another filter"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:286
+#, no-javascript-format
+msgid "Clipboard history is off"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:287
+#, no-javascript-format
+msgid "Turn it on in Isle’s settings"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:290
+#, no-javascript-format
+msgid "Nothing copied yet"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:291
+#, no-javascript-format
+msgid "Text, links, images and files you copy show up here"
+msgstr ""
+
+#. TRANSLATORS: the time in a saved picture's file name (GLib.DateTime.format codes); no "/" or ":".
+#: gnome-extension/src/pages/clips.js:548
+#, no-javascript-format
+msgid "%Y-%m-%d at %H.%M.%S"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:551
+#, no-javascript-format
+msgid "Clipboard image {time}"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:586
+#, no-javascript-format
+msgid "Pin"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:586
+#, no-javascript-format
+msgid "Unpin"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:590
+#, no-javascript-format
+msgid "Pins full · unpin one"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:595
+#, no-javascript-format
+msgid "Pinned"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:599
+#, no-javascript-format
+msgid "Add to the Files tab"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:605
+#, no-javascript-format
+msgid "Files is full"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:612
+#, no-javascript-format
+msgid "Added to Files"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:615
+#, no-javascript-format
+msgid "Add to Reminders"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:620
+#, no-javascript-format
+msgid "Added to Reminders"
+msgstr ""
+
+#: gnome-extension/src/pages/clips.js:624
+#, no-javascript-format
+msgid "Remove"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:280
+#, no-javascript-format
+msgid "Drop files here, then drag them into any app"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:280
+#: gnome-extension/src/pages/files.js:282
+#, no-javascript-format
+msgid "No files on the shelf"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:282
+#, no-javascript-format
+msgid "Dropping files here isn’t set up; install Isle again to add it"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:284
+#, no-javascript-format
+msgid "Links and files online can’t be kept"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:284
+#: gnome-extension/src/pages/shelf.js:397
+#, no-javascript-format
+msgid "Only files on this computer"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:286
+#, no-javascript-format
+msgid "The shelf holds six at a time"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:286
+#, no-javascript-format
+msgid "Too many files"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:288
+#, no-javascript-format
+msgid "Drop to add it"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:288
+#: gnome-extension/src/pages/shelf.js:403
+#, no-javascript-format
+msgid "Release to add it"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:288
+#, no-javascript-format
+msgid "Then drag it into any app, or click to copy it"
+msgstr ""
+
+#: gnome-extension/src/pages/files.js:310
+#, no-javascript-format
+msgid "Remove from the shelf"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:35
+#, no-javascript-format
+msgid "Looking for lyrics"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:36
+#, no-javascript-format
+msgid "Lyrics come from LRCLIB"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:36
+#, no-javascript-format
+msgid "No lyrics for this song"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:37
+#, no-javascript-format
+msgid "Instrumental"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:37
+#, no-javascript-format
+msgid "Nothing to sing along to"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:38
+#, no-javascript-format
+msgid "Lyrics are off"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:38
+#, no-javascript-format
+msgid "Turn them on in Isle’s settings"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:39
+#, no-javascript-format
+msgid "Can’t reach the lyrics"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:39
+#, no-javascript-format
+msgid "Check your connection · trying again soon"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:40
+#, no-javascript-format
+msgid "Lyrics are busy right now"
+msgstr ""
+
+#: gnome-extension/src/pages/lyrics.js:40
+#, no-javascript-format
+msgid "Trying again in a moment"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:205
+#, no-javascript-format
+msgid "Play or pause"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:207
+#, no-javascript-format
+msgid "Previous"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:209
+#, no-javascript-format
+msgid "Next"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:246
+#, no-javascript-format
+msgid "Show lyrics"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:247
+#: gnome-extension/src/pages/media.js:281
+#, no-javascript-format
+msgid "Volume and output"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:277
+#, no-javascript-format
+msgid "Hide lyrics"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:310
+#, no-javascript-format
+msgid "Back to the player"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:335
+#, no-javascript-format
+msgid "Nothing playing"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:336
+#, no-javascript-format
+msgid "Play something in Spotify or on YouTube"
+msgstr ""
+
+#: gnome-extension/src/pages/media.js:430
+#, no-javascript-format
+msgid "Switch to {player}"
+msgstr ""
+
+#: gnome-extension/src/pages/notifications.js:97
+#, no-javascript-format
+msgid "Do Not Disturb: new ones wait here; urgent ones still show"
+msgstr ""
+
+#: gnome-extension/src/pages/notifications.js:119
+#, no-javascript-format
+msgid "No notifications"
+msgstr ""
+
+#: gnome-extension/src/pages/notifications.js:120
+#, no-javascript-format
+msgid "You’re all caught up"
+msgstr ""
+
+#: gnome-extension/src/pages/notifications.js:215
+#, no-javascript-format
+msgid "Dismiss"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:23
+#, no-javascript-format
+msgid "Files"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:26
+#, no-javascript-format
+msgid "Only text"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:27
+#, no-javascript-format
+msgid "Only links"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:28
+#, no-javascript-format
+msgid "Only images"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:29
+#, no-javascript-format
+msgid "Only files"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:159
+#, no-javascript-format
+msgid "Search"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:179
+#, no-javascript-format
+msgid "Search the clipboard history"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:185
+#, no-javascript-format
+msgid "Clear the clipboard history"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:186
+#, no-javascript-format
+msgid "Clear all"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:399
+#, no-javascript-format
+msgid "Full · remove a file first"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:401
+#, no-javascript-format
+msgid "Only {count} more fits"
+msgid_plural "Only {count} more fit"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gnome-extension/src/pages/shelf.js:403
+#, no-javascript-format
+msgid "Drop to keep it on the shelf"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:405
+#, no-javascript-format
+msgid "Added · click to copy, or drag it into any app"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:407
+#, no-javascript-format
+msgid "Full · remove a file to add another"
+msgstr ""
+
+#: gnome-extension/src/pages/shelf.js:409
+#, no-javascript-format
+msgid "{count} of {capacity} · click to copy, or drag into any app"
+msgstr ""
+
+#: gnome-extension/src/pages/tasks.js:137
+#: gnome-extension/src/pages/tasks.js:149
+#, no-javascript-format
+msgid "New reminder"
+msgstr ""
+
+#: gnome-extension/src/pages/tasks.js:253
+#, no-javascript-format
+msgid "All done"
+msgstr ""
+
+#: gnome-extension/src/pages/tasks.js:253
+#, no-javascript-format
+msgid "No reminders"
+msgstr ""
+
+#: gnome-extension/src/pages/tasks.js:293
+#: gnome-extension/src/pages/tasks.js:360
+#, no-javascript-format
+msgid "Mark as done"
+msgstr ""
+
+#: gnome-extension/src/pages/tasks.js:328
+#, no-javascript-format
+msgid "Delete reminder"
+msgstr ""
+
+#: gnome-extension/src/pages/tasks.js:373
+#, no-javascript-format
+msgid "Not done"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:22 gnome-extension/src/pages/timer.js:35
+#, no-javascript-format
+msgid "Break"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:33
+#, no-javascript-format
+msgid "Set work minutes"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:33
+#, no-javascript-format
+msgid "Shorter work"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:33
+#, no-javascript-format
+msgid "Work"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:34
+#, no-javascript-format
+msgid "Longer work"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:35
+#, no-javascript-format
+msgid "Set break minutes"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:35
+#, no-javascript-format
+msgid "Shorter break"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:36
+#, no-javascript-format
+msgid "Longer break"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:80
+#, no-javascript-format
+msgid "Reset the timer"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:85 gnome-extension/src/pages/timer.js:307
+#: gnome-extension/src/pages/timer.js:342
+#, no-javascript-format
+msgid "Start"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:88
+#, no-javascript-format
+msgid "Start or pause"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:307
+#, no-javascript-format
+msgid "Pause"
+msgstr ""
+
+#: gnome-extension/src/pages/timer.js:307
+#, no-javascript-format
+msgid "Resume"
+msgstr ""
+
+#: gnome-extension/src/pages/usage.js:306
+#, no-javascript-format
+msgid "No limits reported yet"
+msgstr ""
+
+#: gnome-extension/src/pages/usage.js:341
+#, no-javascript-format
+msgid "resets soon"
+msgstr ""
+
+#: gnome-extension/src/pages/usage.js:346
+#, no-javascript-format
+msgid "resets in {days}d"
+msgstr ""
+
+#. TRANSLATORS: as short as it can be: "resets in 2d 5h" (days and hours).
+#: gnome-extension/src/pages/usage.js:346
+#, no-javascript-format
+msgid "resets in {days}d {hours}h"
+msgstr ""
+
+#. TRANSLATORS: as short as it can be: "resets in 1h 20m" (hours and minutes).
+#: gnome-extension/src/pages/usage.js:350
+#, no-javascript-format
+msgid "resets in {hours}h {minutes}m"
+msgstr ""
+
+#: gnome-extension/src/pages/usage.js:351
+#, no-javascript-format
+msgid "resets in {hours}h"
+msgstr ""
+
+#: gnome-extension/src/pages/usage.js:353
+#, no-javascript-format
+msgid "resets in {minutes}m"
+msgstr ""
+
+#: gnome-extension/src/pages/usage.js:363
+#, no-javascript-format
+msgid "From Codex, {time}"
+msgstr ""
+
+#: gnome-extension/src/pages/usage.js:363
+#, no-javascript-format
+msgid "Updated {time}"
+msgstr ""
+
+#: gnome-extension/src/peek.js:451
+#, no-javascript-format
+msgid "Allowed"
+msgstr ""
+
+#: gnome-extension/src/voice.js:32
+#, no-javascript-format
+msgid "Asked to run it"
+msgstr ""
+
+#: gnome-extension/src/voice.js:61
+#, no-javascript-format
+msgid "Today’s plan"
+msgstr ""
+
+#: gnome-extension/src/voice.js:61
+#, no-javascript-format
+msgid "What’s on my calendar today?"
+msgstr ""
+
+#: gnome-extension/src/voice.js:62
+#, no-javascript-format
+msgid "Install "
+msgstr ""
+
+#: gnome-extension/src/voice.js:62
+#, no-javascript-format
+msgid "Install an app…"
+msgstr ""
+
+#: gnome-extension/src/voice.js:63
+#, no-javascript-format
+msgid "Find "
+msgstr ""
+
+#: gnome-extension/src/voice.js:63
+#, no-javascript-format
+msgid "Find a file…"
+msgstr ""
+
+#: gnome-extension/src/voice.js:248
+#, no-javascript-format
+msgid "Speak"
+msgstr ""
+
+#: gnome-extension/src/voice.js:270
+#, no-javascript-format
+msgid "Show the conversation"
+msgstr ""
+
+#: gnome-extension/src/voice.js:274
+#, no-javascript-format
+msgid "Started a new chat"
+msgstr ""
+
+#: gnome-extension/src/voice.js:275
+#, no-javascript-format
+msgid "Undo"
+msgstr ""
+
+#: gnome-extension/src/voice.js:295
+#, no-javascript-format
+msgid "Sign in"
+msgstr ""
+
+#: gnome-extension/src/voice.js:297
+#, no-javascript-format
+msgid "Set up"
+msgstr ""
+
+#: gnome-extension/src/voice.js:317
+#, no-javascript-format
+msgid "Ask anything…"
+msgstr ""
+
+#: gnome-extension/src/voice.js:361
+#, no-javascript-format
+msgid "Type instead"
+msgstr ""
+
+#: gnome-extension/src/voice.js:421
+#, no-javascript-format
+msgid "One moment…"
+msgstr ""
+
+#: gnome-extension/src/voice.js:424
+#, no-javascript-format
+msgid "Thinking…"
+msgstr ""
+
+#: gnome-extension/src/voice.js:655
+#, no-javascript-format
+msgid "Send"
+msgstr ""
+
+#: gnome-extension/src/voice.js:655
+#, no-javascript-format
+msgid "Speak instead"
+msgstr ""
+
+#: gnome-extension/src/voice.js:716
+#, no-javascript-format
+msgid "Getting ready…"
+msgstr ""
+
+#: gnome-extension/src/voice.js:920
+#, no-javascript-format
+msgid "Still working · {time}"
+msgstr ""
+
+#: gnome-extension/src/voice.js:1042
+#, no-javascript-format
+msgid "Open a terminal, type “{command}” to sign in, then ask again."
+msgstr ""
+
+#: gnome-extension/src/voice.js:1089
+#, no-javascript-format
+msgid "How can I help?"
+msgstr ""
+
+#: gnome-extension/src/widgets.js:171
+#, no-javascript-format
+msgid "Close"
+msgstr ""

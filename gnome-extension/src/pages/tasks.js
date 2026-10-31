@@ -9,6 +9,7 @@ import GObject from 'gi://GObject';
 import St from 'gi://St';
 
 import {VERTICAL} from '../compat.js';
+import {_} from '../i18n.js';
 import {iconButton, label, wrapLines} from '../widgets.js';
 import {Page} from './page.js';
 
@@ -128,12 +129,12 @@ class TasksPage extends Page {
     /** "Reminders", the count of open ones, and +. */
     _buildHeader() {
         const header = new St.BoxLayout({style_class: 'isle-reminders-header'});
-        header.add_child(label('Reminders', 'isle-reminders-title', {x_expand: true}));
+        header.add_child(label(_('Reminders'), 'isle-reminders-title', {x_expand: true}));
         this._count = label('', 'isle-reminders-count');
         header.add_child(this._count);
         // A small round button, as the other pages' actions, on the page's right edge.
         const add = iconButton('isle-plus-symbolic', 'isle-button-round isle-button-small isle-reminders-add',
-            () => this._focusNew(), {size: 13, accessibleName: 'New reminder'});
+            () => this._focusNew(), {size: 13, accessibleName: _('New reminder')});
         add.y_align = Clutter.ActorAlign.CENTER;
         header.add_child(add);
         return header;
@@ -145,7 +146,7 @@ class TasksPage extends Page {
         const row = new St.BoxLayout({style_class: 'isle-reminder isle-reminder-new', y_expand: false});
         row.add_child(new St.Widget({style_class: 'isle-reminder-check faint', y_align: Clutter.ActorAlign.CENTER}));
         const column = new St.BoxLayout({...VERTICAL, x_expand: true, y_expand: true});
-        this._entry = new St.Entry({style_class: 'isle-reminder-field', hint_text: 'New reminder', can_focus: true, x_expand: true});
+        this._entry = new St.Entry({style_class: 'isle-reminder-field', hint_text: _('New reminder'), can_focus: true, x_expand: true});
         const content = new St.BoxLayout({style_class: 'isle-reminder-content', y_expand: true});
         content.add_child(this._entry);
         column.add_child(content);
@@ -249,7 +250,7 @@ class TasksPage extends Page {
         }
         this._known = new Set(shown.map(task => task.id));
         this._empty.visible = shown.length === 0;
-        this._empty.text = tasks.length > shown.length ? 'All done' : 'No reminders';
+        this._empty.text = tasks.length > shown.length ? _('All done') : _('No reminders');
     }
 
     /** Opens `row` from nothing to its height, fading in, while the rows below make room. */
@@ -289,7 +290,7 @@ class TasksPage extends Page {
         const check = new St.Button({
             style_class: 'isle-reminder-check',
             child: dot,
-            accessible_name: 'Mark as done',
+            accessible_name: _('Mark as done'),
             y_align: Clutter.ActorAlign.START,
         });
         row.add_child(check);
@@ -324,7 +325,7 @@ class TasksPage extends Page {
                 removing = true;
                 this.daemon.call('todo', 'Remove', task.id);
             }
-        }, {size: 9, accessibleName: 'Delete reminder'});
+        }, {size: 9, accessibleName: _('Delete reminder')});
         remove.opacity = 0;
         onHover(row, hovered => remove.ease({opacity: hovered ? 255 : 0, duration: 120}));
         content.add_child(remove);
@@ -356,7 +357,7 @@ class TasksPage extends Page {
             this.cancel(name);
             this._leaving.delete(task.id);
             check.remove_style_pseudo_class('checked');
-            check.accessible_name = 'Mark as done';
+            check.accessible_name = _('Mark as done');
             title.remove_style_class_name('done');
             pop(false);
             strike.remove_transition('scale-x');
@@ -369,7 +370,7 @@ class TasksPage extends Page {
         const [textWidth] = title.clutter_text.get_layout().get_pixel_size();
         this._leaving.add(task.id);
         check.add_style_pseudo_class('checked');
-        check.accessible_name = 'Not done';
+        check.accessible_name = _('Not done');
         // On the title alone: on the row it restyled every widget in it, in the click's frame.
         title.add_style_class_name('done');
         pop(true);

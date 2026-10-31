@@ -124,14 +124,15 @@ jobs:
           npx eslint
       - name: Tests of the parts that need no GNOME Shell
         run: node --experimental-default-type=module --test tests/extension/*.test.js
-      - name: Check the settings schema, and the tests that need GLib
+      - name: Check the settings schema, the translations, and the tests that need GLib
         run: |
           sudo rm -f /var/lib/man-db/auto-update
           # A mirror that stops answering fails and is tried again, rather than hanging the job.
           printf 'Acquire::Retries "5";\nAcquire::http::Timeout "30";\nAcquire::https::Timeout "30";\n' |
             sudo tee /etc/apt/apt.conf.d/99retries >/dev/null
-          sudo apt-get update && sudo apt-get install -y libglib2.0-bin gjs
+          sudo apt-get update && sudo apt-get install -y libglib2.0-bin gjs gettext
           glib-compile-schemas --strict --dry-run gnome-extension/schemas
+          scripts/translations.sh check
           gjs -m tests/extension/format.gjs.js
 
   package:
@@ -149,7 +150,7 @@ jobs:
           printf 'Acquire::Retries "5";\nAcquire::http::Timeout "30";\nAcquire::https::Timeout "30";\n' |
             sudo tee /etc/apt/apt.conf.d/99retries >/dev/null
           sudo apt-get update
-          sudo apt-get install -y libgtk-4-dev rpm file cmake g++ clang libclang-dev libvulkan-dev glslc
+          sudo apt-get install -y libgtk-4-dev rpm file cmake g++ clang libclang-dev libvulkan-dev glslc gettext
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Package

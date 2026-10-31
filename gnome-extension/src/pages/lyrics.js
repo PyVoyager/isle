@@ -9,6 +9,7 @@ import GObject from 'gi://GObject';
 import St from 'gi://St';
 
 import {VERTICAL} from '../compat.js';
+import {_, N_} from '../i18n.js';
 import * as Playback from '../playback.js';
 import {icon, label, wrapFixedLines} from '../widgets.js';
 
@@ -29,14 +30,14 @@ const BLOCK_LINES = 8;
 /** A song whose first line comes this late opens with the pause dots. */
 const INTRO_MS = 3000;
 
-/** What the view says when there are no lines to show. */
+/** What the view says when there are no lines to show (translated as it shows). */
 const STATES = {
-    loading: {dots: true, title: 'Looking for lyrics'},
-    not_found: {icon: 'isle-lyrics', title: 'No lyrics for this song', hint: 'Lyrics come from LRCLIB'},
-    instrumental: {icon: 'isle-music', title: 'Instrumental', hint: 'Nothing to sing along to'},
-    off: {icon: 'isle-lyrics', title: 'Lyrics are off', hint: 'Turn them on in Isle’s settings'},
-    error: {icon: 'isle-lyrics', title: 'Can’t reach the lyrics', hint: 'Check your connection · trying again soon'},
-    unavailable: {icon: 'isle-lyrics', title: 'Lyrics are busy right now', hint: 'Trying again in a moment'},
+    loading: {dots: true, title: N_('Looking for lyrics')},
+    not_found: {icon: 'isle-lyrics', title: N_('No lyrics for this song'), hint: N_('Lyrics come from LRCLIB')},
+    instrumental: {icon: 'isle-music', title: N_('Instrumental'), hint: N_('Nothing to sing along to')},
+    off: {icon: 'isle-lyrics', title: N_('Lyrics are off'), hint: N_('Turn them on in Isle’s settings')},
+    error: {icon: 'isle-lyrics', title: N_('Can’t reach the lyrics'), hint: N_('Check your connection · trying again soon')},
+    unavailable: {icon: 'isle-lyrics', title: N_('Lyrics are busy right now'), hint: N_('Trying again in a moment')},
 };
 
 /** Three dots that breathe while the singing pauses. */
@@ -192,8 +193,8 @@ class LyricsPane extends St.Widget {
         if (state.icon)
             this._stateIcon.gicon = icon(state.icon);
         this._stateDots.visible = Boolean(state.dots);
-        this._stateTitle.text = state.title;
-        this._stateHint.text = state.hint ?? '';
+        this._stateTitle.text = _(state.title);
+        this._stateHint.text = state.hint ? _(state.hint) : '';
         this._stateHint.visible = Boolean(state.hint);
     }
 

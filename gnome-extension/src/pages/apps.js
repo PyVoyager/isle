@@ -12,13 +12,15 @@ import St from 'gi://St';
 
 import {VERTICAL} from '../compat.js';
 import * as Format from '../format.js';
+import {_, N_} from '../i18n.js';
 import {icon, label} from '../widgets.js';
 import {Page} from './page.js';
 
+// The spans to show, each with its tab and its total ("1h 15m today"), translated as they show.
 const PERIODS = [
-    {name: 'today', label: 'Today', total: 'today'},
-    {name: 'week', label: '7 days', total: 'in 7 days'},
-    {name: 'month', label: '30 days', total: 'in 30 days'},
+    {name: 'today', label: N_('Today'), total: N_('{time} today')},
+    {name: 'week', label: N_('7 days'), total: N_('{time} in 7 days')},
+    {name: 'month', label: N_('30 days'), total: N_('{time} in 30 days')},
 ];
 
 // A row's bar: the fill is `share` (0..1) of the width.
@@ -75,14 +77,14 @@ class AppsPage extends Page {
     /** The heading, the period's total, and the switch between today, 7 days and 30 days. */
     _buildBar() {
         const bar = new St.BoxLayout({style_class: 'isle-apps-bar'});
-        bar.add_child(label('App Usage', 'isle-apps-heading', {x_expand: true}));
+        bar.add_child(label(_('App Usage'), 'isle-apps-heading', {x_expand: true}));
         this._total = label('', 'isle-apps-total');
         bar.add_child(this._total);
 
         const toggle = new St.BoxLayout({style_class: 'isle-segmented isle-apps-toggle'});
         this._buttons = new Map();
         for (const {name, label: text} of PERIODS) {
-            const button = new St.Button({style_class: 'isle-segment', label: text, can_focus: true});
+            const button = new St.Button({style_class: 'isle-segment', label: _(text), can_focus: true});
             button.connect('clicked', () => this._show(name));
             this._buttons.set(name, button);
             toggle.add_child(button);
@@ -113,8 +115,8 @@ class AppsPage extends Page {
             style_class: 'isle-empty-icon',
             x_align: Clutter.ActorAlign.CENTER,
         }));
-        this._empty.add_child(label('No usage yet', 'isle-empty-title', {x_align: Clutter.ActorAlign.CENTER}));
-        this._empty.add_child(label('Time in the app in front shows up here',
+        this._empty.add_child(label(_('No usage yet'), 'isle-empty-title', {x_align: Clutter.ActorAlign.CENTER}));
+        this._empty.add_child(label(_('Time in the app in front shows up here'),
             'isle-empty-hint', {x_align: Clutter.ActorAlign.CENTER}));
 
         const column = new St.Widget({layout_manager: new Clutter.BinLayout(), x_expand: true, y_expand: true});
@@ -152,7 +154,7 @@ class AppsPage extends Page {
         const apps = this._apps();
         const total = apps.reduce((sum, app) => sum + Math.max(0, app.ms), 0);
         const period = PERIODS.find(({name}) => name === this._period);
-        this._total.text = total > 0 ? `${Format.hoursMinutes(total)} ${period.total}` : '';
+        this._total.text = total > 0 ? _(period.total, {time: Format.hoursMinutes(total)}) : '';
         this._empty.visible = apps.length === 0;
         this._scroll.visible = apps.length > 0;
 

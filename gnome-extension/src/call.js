@@ -14,6 +14,7 @@ import * as Signals from 'resource:///org/gnome/shell/misc/signals.js';
 import {getMixerControl} from 'resource:///org/gnome/shell/ui/status/volume.js';
 
 import {BROWSERS, callStreamOf, callWindowIndex, isEngineName, serviceOf, streamOwner} from './callServices.js';
+import {_} from './i18n.js';
 import {LEVEL_METERS} from './privacy.js';
 
 /** The microphone must be held this long to count: sites open it briefly to ask for permission. */
@@ -136,7 +137,7 @@ export class CallMonitor extends Signals.EventEmitter {
     /** The call's service ("Google Meet") once its window named one, else its app's name. */
     get name() {
         const stream = isEngineName(this._streamName) ? null : this._streamName;
-        return this._service ?? this.app?.get_name() ?? stream ?? 'Call';
+        return this._service ?? this.app?.get_name() ?? stream ?? _('Call');
     }
 
     /** The call app's icon, or null when the app is unknown. */

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 zickrian
 # Packs dist/isle-<version>-<arch>-linux.tar.gz (+ .sha256) with ready-built programs; arg: version (default Cargo.toml).
-# Needs libgtk-4-dev for isle-shelf, and cmake g++ libclang-dev libvulkan-dev glslc for isle-whisper.
+# Needs libgtk-4-dev for isle-shelf, cmake g++ libclang-dev libvulkan-dev glslc for isle-whisper, and gettext.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -17,6 +17,8 @@ mkdir -p "$OUT/bin"
 install -m755 target/release/isled target/release/isle-shelf target/release/isle-whisper "$OUT/bin/"
 strip "$OUT/bin/isled" "$OUT/bin/isle-shelf" "$OUT/bin/isle-whisper"
 cp -r gnome-extension data install.sh uninstall.sh README.md LICENSE CHANGELOG.md "$OUT/"
+# Its translations, compiled here (msgfmt, from gettext): install.sh then copies them with the extension.
+scripts/translations.sh compile "$OUT/gnome-extension"
 # What install.sh installs as commands: the voice set-up and the battery charge limit.
 mkdir -p "$OUT/scripts"
 install -m755 scripts/setup-voice.sh scripts/isle-charge-limit "$OUT/scripts/"
