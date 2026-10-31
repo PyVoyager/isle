@@ -108,7 +108,9 @@ class TimerPage extends Page {
     _buildStepper({key, label: name, set, shorter, longer, min, max}) {
         const row = new St.BoxLayout({style_class: 'isle-stepper'});
         this._stepperRows.push(row);
-        row.add_child(label(_(name), 'isle-stepper-name'));
+        // The rows are as wide as the widest (a vertical box fills them): the name takes what is left, so
+        // the numbers and − / + line up whatever each name's length.
+        row.add_child(label(_(name), 'isle-stepper-name', {x_expand: true}));
         // The number is a field: click it, type a length, Enter or a click away keeps it. The
         // buttons still step a minute, which stays quicker for a small change.
         const value = new St.Entry({
