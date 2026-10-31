@@ -13,15 +13,15 @@ POT="po/$DOMAIN.pot"
 
 fail() { echo "translations: $*" >&2; exit 1; }
 
-# The template, written to $1: every text the extension marks with _(), N_(), ngettext() or pgettext(). Their
+# The template, written to $1: every text the extension marks with _(), N_(), NN_(), ngettext() or pgettext(). Their
 # blanks are {names} (src/i18n.js), never printf's: "40% darker" is no format, nor a picture name's %Y.
 template() {
     local sources=() plain=()
     mapfile -t sources < <(find gnome-extension -name '*.js' -not -path '*/node_modules/*' | LC_ALL=C sort)
-    for spec in _:1 N_:1 ngettext:1 ngettext:2 pgettext:2; do
+    for spec in _:1 N_:1 NN_:1 NN_:2 ngettext:1 ngettext:2 pgettext:2; do
         plain+=("--flag=$spec:no-javascript-format")
     done
-    xgettext --from-code=UTF-8 --language=JavaScript --keyword=_ --keyword=N_ --keyword=ngettext:1,2 \
+    xgettext --from-code=UTF-8 --language=JavaScript --keyword=_ --keyword=N_ --keyword=NN_:1,2 --keyword=ngettext:1,2 \
         --keyword=pgettext:1c,2 "${plain[@]}" --add-comments=TRANSLATORS: --sort-by-file --package-name=Isle \
         --msgid-bugs-address=https://github.com/zickrian/isle/issues -o "$1" "${sources[@]}"
 }

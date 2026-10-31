@@ -5,6 +5,7 @@
 
 import GLib from 'gi://GLib';
 
+import {words} from './daemonWords.js';
 import * as Format from './format.js';
 import {_, N_, ngettext} from './i18n.js';
 import * as Playback from './playback.js';
@@ -169,7 +170,7 @@ export function system(event) {
             // A kind Isle has no icon of its own for (a printer, a watch): Bluetooth's, in Isle's style.
             icon: hasOwnIcon(device.icon) ? device.icon : 'isle-bluetooth-symbolic',
             ring: battery !== null ? battery / 100 : null,
-            title: device.name,
+            title: words(device.name),
             subtitle: event.connected ? _('Connected') : _('Disconnected'),
             value: battery !== null ? percentText(battery) : null,
             tone: !event.connected ? 'neutral' : battery !== null && battery < 20 ? 'bad' : 'good',
@@ -359,7 +360,7 @@ function limitName(window) {
     if (span === 'Week')
         return model ? _('Weekly {model} limit', {model}) : _('Weekly limit');
     // TRANSLATORS: an AI plan's limit over a span isled names ("Day"), perhaps for one model ("Day Opus limit").
-    return model ? _('{span} {model} limit', {span, model}) : _('{span} limit', {span});
+    return model ? _('{span} {model} limit', {span: words(span), model}) : _('{span} limit', {span: words(span)});
 }
 
 /** An AI plan limit nears its end: the provider's logo in a ring of the share, "86%" beside it. */
@@ -573,7 +574,7 @@ export function taskAsks(card, look, answer) {
     return {
         key: `task-ask:${card.id}`,
         bot: {look, glyph: '!'},
-        title: card.why,
+        title: words(card.why),
         subtitle: card.risks?.includes('root') ? _('Isle wants to run this · asks for your password') : _('Isle wants to run this'),
         code: card.command,
         tone: 'warn',
@@ -628,7 +629,7 @@ export function agentRefused(provider, reason) {
         icon: agentIcon(provider),
         motion: 'shake',
         title: _('Couldn’t turn on {name} alerts', {name}),
-        subtitle: reason,
+        subtitle: words(reason),
         tone: 'bad',
         duration: REMINDER_DURATION,
     };
@@ -690,7 +691,7 @@ export function notificationsSummary(items) {
  * shows it in full. */
 export function assistant(state, open) {
     const failed = state.phase === 'error';
-    const text = failed ? state.error || _('Something went wrong') : Format.answerPlain(state.reply ?? '') || _('Done');
+    const text = failed ? words(state.error) || _('Something went wrong') : Format.answerPlain(words(state.reply)) || _('Done');
     return {
         key: 'assistant',
         icon: failed ? 'dialog-warning-symbolic' : 'isle-mic-symbolic',

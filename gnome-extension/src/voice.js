@@ -19,6 +19,7 @@ import {TILES, describeActions, failed, namesProject, outcomeOf, runnable, slots
 import {Bot} from './bot.js';
 import {ChatView, CommandCard, answerMarkup, elapsed} from './chat.js';
 import {isTerminal} from './clipboard.js';
+import {words} from './daemonWords.js';
 import {answerPlain} from './format.js';
 import {VERTICAL, eventActor, maximize, onUiScale, px, uiScale, unmaximize} from './compat.js';
 import {_, N_} from './i18n.js';
@@ -413,7 +414,7 @@ export const VoiceView = GObject.registerClass({
         /** Whether the answer was cut: the chevron then opens it whole in the conversation. */
         this._replyCut = state.phase === 'reply' && this._exchange.reply !== (state.reply ?? '').trim();
         const heard = state.heard ? `“${state.heard}”` : '';
-        const step = state.phase === 'acting' ? describeActions(state.actions) : state.activity || '';
+        const step = state.phase === 'acting' ? describeActions(state.actions) : words(state.activity);
         this._noteStep(state.phase, step);
         const [top, main, dim, markdown] = {
             // The first time it opens it greets you.
@@ -424,7 +425,7 @@ export const VoiceView = GObject.registerClass({
             thinking: [heard, clip(state.draft ?? '') || step || _('Thinking…'), !state.draft, Boolean(state.draft)],
             acting: [heard, step, true],
             reply: [heard, clip(state.reply ?? ''), false, true],
-            error: [heard, state.error || _('Something went wrong'), false],
+            error: [heard, words(state.error) || _('Something went wrong'), false],
         }[state.phase] ?? ['', '', true];
         this._heard.text = top;
         this._heardButton.visible = Boolean(top) && !this.chatOpen;
@@ -680,13 +681,14 @@ export const VoiceView = GObject.registerClass({
             fadeIn(this._stepsBox.get_last_child());
     }
 
-    /** `text` naming the shortcut as set instead of the default one isled's hints name. */
+    /** `text` (an isled hint) in the user's language, naming the shortcut as set instead of the default one
+     * isled's hints name. */
     withShortcut(text) {
         if (this.shortcut)
-            return text.replaceAll('Super+I', this.shortcut);
+            return words(text).replaceAll('Super+I', this.shortcut);
         // No shortcut set: "Press Super+I and speak again." is "Speak again."; any other mention, the mic.
-        return text.replace(/Press Super\+I and (\w)/, (_match, first) => first.toUpperCase())
-            .replace(/press Super\+I/gi, match => `${match[0] === 'P' ? 'P' : 'p'}ress the mic in the island`);
+        return words(text.replace(/Press Super\+I and (\w)/, (_match, first) => first.toUpperCase())
+            .replace(/press Super\+I/gi, match => `${match[0] === 'P' ? 'P' : 'p'}ress the mic in the island`));
     }
 
     /** Whether a request is being typed. */

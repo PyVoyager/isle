@@ -11,6 +11,7 @@ import Pango from 'gi://Pango';
 import St from 'gi://St';
 
 import {VERTICAL, px} from '../compat.js';
+import {windowName, words} from '../daemonWords.js';
 import * as Format from '../format.js';
 import {_} from '../i18n.js';
 import * as Palette from '../palette.js';
@@ -292,7 +293,7 @@ class UsagePage extends Page {
             head.add_child(label(provider.plan, 'isle-usage-plan'));
         const fromCodex = provider.note?.startsWith('As of');
         const warning = provider.note && !fromCodex;
-        const stamp = label(warning ? provider.note : updated(provider.updated_ms, fromCodex),
+        const stamp = label(warning ? words(provider.note) : updated(provider.updated_ms, fromCodex),
             `isle-usage-stamp${warning ? ' warning' : ''}`, {x_expand: true, x_align: Clutter.ActorAlign.END});
         stamp.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         this._stamp = stamp;
@@ -303,7 +304,7 @@ class UsagePage extends Page {
         for (const window of provider.windows.slice(0, 3))
             limits.add_child(this._limit(window, accent));
         if (provider.windows.length === 0)
-            limits.add_child(label(provider.empty || _('No limits reported yet'), 'isle-usage-empty'));
+            limits.add_child(label(words(provider.empty) || _('No limits reported yet'), 'isle-usage-empty'));
         content.add_child(limits);
         return content;
     }
@@ -316,7 +317,7 @@ class UsagePage extends Page {
         const level = shown >= this._marks.critical ? 'critical' : shown >= this._marks.warn ? 'warn' : 'normal';
         const limit = new St.BoxLayout({...VERTICAL, style_class: 'isle-usage-limit'});
         const line = new St.BoxLayout({style_class: 'isle-usage-line'});
-        const title = label(name, 'isle-usage-window', {x_expand: true});
+        const title = label(windowName(name), 'isle-usage-window', {x_expand: true});
         title.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         line.add_child(title);
         if (resetsAt > 0) {

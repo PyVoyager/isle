@@ -42,3 +42,8 @@ export function pgettext(context, text, values) {
 export function N_(text) {
     return text;
 }
+
+/** The same for a text with a number: its two English forms, translated where it shows with `ngettext`. */
+export function NN_(one, many) {
+    return [one, many];
+}

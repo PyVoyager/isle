@@ -13,6 +13,7 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as Signals from 'resource:///org/gnome/shell/misc/signals.js';
 
 import {px, uiScale} from './compat.js';
+import {_, N_} from './i18n.js';
 
 const BUS_NAME = 'io.github.zickrian.isle.ShelfWindow';
 const OBJECT_PATH = '/io/github/zickrian/isle/ShelfWindow';
@@ -38,10 +39,25 @@ const ShelfWindowProxy = Gio.DBusProxy.makeProxyWrapper(`
   <method name="Scale"><arg name="scale" type="i" direction="out"/></method>
   <method name="SetScale"><arg name="scale" type="i" direction="in"/></method>
   <method name="SetDropping"><arg name="dropping" type="b" direction="in"/></method>
+  <method name="SetWords"><arg name="words" type="a{ss}" direction="in"/></method>
   <signal name="Dragging"><arg name="active" type="b"/></signal>
   <signal name="Hovering"><arg name="uris" type="as"/></signal>
   <signal name="Drawn"/>
 </interface></node>`);
+
+/** The helper's drop-area words as it writes them (crates/isle-shelf `render`), each with the Files tab's for it,
+ * which it shows in the user's language (`SetWords`). */
+const HELPER_WORDS = [
+    ['No files on the shelf', N_('No files on the shelf')],
+    ['Drop files here, then drag them into any app', N_('Drop files here, then drag them into any app')],
+    ['Only files on this computer', N_('Only files on this computer')],
+    ["Links and files online can't be kept", N_('Links and files online can’t be kept')],
+    ['Too many files', N_('Too many files')],
+    ['The shelf holds six at a time', N_('The shelf holds six at a time')],
+    ['Release to add it', N_('Release to add it')],
+    ['Drop to add it', N_('Drop to add it')],
+    ['Then drag it into any app, or click to copy it', N_('Then drag it into any app, or click to copy it')],
+];
 
 /** Errors meaning the helper cannot be started at all. */
 const CANNOT_START = [
@@ -518,6 +534,9 @@ export class ShelfHelper extends Signals.EventEmitter {
                     });
                     this._signalProxy = proxy;
                     this._ownerId = proxy.connect('notify::g-name-owner', () => this._onOwnerChanged(proxy));
+                    // Already running (the extension restarted): it hears the words now, else once it starts.
+                    if (proxy.g_name_owner)
+                        this._sendWords(proxy);
                     this.sync();
                 }, this._cancellable, Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION);
             });
@@ -526,7 +545,8 @@ export class ShelfHelper extends Signals.EventEmitter {
     /** The helper started or quit; too many quits while shown and it is given up. */
     _onOwnerChanged(proxy) {
         if (proxy.g_name_owner) {
-            // Started again (after a crash, or quitting as the drag began): it must hear of the drag too.
+            // Started (again, after a crash or quitting as the drag began): its words, and the drag too.
+            this._sendWords(proxy);
             if (this._dragNear)
                 this._setDropping(true);
             return;
@@ -629,6 +649,12 @@ export class ShelfHelper extends Signals.EventEmitter {
     _setDropping(dropping) {
         // A helper from before 0.2 has no such method; it just does without.
         this._proxy?.SetDroppingRemote(dropping, () => {});
+    }
+
+    /** Tells the helper its words in the user's language (a helper from before them stays in English). */
+    _sendWords(proxy) {
+        const words = Object.fromEntries(HELPER_WORDS.map(([english, text]) => [english, _(text)]));
+        proxy.SetWordsRemote(words, () => {});
     }
 
     /** Disconnects everything and hides the window. */

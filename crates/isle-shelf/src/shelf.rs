@@ -70,6 +70,9 @@ struct Inner {
     dragged: RefCell<Option<Vec<String>>>,
     /// Quits the helper once hidden for `IDLE_QUIT_SECS`.
     idle_quit: RefCell<Option<glib::SourceId>>,
+    /// The drop area's words in the user's language, by the English ones `render` writes (from the
+    /// extension's translations; see `SetWords`).
+    words: RefCell<HashMap<String, String>>,
 }
 
 impl ShelfWindow {
@@ -128,6 +131,7 @@ impl ShelfWindow {
             over: Cell::default(),
             dragged: RefCell::default(),
             idle_quit: RefCell::default(),
+            words: RefCell::default(),
         }));
         shelf.accept_drops();
         let weak = Rc::downgrade(&shelf.0);
@@ -273,6 +277,12 @@ impl ShelfWindow {
             }
         });
         self.0.idle_quit.replace(Some(quit));
+    }
+
+    /// The drop area's words in the user's language, by the English ones; shown at once.
+    pub fn set_words(&self, words: HashMap<String, String>) {
+        self.0.words.replace(words);
+        self.render();
     }
 
     /// Whether a file is being dragged towards the island: the shelf then
@@ -500,8 +510,9 @@ impl ShelfWindow {
                 "Drop files here, then drag them into any app",
             )
         };
-        inner.empty_title.set_label(title);
-        inner.empty_hint.set_label(hint);
+        let words = inner.words.borrow();
+        inner.empty_title.set_label(said(&words, title));
+        inner.empty_hint.set_label(said(&words, hint));
         inner
             .stack
             .set_visible_child_name(if count == 0 { "empty" } else { "files" });
@@ -631,4 +642,34 @@ fn empty_state(title: &gtk::Label, hint: &gtk::Label) -> gtk::Box {
     box_.append(title);
     box_.append(hint);
     box_
+}
+
+/// `english` in the user's language, as the extension gave it; as it is when it gave none.
+fn said<'a>(words: &'a HashMap<String, String>, english: &'a str) -> &'a str {
+    words
+        .get(english)
+        .filter(|word| !word.trim().is_empty())
+        .map_or(english, String::as_str)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn says_the_extensions_words_else_english() {
+        let words = HashMap::from([
+            (
+                "Too many files".to_owned(),
+                "Слишком много файлов".to_owned(),
+            ),
+            ("Drop to add it".to_owned(), " ".to_owned()),
+        ]);
+        assert_eq!(said(&words, "Too many files"), "Слишком много файлов");
+        assert_eq!(said(&words, "Drop to add it"), "Drop to add it");
+        assert_eq!(
+            said(&HashMap::new(), "No files on the shelf"),
+            "No files on the shelf"
+        );
+    }
 }

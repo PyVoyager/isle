@@ -14,6 +14,7 @@ import St from 'gi://St';
 
 import {BotIcon} from './botIcon.js';
 import {VERTICAL, onUiScale, px} from './compat.js';
+import {words} from './daemonWords.js';
 import * as Format from './format.js';
 import {_, N_} from './i18n.js';
 import {icon, iconButton, playMotion, slideBy, wrapLines} from './widgets.js';
@@ -333,7 +334,7 @@ export const CommandCard = GObject.registerClass({
         const waiting = card.status === 'waiting';
         const running = card.status === 'running';
         const ended = !waiting && !running;
-        this._title.text = card.why;
+        this._title.text = words(card.why);
         // Waiting, the line under the title says what to know; running, how long it has been at it.
         this._subtitle.text = waiting ? card.detail ?? '' : running ? _('Running · {time}', {time: elapsed(card.seconds ?? 0)}) : '';
         this._subtitle.visible = Boolean(this._subtitle.text);
@@ -600,7 +601,7 @@ export const ChatView = GObject.registerClass({
         const text = label('', 'isle-chat-reply', {x_expand: true});
         copyable(text, () => this._copied(), () => this.emit('settled'));
         text.clutter_text.set({line_wrap: true, line_wrap_mode: Pango.WrapMode.WORD_CHAR, ellipsize: Pango.EllipsizeMode.NONE});
-        text.clutter_text.set_markup(answerMarkup(item.text ?? ''));
+        text.clutter_text.set_markup(answerMarkup(words(item.text)));
         row.add_child(text);
         return row;
     }

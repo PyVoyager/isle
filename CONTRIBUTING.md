@@ -97,6 +97,9 @@ is a file in `po/`, compiled into the extension's `locale/` by `install.sh` and 
   `N_()` there and translated with `_()` where it shows: translations arrive after the modules load.
 - Two meanings of one English word get a context: `pgettext('glass', 'Clear')`.
 - What goes to the AI or into logs stays in English.
+- isled and isle-shelf write in English. A text isled sends that the island shows goes in
+  `src/daemonWords.js`, as isled writes it with its blanks as `{names}` (a test checks it is still in
+  isled's code); isle-shelf gets its words from the extension (`SetWords`, see `src/shelfHelper.js`).
 - After changing texts, run `scripts/translations.sh update` (needs `gettext`) and commit `po/`; to
   translate, edit `po/<language>.po` (or add one, from `po/isle.pot`) and run the check.
 
