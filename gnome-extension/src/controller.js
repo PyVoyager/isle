@@ -695,6 +695,7 @@ export class Controller {
         });
         this._settingsChanged.push(this._settings.connect('changed::battery-low-level', () => {
             this._warnedCustomLevel = null;
+            this._checkCustomBatteryLow(daemon.state.system?.battery, {thresholdChanged: true});
         }));
         this._settingsChanged.push(this._settings.connect('changed::check-updates', () => this._syncUpdates()));
         this._settingsChanged.push(this._settings.connect('changed::lyrics-online', () => this._syncLyrics()));
@@ -746,6 +747,17 @@ export class Controller {
             this._post(Alerts.pomodoroFinished(finished, next, daemon.state.pomodoro, daemon));
         });
         daemon.connect('system-event', (_daemon, event) => {
+            if (event.kind === 'power') {
+                if (this._alertedPlugged === event.plugged)
+                    return;
+                this._alertedPlugged = event.plugged;
+                const level = this._settings.get_int('battery-low-level');
+                if (!event.plugged && event.percent <= level && this._warnedCustomLevel !== level) {
+                    this._warnedCustomLevel = level;
+                    this._postSystemAlert(Alerts.system({kind: 'battery_low', percent: event.percent}), 'power', true);
+                    return;
+                }
+            }
             if (event.kind === 'battery_low' && Math.round(event.percent) === this._settings.get_int('battery-low-level'))
                 this._warnedCustomLevel = Math.round(event.percent);
             this._postSystemAlert(Alerts.system(event), SYSTEM_ALERTS[event.kind] ?? 'power',
@@ -2231,21 +2243,37 @@ export class Controller {
     }
 
     /** Triggers a low-battery visual + sound alert at the user's chosen `battery-low-level` (%). */
-    _checkCustomBatteryLow(battery) {
+    _checkCustomBatteryLow(battery, {thresholdChanged = false} = {}) {
         if (!battery)
             return;
-        if (battery.plugged) {
-            this._warnedCustomLevel = null;
-            this._lastBatteryPercent = battery.percent;
-            return;
-        }
+        const prevPlugged = this._lastBatteryPlugged;
+        this._lastBatteryPlugged = battery.plugged;
+        const justUnplugged = prevPlugged === true && !battery.plugged;
         const level = this._settings.get_int('battery-low-level');
         const prev = this._lastBatteryPercent;
         const now = battery.percent;
         this._lastBatteryPercent = now;
-        if (prev !== undefined && prev > level && now <= level && this._warnedCustomLevel !== level) {
+        if (battery.plugged) {
+            this._warnedCustomLevel = null;
+            if (prevPlugged !== undefined && prevPlugged !== battery.plugged && this._alertedPlugged !== battery.plugged) {
+                this._alertedPlugged = battery.plugged;
+                this._postSystemAlert(Alerts.system({kind: 'power', plugged: true, percent: now}), 'power');
+            }
+            return;
+        }
+        const crossedDown = prev !== undefined && prev > level && now <= level;
+        const lowNow = (crossedDown || ((justUnplugged || thresholdChanged) && now <= level)) &&
+            this._warnedCustomLevel !== level;
+        if (lowNow) {
             this._warnedCustomLevel = level;
+            this._alertedPlugged = false;
             this._postSystemAlert(Alerts.system({kind: 'battery_low', percent: now}), 'power', true);
+            return;
+        }
+        if (prevPlugged !== undefined && prevPlugged !== battery.plugged && this._alertedPlugged !== battery.plugged) {
+            // Shown immediately when `System1.State` changes, even if `isled`'s flap window suppressed the Event signal.
+            this._alertedPlugged = battery.plugged;
+            this._postSystemAlert(Alerts.system({kind: 'power', plugged: false, percent: now}), 'power');
         }
     }
 
@@ -3212,8 +3240,10 @@ export class Controller {
         }
     }
 
-    /** Turns Isle off: agents' asks go back to their terminals, then all it built is torn down. */
-    destroy() {
+    /** Turns Isle off: agents' asks go back to their terminals, then all it built is torn down.
+     * With `keepOperations: true` (a live reload for an interface language change), active phone sharing
+     * and pending assistant command approvals are kept running. */
+    destroy({keepOperations = false} = {}) {
         // Failed to start: what it built went then.
         if (this._failed)
             return;
@@ -3221,7 +3251,7 @@ export class Controller {
         if (this._building) {
             GLib.source_remove(this._building);
             this._building = 0;
-            this._destroyPartial();
+            this._destroyPartial({keepOperations});
             return;
         }
         this._stopRevealWait();
@@ -3231,7 +3261,7 @@ export class Controller {
         this._sayPresent(false);
         // Sharing with a phone never outlives Isle (the screen locking turns it off too): asked whatever the
         // state last said (a Start may be on its way), but never starting isled just for that.
-        if (this._daemon.running)
+        if (!keepOperations && this._daemon.running)
             this._daemon.call('share', 'Stop');
         // What waits goes with Isle, never shown (a notification marked read, its sound played) as it goes.
         this._queue = [];
@@ -3243,7 +3273,8 @@ export class Controller {
         this._focusChanged = 0;
         global.display.disconnect(this._focusMonitorChanged);
         global.display.disconnect(this._fullscreenChanged);
-        stopPending();
+        if (!keepOperations)
+            stopPending();
         if (this._voiceBound)
             Main.wm.removeKeybinding('voice-shortcut');
         this._unbindPageShortcuts();
@@ -3316,13 +3347,14 @@ export class Controller {
 
     /** Frees what the steps of building (see the constructor) made before it was turned off: nothing
      * outside knows of it yet, but for what it built. */
-    _destroyPartial() {
+    _destroyPartial({keepOperations = false} = {}) {
         this._destroying = true;
         for (const name of [...this._timeouts.keys()])
             this._cancel(name);
         // What the last step had connected before it failed (see `_connectAll`).
         Alerts.stopWatching();
-        stopPending();
+        if (!keepOperations)
+            stopPending();
         if (this._primaryChanged)
             global.display.get_selection().disconnect(this._primaryChanged);
         if (this._panelAdded)

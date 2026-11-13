@@ -24,7 +24,7 @@ const INTERFACE: &str = "org.freedesktop.UPower.Device";
 
 /// Plugged in and out again within this, as a charge limit can make the battery seem to (pending-charge,
 /// discharging, pending-charge…), alerts only once.
-const FLAP_WINDOW: Duration = Duration::from_secs(30);
+const FLAP_WINDOW: Duration = Duration::from_secs(2);
 
 /// The properties read; a change to any other (the energy, the rate, the time it was measured) is not.
 const READ: [&str; 4] = ["IsPresent", "Type", "State", "Percentage"];

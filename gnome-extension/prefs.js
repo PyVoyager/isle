@@ -17,7 +17,7 @@ import {ExtensionPreferences} from 'resource:///org/gnome/Shell/Extensions/js/ex
 import {DesktopAppInfo} from './src/appInfo.js';
 import {Bot, COLORS, SHAPES, paletteFor} from './src/bot.js';
 import {paintRim} from './src/glow.js';
-import {_, N_, pgettext, setTranslations} from './src/i18n.js';
+import {_, N_, pgettext, setLanguage, setTranslations} from './src/i18n.js';
 import {listenForSuperV} from './src/shortcutRecorder.js';
 import * as WorldClocks from './src/worldClocks.js';
 
@@ -36,19 +36,56 @@ export default class IslePreferences extends ExtensionPreferences {
     constructor(metadata) {
         super(metadata);
         this.initTranslations();
-        setTranslations(this);
+        setTranslations(this, path => Gio.File.new_for_path(path).load_contents(null)[1]);
     }
 
     // Island, Clipboard, Timer, Assistant, AI Usage and About, in that order.
     fillPreferencesWindow(window) {
         const settings = this.getSettings();
+        setLanguage(settings.get_string('language'));
         window.set_default_size(560, 680);
-        window.add(this._islandPage(settings, window));
-        window.add(this._clipboardPage(settings, window));
-        window.add(this._timerPage(settings, window));
-        window.add(this._voicePage(settings, window));
-        window.add(this._usagePage(settings, window));
-        window.add(this._aboutPage(settings, window));
+        let pages = [];
+        let pageCleanups = [];
+        const clearPages = () => {
+            pageCleanups.splice(0).forEach(fn => fn());
+            for (const page of pages)
+                window.remove(page);
+            pages = [];
+        };
+        const buildPages = () => {
+            const current = window.visible_page_name;
+            clearPages();
+            // Collect `close-request` handlers registered by the pages so they also run when a language switch rebuilds them.
+            const origConnect = window.connect.bind(window);
+            window.connect = (signal, handler) => {
+                if (signal === 'close-request') {
+                    pageCleanups.push(handler);
+                    return 0;
+                }
+                return origConnect(signal, handler);
+            };
+            try {
+                const island = this._islandPage(settings, window);
+                island.name = 'island';
+                const clipboard = this._clipboardPage(settings, window);
+                clipboard.name = 'clipboard';
+                const timer = this._timerPage(settings, window);
+                timer.name = 'timer';
+                const voice = this._voicePage(settings, window);
+                voice.name = 'voice';
+                const usage = this._usagePage(settings, window);
+                usage.name = 'usage';
+                const about = this._aboutPage(settings, window);
+                pages = [island, clipboard, timer, voice, usage, about];
+            } finally {
+                delete window.connect;
+            }
+            for (const page of pages)
+                window.add(page);
+            if (current)
+                window.visible_page_name = current;
+        };
+        buildPages();
         // A page asked for by the island (its Update button: About), once, also while open.
         const showAsked = () => {
             const asked = settings.get_string('prefs-page');
@@ -60,8 +97,14 @@ export default class IslePreferences extends ExtensionPreferences {
         };
         // Asked while open (perhaps behind other windows): brought forward too.
         const asked = settings.connect('changed::prefs-page', () => showAsked() && window.present());
+        const langChanged = settings.connect('changed::language', () => {
+            setLanguage(settings.get_string('language'));
+            buildPages();
+        });
         window.connect('close-request', () => {
+            pageCleanups.splice(0).forEach(fn => fn());
             settings.disconnect(asked);
+            settings.disconnect(langChanged);
             return false;
         });
         showAsked();
@@ -367,6 +410,11 @@ export default class IslePreferences extends ExtensionPreferences {
         const page = new Adw.PreferencesPage({title: _('Island'), icon_name: 'preferences-desktop-appearance-symbolic'});
 
         const look = new Adw.PreferencesGroup({title: _('Appearance')});
+        look.add(choiceRow(settings, 'language', _('Interface language'), _('Language for the island and Settings, independent of the system locale'), [
+            ['system', _('As system')],
+            ['ru', 'Русский'],
+            ['en', 'English'],
+        ]));
         look.add(choiceRow(settings, 'island-theme', _('Island'), _('Black, or clear glass that shows what is behind it, blurred'), [
             ['black', _('Black')],
             ['glass', _('Glass')],
@@ -461,7 +509,7 @@ export default class IslePreferences extends ExtensionPreferences {
             _('Alerts show over a video or game, then hide again; off, they wait until it leaves full screen')));
         alerts.add(switchRow(settings, 'alert-power', _('Charging and battery'), _('Plugged in, unplugged, full and low')));
         const batteryLowLevel = spinRow(settings, 'battery-low-level', _('Low battery warning at (%)'),
-            _('Visual and sound alert when battery drops to this level'), 5, 80);
+            _('Visual and sound alert when battery drops to this level'), 5, 95);
         settings.bind('alert-power', batteryLowLevel, 'sensitive', Gio.SettingsBindFlags.GET);
         alerts.add(batteryLowLevel);
         alerts.add(switchRow(settings, 'alert-network', _('Network'), _('When the connection drops')));

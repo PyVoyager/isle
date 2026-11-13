@@ -43,6 +43,16 @@
       <summary>The island's clock</summary>
       <description>system: as GNOME's own clock is set. 24h: 20:40. 12h: 8:40 PM, with AM or PM. Every time Isle shows follows it.</description>
     </key>
+    <key name="language" type="s">
+      <choices>
+        <choice value="system"/>
+        <choice value="ru"/>
+        <choice value="en"/>
+      </choices>
+      <default>'system'</default>
+      <summary>Interface language</summary>
+      <description>system: follows the desktop locale. ru: Russian. en: English.</description>
+    </key>
     <key name="glass-tint" type="i">
       <range min="0" max="100"/>
       <default>0</default>
@@ -168,7 +178,7 @@
       <summary>Show charging and battery alerts</summary>
     </key>
     <key name="battery-low-level" type="i">
-      <range min="5" max="80"/>
+      <range min="5" max="95"/>
       <default>15</default>
       <summary>Custom low battery alert level (%)</summary>
       <description>Percentage at which the island warns of a low battery (with sound and visual alert), in addition to system low-battery levels.</description>
