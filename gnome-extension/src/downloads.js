@@ -7,10 +7,12 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
+import {_} from './i18n.js';
+
 /** Names tried before giving up: "Photo.jpg", "Photo (2).jpg"… */
 const MAX_NAMES = 999;
 /** Why a file that left the Shelf can't be saved. */
-const GONE = 'It is no longer on the Shelf';
+const GONE = () => _('It is no longer on the Shelf');
 
 /** The user's Downloads folder (XDG's, else ~/Downloads). */
 export function downloadsDir() {
@@ -87,7 +89,7 @@ async function save(uri, cancellable) {
             (file, result) => file.read_finish(result));
     } catch (e) {
         // Gone from the Shelf, or unreadable: nothing in Downloads is touched.
-        throw new Error(e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND) ? GONE : 'It can\u2019t be read', {cause: e});
+        throw new Error(e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND) ? GONE() : _('It can’t be read'), {cause: e});
     }
     try {
         const dir = downloadsDir();
@@ -115,7 +117,7 @@ async function save(uri, cancellable) {
                 throw new Error(e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NO_SPACE) ? writeReason(e) : reason(e), {cause: e});
             }
         }
-        throw new Error('Too many files of that name in Downloads');
+        throw new Error(_('Too many files of that name in Downloads'));
     } finally {
         input.close_async(GLib.PRIORITY_LOW, null, null);
     }
@@ -124,20 +126,20 @@ async function save(uri, cancellable) {
 /** Why Downloads can't take the file. */
 function writeReason(e) {
     if (e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NO_SPACE))
-        return 'Not enough space in Downloads';
+        return _('Not enough space in Downloads');
     if (e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.PERMISSION_DENIED) || e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.READ_ONLY))
-        return 'Downloads can\u2019t be written to';
+        return _('Downloads can’t be written to');
     return e.message;
 }
 
 /** A failed copy's reason, as the island says it. */
 function reason(e) {
     if (e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND))
-        return GONE;
+        return GONE();
     if (e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NO_SPACE))
-        return 'Not enough space in Downloads';
+        return _('Not enough space in Downloads');
     if (e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.PERMISSION_DENIED))
-        return 'Downloads can’t be written to';
+        return _('Downloads can’t be written to');
     return e.message;
 }
 

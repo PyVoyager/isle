@@ -6,6 +6,17 @@ All notable changes to Isle are listed here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Isle in Russian: the island, its alerts, the assistant's panel and Settings follow the desktop's language,
+  through gettext (`po/`, compiled on install). Settings → Assistant → Language offers Russian, and Russian or
+  English, for speech, and speech recognition drops the credits Whisper makes up from silence in Russian
+  ("Продолжение следует…"). What isled says (the assistant's steps and errors, the AI limits' names and notes)
+  is translated in the island as it shows, and the shelf's drag-and-drop window takes its words from the
+  extension (`SetWords`, new in its D-Bus interface).
+- Notification buttons that turn something down are also known in Russian ("Отклонить"), so they are never
+  the one shown to press.
+
 ## [1.7.2] - 2026-11-13
 
 The voice assistant hears you again on newer PipeWire, the arrow keys choose in the clipboard, opencode 2 shows

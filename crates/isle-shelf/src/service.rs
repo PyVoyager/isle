@@ -3,6 +3,8 @@
 
 //! The D-Bus interface the GNOME extension uses to place the window.
 
+use std::collections::HashMap;
+
 use gtk::{gio, glib, prelude::*};
 use gtk4 as gtk;
 
@@ -59,6 +61,11 @@ const INTERFACE: &str = r#"
          land before the pointer gets to the window. -->
     <method name="SetDropping">
       <arg name="dropping" type="b" direction="in"/>
+    </method>
+    <!-- The drop area's words in the user's language, from the extension's translations: each English
+         text, as this helper writes it, with its own; a text it gives none for stays in English. -->
+    <method name="SetWords">
+      <arg name="words" type="a{ss}" direction="in"/>
     </method>
     <!-- A file is being dragged out: the island must stay open meanwhile,
          or hiding this window would end the drag. -->
@@ -153,6 +160,16 @@ pub fn register(connection: &gio::DBusConnection, window: ShelfWindow) -> Result
                     invocation.return_value(None);
                 }
                 None => invocation.return_error(gio::DBusError::InvalidArgs, "expected a boolean"),
+            },
+            "SetWords" => match params.get::<(HashMap<String, String>,)>() {
+                Some((words,)) => {
+                    window.set_words(words);
+                    invocation.return_value(None);
+                }
+                None => invocation.return_error(
+                    gio::DBusError::InvalidArgs,
+                    "expected English words with their own",
+                ),
             },
             _ => invocation.return_error(gio::DBusError::UnknownMethod, method),
         })

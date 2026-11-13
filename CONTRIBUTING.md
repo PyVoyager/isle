@@ -50,6 +50,7 @@ node --experimental-default-type=module --test tests/extension/*.test.js   # its
 gjs -m tests/extension/format.gjs.js                  # and those that need GLib
 gjs -m tests/extension/downloads.gjs.js
 glib-compile-schemas --strict --dry-run gnome-extension/schemas
+scripts/translations.sh check                         # po/ matches the extension's words (needs gettext)
 shellcheck get.sh install.sh uninstall.sh scripts/*.sh scripts/isle-charge-limit scripts/ci/*.sh packaging/aur/update.sh
 cargo deny check                                      # advisories and licences (deny.toml)
 ```
@@ -85,6 +86,24 @@ change. Logs:
 journalctl --user -u isled -f                        # the daemon
 journalctl -f /usr/bin/gnome-shell | grep -i isle    # the extension
 ```
+
+## Translations
+
+The extension's words go through `gnome-extension/src/i18n.js` (gettext, domain `isle`); each language
+is a file in `po/`, compiled into the extension's `locale/` by `install.sh` and `scripts/package.sh`.
+
+- Mark every text people read: `_('Opening {app}…', {app})`, and `ngettext('{count} file', '{count}
+  files', count)` for a number of things (Russian has three forms, so never `count === 1 ? … : …`).
+  Blanks are `{names}`, never a string built around the words, so a language can put them where it needs.
+- A text kept in a table that modules build as they load (tab names, a shape's label) is marked with
+  `N_()` there and translated with `_()` where it shows: translations arrive after the modules load.
+- Two meanings of one English word get a context: `pgettext('glass', 'Clear')`.
+- What goes to the AI or into logs stays in English.
+- isled and isle-shelf write in English. A text isled sends that the island shows goes in
+  `src/daemonWords.js`, as isled writes it with its blanks as `{names}` (a test checks it is still in
+  isled's code); isle-shelf gets its words from the extension (`SetWords`, see `src/shelfHelper.js`).
+- After changing texts, run `scripts/translations.sh update` (needs `gettext`) and commit `po/`; to
+  translate, edit `po/<language>.po` (or add one, from `po/isle.pot`) and run the check.
 
 ## Code style
 

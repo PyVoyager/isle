@@ -12,6 +12,7 @@ import St from 'gi://St';
 
 import {BotIcon} from './botIcon.js';
 import {VERTICAL, onUiScale, px} from './compat.js';
+import {_} from './i18n.js';
 import * as Palette from './palette.js';
 import * as Theme from './theme.js';
 import {Art, LevelBar, Ring, VolumeGlyph, WrapLayout, cornerClose, icon, isSymbolic, ownIcon, pillButton, playMotion,
@@ -447,7 +448,7 @@ export const PeekView = GObject.registerClass({
         this._bot.form = allowed ? 'success' : 'attentive';
         this._bot.play(allowed ? 'hop' : 'shake');
         this._answeredIcon.gicon = icon(allowed ? 'isle-check-symbolic' : 'isle-close-symbolic');
-        this._answeredText.text = action.done ?? (allowed ? 'Allowed' : 'Denied');
+        this._answeredText.text = action.done ?? (allowed ? _('Allowed') : _('Denied'));
         this._answered.style_class = `isle-peek-answered ${allowed ? 'isle-peek-allowed' : 'isle-peek-denied'}`;
         this._actions.visible = false;
         this._answered.visible = true;

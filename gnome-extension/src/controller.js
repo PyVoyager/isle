@@ -23,6 +23,7 @@ import {CompactView} from './compact.js';
 import {HAS_ACCENT, grabsKeyboard, inhibitScanout, isWayland, onUiScale, px, uiScale} from './compat.js';
 import {Daemon} from './daemon.js';
 import {BOTTOM_PADDING, ExpandedView, PAGE_HEIGHT} from './expanded.js';
+import {_} from './i18n.js';
 import {Island} from './island.js';
 import {MirrorIsland} from './mirror.js';
 import {AudioOutputs} from './audio.js';
@@ -685,11 +686,16 @@ export class Controller {
             else if (key === 'agents')
                 this._agentsUnsynced ? this._syncAgents() : this._hookNewAgents();
             // Back online: an "Offline" still waiting its turn, or on screen, is no longer so.
-            else if (key === 'system' && daemon.state.system?.network?.connected)
-                this._withdrawAlert('network');
-            else if (key === 'share')
+            else if (key === 'system') {
+                if (daemon.state.system?.network?.connected)
+                    this._withdrawAlert('network');
+                this._checkCustomBatteryLow(daemon.state.system?.battery);
+            } else if (key === 'share')
                 this._onShare();
         });
+        this._settingsChanged.push(this._settings.connect('changed::battery-low-level', () => {
+            this._warnedCustomLevel = null;
+        }));
         this._settingsChanged.push(this._settings.connect('changed::check-updates', () => this._syncUpdates()));
         this._settingsChanged.push(this._settings.connect('changed::lyrics-online', () => this._syncLyrics()));
         this._voice.connect('orb-clicked', () => this._onVoiceKey());
@@ -739,9 +745,12 @@ export class Controller {
             this._chime('complete');
             this._post(Alerts.pomodoroFinished(finished, next, daemon.state.pomodoro, daemon));
         });
-        daemon.connect('system-event', (_daemon, event) =>
+        daemon.connect('system-event', (_daemon, event) => {
+            if (event.kind === 'battery_low' && Math.round(event.percent) === this._settings.get_int('battery-low-level'))
+                this._warnedCustomLevel = Math.round(event.percent);
             this._postSystemAlert(Alerts.system(event), SYSTEM_ALERTS[event.kind] ?? 'power',
-                URGENT_SYSTEM_ALERTS.includes(event.kind)));
+                URGENT_SYSTEM_ALERTS.includes(event.kind));
+        });
 
         // Sharing or recording the screen, what others write and what was copied stay out of sight.
         this._privacy.connect('changed', () => this._syncSharing());
@@ -2214,7 +2223,30 @@ export class Controller {
             return;
         if (this._notifications.dnd && !urgent)
             return;
+        if (urgent)
+            this._chime('dialog-warning');
+        else if (alert.key === 'power')
+            this._chime('complete');
         this._post(alert);
+    }
+
+    /** Triggers a low-battery visual + sound alert at the user's chosen `battery-low-level` (%). */
+    _checkCustomBatteryLow(battery) {
+        if (!battery)
+            return;
+        if (battery.plugged) {
+            this._warnedCustomLevel = null;
+            this._lastBatteryPercent = battery.percent;
+            return;
+        }
+        const level = this._settings.get_int('battery-low-level');
+        const prev = this._lastBatteryPercent;
+        const now = battery.percent;
+        this._lastBatteryPercent = now;
+        if (prev !== undefined && prev > level && now <= level && this._warnedCustomLevel !== level) {
+            this._warnedCustomLevel = level;
+            this._postSystemAlert(Alerts.system({kind: 'battery_low', percent: now}), 'power', true);
+        }
     }
 
     /** Queues `alert`, replacing one with its key; past a few waiting notifications, they merge into a summary. */
@@ -2646,7 +2678,7 @@ export class Controller {
             this._syncAssistantBusy();
             return;
         }
-        const why = error || (this._daemon.running ? 'Isle couldn’t take that' : 'Isle’s service isn’t running');
+        const why = error || (this._daemon.running ? _('Isle couldn’t take that') : _('Isle’s service isn’t running'));
         this._listenSent = false;
         this._voice.setState({phase: 'error', error: why, hint: this._askAgainHint});
         this._setKeyboard(false);
@@ -2702,7 +2734,8 @@ export class Controller {
 
     /** How to ask again, under an error: the shortcut, if there is one. */
     get _askAgainHint() {
-        return this._voiceShortcut ? `Press ${this._voiceShortcut} to ask again.` : 'Ask again from the mic in the island.';
+        return this._voiceShortcut ? _('Press {shortcut} to ask again.', {shortcut: this._voiceShortcut})
+            : _('Ask again from the mic in the island.');
     }
 
     /** Whether the assistant works on a request with the island closed. */
@@ -2730,7 +2763,7 @@ export class Controller {
         this._voice.followUp = greet ? null : Format.answerPlain(this._voice.exchange?.reply ?? '') || null;
         // Esc and clicks elsewhere close it while it listens and thinks.
         this._setKeyboard(true);
-        this._voice.greeting = greet ? GREETING : null;
+        this._voice.greeting = greet ? _(GREETING) : null;
         this._voice.micWaiting = false;
         this._voice.setState({phase: 'listening'});
         // Not recording yet after a moment (isled getting the AI or the speech model ready): it says so.
@@ -3045,13 +3078,13 @@ export class Controller {
         if (this._voiceInBackground) {
             this._voiceInBackground = false;
             this._syncAssistantBusy();
-            this._post(Alerts.assistant({phase: 'error', error: 'Isle restarted', hint: this._askAgainHint},
+            this._post(Alerts.assistant({phase: 'error', error: _('Isle restarted'), hint: this._askAgainHint},
                 () => this._openVoice()));
             return;
         }
         if (!this._voiceOpen || !['listening', ...VOICE_WORKING].includes(this._voice.phase))
             return;
-        this._voice.setState({phase: 'error', error: 'Isle restarted', hint: this._askAgainHint});
+        this._voice.setState({phase: 'error', error: _('Isle restarted'), hint: this._askAgainHint});
         this._setKeyboard(false);
         this._render();
         this._scheduleVoiceClose(VOICE_ERROR_MS);

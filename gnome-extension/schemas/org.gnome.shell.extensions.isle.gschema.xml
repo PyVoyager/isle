@@ -167,6 +167,12 @@
       <default>true</default>
       <summary>Show charging and battery alerts</summary>
     </key>
+    <key name="battery-low-level" type="i">
+      <range min="5" max="80"/>
+      <default>15</default>
+      <summary>Custom low battery alert level (%)</summary>
+      <description>Percentage at which the island warns of a low battery (with sound and visual alert), in addition to system low-battery levels.</description>
+    </key>
     <key name="alert-network" type="b">
       <default>true</default>
       <summary>Show network alerts</summary>

@@ -10,6 +10,7 @@ import GObject from 'gi://GObject';
 import St from 'gi://St';
 
 import {VERTICAL, onUiScale, uiScale} from '../compat.js';
+import {_, N_} from '../i18n.js';
 import {icon, iconButton, label, pillButton, wrapLines} from '../widgets.js';
 
 /** The tallest the code may be (CSS px): the page's height less its top padding. */
@@ -29,12 +30,12 @@ const FOLD_MS = 220;
 
 /** What the island says of the network, by isled's `network`. */
 const NETWORK_NOTES = {
-    public: 'This network looks public · use your phone’s hotspot',
-    open: 'Open Wi-Fi: others nearby could see the files · try a hotspot',
-    unknown: 'Only share on a network you trust',
+    public: N_('This network looks public · use your phone’s hotspot'),
+    open: N_('Open Wi-Fi: others nearby could see the files · try a hotspot'),
+    unknown: N_('Only share on a network you trust'),
 };
 /** How to connect, one short step a line; the first says where (a network to avoid makes it a warning). */
-const STEPS = ['Same Wi-Fi as this computer, or its hotspot', 'Scan the code with the camera', 'Allow it here with the code it shows'];
+const STEPS = [N_('Same Wi-Fi as this computer, or its hotspot'), N_('Scan the code with the camera'), N_('Allow it here with the code it shows')];
 
 /** The QR code, black on white, each module whole device pixels so it is sharp at any scale. */
 export const PhoneCode = GObject.registerClass(
@@ -42,7 +43,7 @@ class PhoneCode extends St.DrawingArea {
     _init() {
         super._init({
             style_class: 'isle-phone-code',
-            accessible_name: 'Code to open the Shelf on your phone',
+            accessible_name: _('Code to open the Shelf on your phone'),
             y_align: Clutter.ActorAlign.START,
         });
         this._rows = [];
@@ -110,7 +111,7 @@ export const PhoneView = GObject.registerClass({
             y_expand: true,
             y_align: Clutter.ActorAlign.FILL,
         });
-        this._title = label('Scan with your phone', 'isle-phone-title', {y_align: Clutter.ActorAlign.START});
+        this._title = label(_('Scan with your phone'), 'isle-phone-title', {y_align: Clutter.ActorAlign.START});
         this.add_child(this._title);
 
         // Not connected yet: three numbered steps.
@@ -120,7 +121,7 @@ export const PhoneView = GObject.registerClass({
             // The digit centred in its circle: a label as tall as the circle would sit at its top.
             step.add_child(new St.Bin({style_class: 'isle-phone-step-number', y_align: Clutter.ActorAlign.START,
                 child: label(String(i + 1), 'isle-phone-step-digit', {x_align: Clutter.ActorAlign.CENTER, y_align: Clutter.ActorAlign.CENTER})}));
-            const words = label(text, 'isle-phone-step-text', {x_expand: true, y_align: Clutter.ActorAlign.START});
+            const words = label(_(text), 'isle-phone-step-text', {x_expand: true, y_align: Clutter.ActorAlign.START});
             wrapLines(words);
             step.add_child(words);
             this._steps.add_child(step);
@@ -214,11 +215,11 @@ export const PhoneView = GObject.registerClass({
         const asks = this._asks.get_n_children();
         const phones = this._phones.get_n_children();
         const connected = asks + phones > 0;
-        const note = NETWORK_NOTES[state?.network] ?? null;
+        const note = state?.network in NETWORK_NOTES ? _(NETWORK_NOTES[state.network]) : null;
         // Not connected: the steps, the first a warning on a network to avoid; the copy row at the bottom.
         this._steps.visible = !connected;
         const warn = ['public', 'open'].includes(state?.network);
-        this._stepTexts[0].text = warn ? note : STEPS[0];
+        this._stepTexts[0].text = warn ? note : _(STEPS[0]);
         if (warn)
             this._stepTexts[0].add_style_class_name('isle-phone-warning');
         else
@@ -229,9 +230,9 @@ export const PhoneView = GObject.registerClass({
         this._noteText.text = note ?? '';
         this._fix = state?.firewall ?? null;
         this._copyRow.visible = !connected && Boolean(this._fix || this._url);
-        this._copyText.text = this._fix ? 'Phone can’t connect? ufw may block it' : 'Can’t scan? Send the link another way';
+        this._copyText.text = this._fix ? _('Phone can’t connect? ufw may block it') : _('Can’t scan? Send the link another way');
         if (!this._copiedTimer)
-            this._copy.label = this._fix ? 'Copy fix' : 'Copy link';
+            this._copy.label = this._fix ? _('Copy fix') : _('Copy link');
     }
 
     /** One row per item, in order, kept while its phone stays (refreshed in place); one whose phone went says
@@ -250,7 +251,7 @@ export const PhoneView = GObject.registerClass({
                 if (asks)
                     this._drop(key, row);
                 else
-                    this._leave(row, `${row._device} left`);
+                    this._leave(row, _('{device} left', {device: row._device}));
             }
         }
         items.forEach((item, index) => {
@@ -279,15 +280,15 @@ export const PhoneView = GObject.registerClass({
     _askRow({id, code, device, address}) {
         const row = new St.BoxLayout({style_class: 'isle-phone-row isle-phone-ask'});
         const words = new St.BoxLayout({...VERTICAL, x_expand: true, y_align: Clutter.ActorAlign.CENTER});
-        words.add_child(label(`Code ${code}`, 'isle-phone-code-text'));
+        words.add_child(label(_('Code {code}', {code}), 'isle-phone-code-text'));
         const what = label(`${device} · ${address}`, 'isle-phone-hint');
         wrapLines(what);
         words.add_child(what);
         row.add_child(words);
-        const deny = pillButton('Deny', 'isle-pill-small', () => this.emit('answer', id, false));
-        const allow = pillButton('Allow', 'isle-pill-small isle-pill-white isle-pill-decision', () => this.emit('answer', id, true));
-        deny.accessible_name = `Deny ${device} with code ${code}`;
-        allow.accessible_name = `Allow ${device} with code ${code}`;
+        const deny = pillButton(_('Deny'), 'isle-pill-small', () => this.emit('answer', id, false));
+        const allow = pillButton(_('Allow'), 'isle-pill-small isle-pill-white isle-pill-decision', () => this.emit('answer', id, true));
+        deny.accessible_name = _('Deny {device} with code {code}', {device, code});
+        allow.accessible_name = _('Allow {device} with code {code}', {device, code});
         row.add_child(deny);
         row.add_child(allow);
         return row;
@@ -305,8 +306,8 @@ export const PhoneView = GObject.registerClass({
         row._remove = iconButton('isle-close-symbolic', 'isle-phone-remove', () => {
             this._removing.add(id);
             this.emit('remove', id);
-            this._leave(row, `✓ ${row._device} disconnected`);
-        }, {size: 10, accessibleName: `Take ${device} off`});
+            this._leave(row, _('✓ {device} disconnected', {device: row._device}));
+        }, {size: 10, accessibleName: _('Take {device} off', {device})});
         row.add_child(row._remove);
         this._refresh(row, phone);
         return row;
@@ -317,7 +318,7 @@ export const PhoneView = GObject.registerClass({
         if (row._leaving)
             return;
         row._device = device;
-        row._text.text = here ? `${device} · ${address}` : `${device} · ${address} · away`;
+        row._text.text = here ? `${device} · ${address}` : _('{device} · {address} · away', {device, address});
         if (here) {
             row._dot.add_style_class_name('on');
             row.remove_style_class_name('isle-phone-away');
@@ -380,7 +381,7 @@ export const PhoneView = GObject.registerClass({
         if (!text)
             return;
         St.Clipboard.get_default().set_text(St.ClipboardType.CLIPBOARD, text);
-        this._copy.label = 'Copied';
+        this._copy.label = _('Copied');
         this._cancelCopied();
         this._copiedTimer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, COPIED_MS, () => {
             this._copiedTimer = 0;

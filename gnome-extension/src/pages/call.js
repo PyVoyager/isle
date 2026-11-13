@@ -15,6 +15,7 @@ import {VERTICAL, onUiScale, px, uiScale} from '../compat.js';
 import {PAGE_HEIGHT} from '../expanded.js';
 import * as Format from '../format.js';
 import {roundCorners} from '../glass.js';
+import {_} from '../i18n.js';
 import * as Theme from '../theme.js';
 import {icon, label, setEnabled} from '../widgets.js';
 import {Page} from './page.js';
@@ -240,7 +241,7 @@ class CallPage extends Page {
             child: this._preview,
             can_focus: true,
             track_hover: true,
-            accessible_name: 'Go to the call',
+            accessible_name: _('Go to the call'),
             y_align: Clutter.ActorAlign.CENTER,
         });
         this._previewButton.connect('clicked', () => this._open());
@@ -266,8 +267,8 @@ class CallPage extends Page {
         side.add_child(status);
 
         const controls = new St.BoxLayout({style_class: 'isle-call-controls'});
-        this._mute = this._control('isle-mic-symbolic', 'Mute', () => call.toggleMuted());
-        this._show = this._control('isle-open-symbolic', 'Open', () => this._open());
+        this._mute = this._control('isle-mic-symbolic', _('Mute'), () => call.toggleMuted());
+        this._show = this._control('isle-open-symbolic', _('Open'), () => this._open());
         controls.add_child(this._mute.box);
         controls.add_child(this._show.box);
         side.add_child(controls);
@@ -326,7 +327,7 @@ class CallPage extends Page {
         const gicon = call.gicon ?? icon('isle-phone-symbolic');
         this._appIcon.gicon = gicon;
         this._name.text = call.name;
-        this._kind.text = call.video ? 'Video call' : 'Voice call';
+        this._kind.text = call.video ? _('Video call') : _('Voice call');
 
         const muted = call.muted;
         this._mute.button.child.gicon = icon(muted ? 'isle-mic-off-symbolic' : 'isle-mic-symbolic');
@@ -334,8 +335,8 @@ class CallPage extends Page {
             this._mute.button.add_style_pseudo_class('checked');
         else
             this._mute.button.remove_style_pseudo_class('checked');
-        this._mute.text.text = muted ? 'Muted' : 'Mute';
-        this._mute.button.accessible_name = muted ? 'Unmute the microphone' : 'Mute the microphone';
+        this._mute.text.text = muted ? _('Muted') : _('Mute');
+        this._mute.button.accessible_name = muted ? _('Unmute the microphone') : _('Mute the microphone');
 
         const reachable = Boolean(call.window || call.app);
         setEnabled(this._show.button, reachable);
@@ -351,7 +352,7 @@ class CallPage extends Page {
             return {};
         // Whoever watches the shared or recorded screen should not see the call.
         if (this._privacy.screenShare || this._privacy.recording)
-            return {hint: 'Hidden while sharing'};
+            return {hint: _('Hidden while sharing')};
         return {window};
     }
 

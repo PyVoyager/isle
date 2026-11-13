@@ -14,6 +14,7 @@ import Pango from 'gi://Pango';
 import St from 'gi://St';
 
 import {VERTICAL, px} from '../compat.js';
+import {_} from '../i18n.js';
 import {LOW_BATTERY, deviceIcon, icon, label} from '../widgets.js';
 import {Page} from './page.js';
 
@@ -138,7 +139,7 @@ class DeviceCard extends St.BoxLayout {
         this._name.clutter_text.ellipsize = Pango.EllipsizeMode.END;
         const status = new St.BoxLayout({style_class: 'isle-device-status'});
         status.add_child(new St.Widget({style_class: 'isle-device-dot', y_align: Clutter.ActorAlign.CENTER}));
-        this._status = label('Connected', 'isle-device-connected');
+        this._status = label(_('Connected'), 'isle-device-connected');
         status.add_child(this._status);
         texts.add_child(this._name);
         texts.add_child(status);
@@ -149,7 +150,7 @@ class DeviceCard extends St.BoxLayout {
         this._battery.add_child(this._body);
         this._battery.add_child(new St.Widget({style_class: 'isle-device-battery-nub', y_align: Clutter.ActorAlign.CENTER}));
         this._level = label('', 'isle-device-level', {y_align: Clutter.ActorAlign.CENTER});
-        this._none = label('No battery info', 'isle-device-none', {y_align: Clutter.ActorAlign.CENTER});
+        this._none = label(_('No battery info'), 'isle-device-none', {y_align: Clutter.ActorAlign.CENTER});
         for (const child of [this._battery, this._level, this._none])
             power.add_child(child);
 
@@ -175,7 +176,7 @@ class DeviceCard extends St.BoxLayout {
             this._body.level = Math.min(100, Math.max(0, percent)) / 100;
         }
         const low = known && percent <= LOW_BATTERY;
-        this._status.text = low ? 'Low battery' : 'Connected';
+        this._status.text = low ? _('Low battery') : _('Connected');
         if (low)
             this.add_style_class_name('low');
         else

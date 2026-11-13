@@ -388,6 +388,7 @@ Served by `isle-shelf` (not `isled`) as `io.github.zickrian.isle.ShelfWindow` at
 | `Scale()` | → `i` | The scale GTK draws the window at: X pixels per logical one. |
 | `SetScale(i scale)` | | Draw at this scale (1 to 4) from now on: the extension sets it when the window comes out another size than asked, as when GTK started before GNOME told X11 apps the display's scale. |
 | `SetDropping(b dropping)` | | A file is being dragged towards the island: show where it will land. |
+| `SetWords(a{ss} words)` | | The drop area's words in the user's language: each English text, as the helper writes it, with its own. One not given stays in English. |
 | `Hovering` | signal `as uris` | The files dragged over the window, for the island to light in their colours; empty once they leave. |
 | `SetSaves(b saves)` | | 1.5.4: the extension saves files on `Save`; until it says so (an older one), the helper shows no ↓. The extension says it whenever the helper starts. |
 | `Save` | signal `s uri` | 1.5.4: ↓ was pressed on a file the shelf keeps itself (in isled's shelf folder); the extension copies it into Downloads, as from its own tile, and only such a file. |

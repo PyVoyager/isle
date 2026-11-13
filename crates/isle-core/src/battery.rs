@@ -7,7 +7,7 @@
 use std::collections::HashMap;
 
 /// Percentages at which a low battery is said, once each, highest first.
-pub const LOW_LEVELS: [f64; 3] = [20.0, 10.0, 5.0];
+pub const LOW_LEVELS: [f64; 4] = [20.0, 15.0, 10.0, 5.0];
 
 /// A device's level counts as charged back above a low level only this many points over it: a reading that
 /// wavers round a level (20, 21, 20), as some devices' do, warns once.
@@ -64,8 +64,9 @@ mod tests {
         assert_eq!(low_level(20.3, 19.8, None), Some(20.0));
         // Back over 20% and under again: said already.
         assert_eq!(low_level(20.1, 19.9, Some(20.0)), None);
-        assert_eq!(low_level(10.2, 9.9, Some(20.0)), Some(10.0));
-        // Asleep past two levels: the lowest.
+        assert_eq!(low_level(15.2, 14.9, Some(20.0)), Some(15.0));
+        assert_eq!(low_level(10.2, 9.9, Some(15.0)), Some(10.0));
+        // Asleep past several levels: the lowest.
         assert_eq!(low_level(22.0, 8.0, None), Some(10.0));
         assert_eq!(low_level(30.0, 25.0, None), None);
     }
@@ -75,7 +76,8 @@ mod tests {
         let mut devices = DeviceBatteries::default();
         assert_eq!(devices.reading("buds", 30, 25), None);
         assert_eq!(devices.reading("buds", 21, 20), Some(20));
-        assert_eq!(devices.reading("buds", 20, 15), None);
+        assert_eq!(devices.reading("buds", 20, 16), None);
+        assert_eq!(devices.reading("buds", 16, 15), Some(15));
         assert_eq!(devices.reading("buds", 15, 10), Some(10));
         assert_eq!(devices.reading("buds", 10, 9), None);
         // Several levels at once (a headset that reports in tens, or a gap): the lowest.

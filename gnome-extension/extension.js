@@ -7,10 +7,18 @@
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 import {Controller} from './src/controller.js';
+import {setTranslations} from './src/i18n.js';
 import {releaseIconTheme, setIconDir} from './src/widgets.js';
 
 /** The entry point GNOME Shell loads; everything else hangs off the controller. */
 export default class IsleExtension extends Extension {
+    /** Isle's words in the user's language (locale/, from po/), before anything is drawn. */
+    constructor(metadata) {
+        super(metadata);
+        this.initTranslations();
+        setTranslations(this);
+    }
+
     /** Icons first: the widgets the controller builds look them up. */
     enable() {
         setIconDir(this.dir.get_child('icons'));
