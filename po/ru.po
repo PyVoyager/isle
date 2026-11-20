@@ -217,14 +217,6 @@ msgstr "ИИ"
 msgid "Answers with your own sign-in; Isle runs its actions"
 msgstr "Отвечает с вашим входом; действия выполняет Isle"
 
-#: gnome-extension/prefs.js:228
-#, no-javascript-format
-msgid ""
-"Install Claude Code, Codex, Grok, opencode or Antigravity (agy), and sign in"
-msgstr ""
-"Установите Claude Code, Codex, Grok, opencode или Antigravity (agy) и "
-"войдите в аккаунт"
-
 #: gnome-extension/prefs.js:229
 #, no-javascript-format
 msgid "Automatic ({name})"
@@ -424,22 +416,6 @@ msgstr "Разрешить ИИ читать недавние уведомлен
 msgid "About the AIs"
 msgstr "Об ИИ"
 
-#: gnome-extension/prefs.js:358
-#, no-javascript-format
-msgid ""
-"Claude Code and Codex answer within your Claude or ChatGPT plan's limits; "
-"opencode with the providers you signed in to in opencode. Antigravity's "
-"terms bar third-party tools from its service; Isle only runs the official "
-"agy app, but use it at your own risk. Each is kept to answering: commands "
-"and file changes go through Isle, which asks you first."
-msgstr ""
-"Claude Code и Codex отвечают в пределах лимитов вашего тарифа Claude или "
-"ChatGPT, а opencode — через провайдеров, в которые вы вошли в opencode. "
-"Условия Antigravity запрещают сторонним инструментам доступ к сервису; Isle "
-"запускает только официальное приложение agy, но используйте его на свой "
-"страх и риск. Каждой ИИ-модели разрешено только отвечать: команды и "
-"изменения файлов проходят через Isle с вашего подтверждения."
-
 #: gnome-extension/prefs.js:366 gnome-extension/src/pages/shelf.js:24
 #, no-javascript-format
 msgid "Clipboard"
@@ -619,16 +595,6 @@ msgstr "Отступ под островом"
 #, no-javascript-format
 msgid "A little room between the closed island and the windows below"
 msgstr "Небольшой зазор между закрытым островом и окнами под ним"
-
-#: gnome-extension/prefs.js:450
-#, no-javascript-format
-msgid "Clock"
-msgstr "Часы"
-
-#: gnome-extension/prefs.js:450
-#, no-javascript-format
-msgid "The time in the island and its pages"
-msgstr "Время в острове и на его страницах"
 
 #: gnome-extension/prefs.js:451
 #, no-javascript-format
@@ -1281,11 +1247,6 @@ msgstr "Также открывается по Super+V"
 #, no-javascript-format
 msgid "Pages"
 msgstr "Страницы"
-
-#: gnome-extension/prefs.js:1108
-#, no-javascript-format
-msgid "The tabs of the open island. Turn off the ones you don’t use."
-msgstr "Вкладки открытого острова. Выключите те, которыми не пользуетесь."
 
 #: gnome-extension/prefs.js:1123
 #, no-javascript-format
@@ -2937,15 +2898,6 @@ msgstr "Попробуйте снова или просите меньше за 
 msgid "No AI is set up"
 msgstr "ИИ не настроен"
 
-#: gnome-extension/src/daemonWords.js:64
-#, no-javascript-format
-msgid ""
-"Install Claude Code, Codex, Grok, opencode or Antigravity (agy) and sign in, "
-"then pick it in Settings."
-msgstr ""
-"Установите Claude Code, Codex, Grok, opencode или Antigravity (agy), войдите "
-"в аккаунт и выберите его в Настройках."
-
 #: gnome-extension/src/daemonWords.js:65
 #, no-javascript-format
 msgid "Isle is still answering the last request"
@@ -4175,3 +4127,90 @@ msgstr "Чем могу помочь?"
 #, no-javascript-format
 msgid "Close"
 msgstr "Закрыть"
+
+msgid "12- or 24-hour, wherever Isle shows the time"
+msgstr "12- или 24-часовой формат везде, где Isle показывает время"
+
+msgid "An extra clock at the left or right end of the bar. Click it to open the calendar"
+msgstr "Дополнительные часы слева или справа на панели. Нажмите, чтобы открыть календарь"
+
+msgid "Check the connection, or that the model’s server is running, then ask again."
+msgstr "Проверьте подключение или убедитесь, что сервер модели запущен, и спросите снова."
+
+msgid "Claude Code and Codex answer within your Claude or ChatGPT plan's limits; opencode and Pi with the providers you signed in to in them (Pi searches no web). Antigravity's terms bar third-party tools from its service; Isle only runs the official agy app, but use it at your own risk. Each is kept to answering: commands and file changes go through Isle, which asks you first."
+msgstr "Claude Code и Codex отвечают в пределах вашего тарифа Claude или ChatGPT; opencode и Pi — через провайдеров, в которые вы вошли (Pi не ищет в сети). Условия Antigravity запрещают сторонние инструменты; Isle запускает только официальное приложение agy, но используйте его на свой риск. ИИ только отвечает: команды и изменения файлов идут через Isle, который сначала спрашивает вас."
+
+msgid "Clock in the island"
+msgstr "Часы в островке"
+
+msgid "Clock in the top bar"
+msgstr "Часы на верхней панели"
+
+msgid "Colour the top bar"
+msgstr "Окрашивать верхнюю панель"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Install Claude Code, Codex, Grok, opencode, Pi or Antigravity (agy) and sign in, then pick it in Settings."
+msgstr "Установите Claude Code, Codex, Grok, opencode, Pi или Antigravity (agy) и войдите, затем выберите его в Настройках."
+
+msgid "Install Claude Code, Codex, Grok, opencode, Pi or Antigravity (agy), and sign in"
+msgstr "Установите Claude Code, Codex, Grok, opencode, Pi или Antigravity (agy) и войдите"
+
+msgid "It hides by itself while the bar is too full"
+msgstr "Скрываются сами, когда на панели слишком тесно"
+
+msgid "Keep the lyrics open"
+msgstr "Закрепить текст песни"
+
+msgid "Left"
+msgstr "Слева"
+
+msgid "Let the lyrics close"
+msgstr "Открепить текст песни"
+
+msgid "Move down: the tab goes right"
+msgstr "Вниз: вкладка сдвинется вправо"
+
+msgid "Move up: the tab goes left"
+msgstr "Вверх: вкладка сдвинется влево"
+
+msgid "Open a terminal, type “pi”, then “/login” to sign in, then ask again."
+msgstr "Откройте терминал, введите «pi», затем «/login» для входа и спросите снова."
+
+msgid "Pi can’t reach its provider"
+msgstr "Pi не может связаться с провайдером"
+
+msgid "Put the tabs back in Isle’s own order"
+msgstr "Вернуть стандартный порядок вкладок Isle"
+
+msgid "Reset Order"
+msgstr "Сбросить порядок"
+
+msgid "Right"
+msgstr "Справа"
+
+msgid "Sign in with /login in Pi, then ask again."
+msgstr "Войдите с помощью /login в Pi и спросите снова."
+
+msgid "The open island’s tabs, top here is left there. Use the arrows to reorder them and the switches to hide the ones you don’t use."
+msgstr "Вкладки открытого островка: верхняя здесь будет слева там. Стрелками меняйте порядок, а переключателями скрывайте ненужные."
+
+msgid "Time"
+msgstr "Время"
+
+msgid "Time format"
+msgstr "Формат времени"
+
+msgid "Top bar clock shows"
+msgstr "Часы на панели показывают"
+
+msgid "Turn off for an empty island; the open island still shows the time"
+msgstr "Выключите, чтобы скрыть часы на закрытом островке; в открытом они останутся"
+
+msgid "Turn off to let your theme or another extension style the bar"
+msgstr "Выключите, чтобы панель оформляла ваша тема или другое расширение"
+
+msgid "the models of the providers you signed in to in Pi"
+msgstr "модели провайдеров, в которые вы вошли в Pi"

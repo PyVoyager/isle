@@ -203,12 +203,6 @@ msgstr ""
 msgid "Answers with your own sign-in; Isle runs its actions"
 msgstr ""
 
-#: gnome-extension/prefs.js:228
-#, no-javascript-format
-msgid ""
-"Install Claude Code, Codex, Grok, opencode or Antigravity (agy), and sign in"
-msgstr ""
-
 #: gnome-extension/prefs.js:229
 #, no-javascript-format
 msgid "Automatic ({name})"
@@ -404,16 +398,6 @@ msgstr ""
 msgid "About the AIs"
 msgstr ""
 
-#: gnome-extension/prefs.js:358
-#, no-javascript-format
-msgid ""
-"Claude Code and Codex answer within your Claude or ChatGPT plan's limits; "
-"opencode with the providers you signed in to in opencode. Antigravity's "
-"terms bar third-party tools from its service; Isle only runs the official "
-"agy app, but use it at your own risk. Each is kept to answering: commands "
-"and file changes go through Isle, which asks you first."
-msgstr ""
-
 #: gnome-extension/prefs.js:366 gnome-extension/src/pages/shelf.js:24
 #, no-javascript-format
 msgid "Clipboard"
@@ -583,16 +567,6 @@ msgstr ""
 #: gnome-extension/prefs.js:436
 #, no-javascript-format
 msgid "A little room between the closed island and the windows below"
-msgstr ""
-
-#: gnome-extension/prefs.js:450
-#, no-javascript-format
-msgid "Clock"
-msgstr ""
-
-#: gnome-extension/prefs.js:450
-#, no-javascript-format
-msgid "The time in the island and its pages"
 msgstr ""
 
 #: gnome-extension/prefs.js:451
@@ -1221,11 +1195,6 @@ msgstr ""
 #: gnome-extension/prefs.js:1108
 #, no-javascript-format
 msgid "Pages"
-msgstr ""
-
-#: gnome-extension/prefs.js:1108
-#, no-javascript-format
-msgid "The tabs of the open island. Turn off the ones you don’t use."
 msgstr ""
 
 #: gnome-extension/prefs.js:1123
@@ -2851,13 +2820,6 @@ msgstr ""
 msgid "No AI is set up"
 msgstr ""
 
-#: gnome-extension/src/daemonWords.js:64
-#, no-javascript-format
-msgid ""
-"Install Claude Code, Codex, Grok, opencode or Antigravity (agy) and sign in, "
-"then pick it in Settings."
-msgstr ""
-
 #: gnome-extension/src/daemonWords.js:65
 #, no-javascript-format
 msgid "Isle is still answering the last request"
@@ -4075,4 +4037,91 @@ msgstr ""
 #: gnome-extension/src/widgets.js:212
 #, no-javascript-format
 msgid "Close"
+msgstr ""
+
+msgid "12- or 24-hour, wherever Isle shows the time"
+msgstr ""
+
+msgid "An extra clock at the left or right end of the bar. Click it to open the calendar"
+msgstr ""
+
+msgid "Check the connection, or that the model’s server is running, then ask again."
+msgstr ""
+
+msgid "Claude Code and Codex answer within your Claude or ChatGPT plan's limits; opencode and Pi with the providers you signed in to in them (Pi searches no web). Antigravity's terms bar third-party tools from its service; Isle only runs the official agy app, but use it at your own risk. Each is kept to answering: commands and file changes go through Isle, which asks you first."
+msgstr ""
+
+msgid "Clock in the island"
+msgstr ""
+
+msgid "Clock in the top bar"
+msgstr ""
+
+msgid "Colour the top bar"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Install Claude Code, Codex, Grok, opencode, Pi or Antigravity (agy) and sign in, then pick it in Settings."
+msgstr ""
+
+msgid "Install Claude Code, Codex, Grok, opencode, Pi or Antigravity (agy), and sign in"
+msgstr ""
+
+msgid "It hides by itself while the bar is too full"
+msgstr ""
+
+msgid "Keep the lyrics open"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Let the lyrics close"
+msgstr ""
+
+msgid "Move down: the tab goes right"
+msgstr ""
+
+msgid "Move up: the tab goes left"
+msgstr ""
+
+msgid "Open a terminal, type “pi”, then “/login” to sign in, then ask again."
+msgstr ""
+
+msgid "Pi can’t reach its provider"
+msgstr ""
+
+msgid "Put the tabs back in Isle’s own order"
+msgstr ""
+
+msgid "Reset Order"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Sign in with /login in Pi, then ask again."
+msgstr ""
+
+msgid "The open island’s tabs, top here is left there. Use the arrows to reorder them and the switches to hide the ones you don’t use."
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Time format"
+msgstr ""
+
+msgid "Top bar clock shows"
+msgstr ""
+
+msgid "Turn off for an empty island; the open island still shows the time"
+msgstr ""
+
+msgid "Turn off to let your theme or another extension style the bar"
+msgstr ""
+
+msgid "the models of the providers you signed in to in Pi"
 msgstr ""

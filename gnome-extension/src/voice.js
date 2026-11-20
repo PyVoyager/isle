@@ -733,6 +733,10 @@ export const VoiceView = GObject.registerClass({
     startTyping(initial = '', card = null) {
         this._dropEndedCard(card);
         this._phase = 'typing';
+        // As isled has it now: opened again by typing, a card left from before (closed while it ran, the island
+        // drew no more of it) showed "Running · 0:01" long after its command ended. One that waits or runs shows
+        // fresh, one that ended goes, as `_dropEndedCard` just marked it.
+        this._syncCard(card);
         this._syncClose();
         // A new request: the steps and working time of one still at work when the field opened are not its.
         this._lastPhase = 'typing';
@@ -1009,7 +1013,7 @@ const TERMINALS = [
     ['ghostty', '-e'], ['wezterm', 'start', '--'], ['foot'], ['x-terminal-emulator', '-e'],
 ];
 
-/** Opens a terminal to sign in to `provider` ("agy", "claude", "codex", "grok", "opencode"), with its CLI where isled
+/** Opens a terminal to sign in to `provider` ("agy", "claude", "codex", "grok", "opencode", "pi"), with its CLI where isled
  * found it (`found`: nvm, Homebrew…); false without a terminal or the CLI. */
 export function openSignIn(provider, found = '') {
     const [name, ...args] = SIGN_IN[provider] ?? SIGN_IN.agy;
@@ -1040,10 +1044,14 @@ const SET_UP = 'next="$1"; shift; "$@" && printf "\\nIsle: done. %s\\n" "$next" 
 const SIGN_IN = {
     agy: ['agy'], claude: ['claude'], codex: ['codex', 'login'], grok: ['grok', 'login'],
     opencode: ['opencode', 'auth', 'login'],
+    // Pi signs in from inside, with its /login command.
+    pi: ['pi'],
 };
 
 /** What to do when no terminal could be opened to sign in. */
 export function signInHint(provider) {
+    if (provider === 'pi')
+        return _('Open a terminal, type “pi”, then “/login” to sign in, then ask again.');
     return _('Open a terminal, type “{command}” to sign in, then ask again.', {command: (SIGN_IN[provider] ?? SIGN_IN.agy).join(' ')});
 }
 
@@ -1056,6 +1064,7 @@ export function aiSettings(settings) {
         codex_model: settings.get_string('voice-codex-model'),
         grok_model: settings.get_string('voice-grok-model'),
         opencode_model: settings.get_string('voice-opencode-model'),
+        pi_model: settings.get_string('voice-pi-model'),
     };
 }
 

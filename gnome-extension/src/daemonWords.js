@@ -49,10 +49,13 @@ const WORDS = [
     N_('Ask again: it answers with its own default model now, or pick another in Settings.'),
     N_('Sign in to {name}'),
     N_('Sign in, then ask again.'),
+    N_('Sign in with /login in Pi, then ask again.'),
     N_('{name} can’t write its own files'),
     N_('Reinstalling it with its own installer usually puts this right.'),
     N_('{name} isn’t available'),
     N_('Its limit may be used up for now; try again later, or pick another in Settings.'),
+    N_('Pi can’t reach its provider'),
+    N_('Check the connection, or that the model’s server is running, then ask again.'),
     N_('You’re offline'),
     N_('Check the internet connection and try again.'),
     N_('{name} could not answer this time; try again.'),
@@ -61,7 +64,7 @@ const WORDS = [
     N_('{name} took too long'),
     N_('Try again, or ask for less at once.'),
     N_('No AI is set up'),
-    N_('Install Claude Code, Codex, Grok, opencode or Antigravity (agy) and sign in, then pick it in Settings.'),
+    N_('Install Claude Code, Codex, Grok, opencode, Pi or Antigravity (agy) and sign in, then pick it in Settings.'),
     N_('Isle is still answering the last request'),
     N_('Voice isn’t set up'),
     N_('Set up downloads speech recognition, once.'),
@@ -109,7 +112,7 @@ const NO_SHORTCUT = [
 /** What a blank holds: {name} is one of the AIs isled names (brain.rs and agents/mod.rs `name`), {count} a
  * number; any other, at least a character, as few as fit. So "Update {name}" is never an AI's "Update the
  * system". */
-const BLANKS = {name: '(Antigravity|Claude Code|Codex|Grok|opencode)', count: '(\\d+)'};
+const BLANKS = {name: '(Antigravity|Claude Code|Codex|Grok|opencode|Pi)', count: '(\\d+)'};
 
 let known = null;
 
