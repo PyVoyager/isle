@@ -4039,89 +4039,118 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#, no-javascript-format
 msgid "12- or 24-hour, wherever Isle shows the time"
 msgstr ""
 
+#, no-javascript-format
 msgid "An extra clock at the left or right end of the bar. Click it to open the calendar"
 msgstr ""
 
+#, no-javascript-format
 msgid "Check the connection, or that the model’s server is running, then ask again."
 msgstr ""
 
+#, no-javascript-format
 msgid "Claude Code and Codex answer within your Claude or ChatGPT plan's limits; opencode and Pi with the providers you signed in to in them (Pi searches no web). Antigravity's terms bar third-party tools from its service; Isle only runs the official agy app, but use it at your own risk. Each is kept to answering: commands and file changes go through Isle, which asks you first."
 msgstr ""
 
+#, no-javascript-format
 msgid "Clock in the island"
 msgstr ""
 
+#, no-javascript-format
 msgid "Clock in the top bar"
 msgstr ""
 
+#, no-javascript-format
 msgid "Colour the top bar"
 msgstr ""
 
+#, no-javascript-format
 msgid "Date"
 msgstr ""
 
+#, no-javascript-format
 msgid "Install Claude Code, Codex, Grok, opencode, Pi or Antigravity (agy) and sign in, then pick it in Settings."
 msgstr ""
 
+#, no-javascript-format
 msgid "Install Claude Code, Codex, Grok, opencode, Pi or Antigravity (agy), and sign in"
 msgstr ""
 
+#, no-javascript-format
 msgid "It hides by itself while the bar is too full"
 msgstr ""
 
+#, no-javascript-format
 msgid "Keep the lyrics open"
 msgstr ""
 
+#, no-javascript-format
 msgid "Left"
 msgstr ""
 
+#, no-javascript-format
 msgid "Let the lyrics close"
 msgstr ""
 
+#, no-javascript-format
 msgid "Move down: the tab goes right"
 msgstr ""
 
+#, no-javascript-format
 msgid "Move up: the tab goes left"
 msgstr ""
 
+#, no-javascript-format
 msgid "Open a terminal, type “pi”, then “/login” to sign in, then ask again."
 msgstr ""
 
+#, no-javascript-format
 msgid "Pi can’t reach its provider"
 msgstr ""
 
+#, no-javascript-format
 msgid "Put the tabs back in Isle’s own order"
 msgstr ""
 
+#, no-javascript-format
 msgid "Reset Order"
 msgstr ""
 
+#, no-javascript-format
 msgid "Right"
 msgstr ""
 
+#, no-javascript-format
 msgid "Sign in with /login in Pi, then ask again."
 msgstr ""
 
+#, no-javascript-format
 msgid "The open island’s tabs, top here is left there. Use the arrows to reorder them and the switches to hide the ones you don’t use."
 msgstr ""
 
+#, no-javascript-format
 msgid "Time"
 msgstr ""
 
+#, no-javascript-format
 msgid "Time format"
 msgstr ""
 
+#, no-javascript-format
 msgid "Top bar clock shows"
 msgstr ""
 
+#, no-javascript-format
 msgid "Turn off for an empty island; the open island still shows the time"
 msgstr ""
 
+#, no-javascript-format
 msgid "Turn off to let your theme or another extension style the bar"
 msgstr ""
 
+#, no-javascript-format
 msgid "the models of the providers you signed in to in Pi"
 msgstr ""
